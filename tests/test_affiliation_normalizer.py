@@ -2,7 +2,14 @@ from __future__ import annotations
 
 import pytest
 
-from affiliation_normalizer import AffiliationNormalizer, match_email_domain, match_grid, match_record, match_ror
+from affiliation_normalizer import (
+    AffiliationNormalizer,
+    match_affiliation,
+    match_email_domain,
+    match_grid,
+    match_record,
+    match_ror,
+)
 from affiliation_normalizer.build_rules import normalize_text as build_normalize_text
 from affiliation_normalizer.matcher import DEFAULT_RULES_PATH, normalize_text
 
@@ -364,6 +371,12 @@ def test_module_match_record_default_not_found_for_empty_input() -> None:
     result = match_record()
     assert result.status == "not_found"
     assert result.reason == "empty_input"
+
+
+def test_module_match_affiliation_uses_bundled_rules() -> None:
+    result = match_affiliation("Yale University, New Haven, CT")
+    assert result.status == "matched"
+    assert result.canonical_id == "us-ct-yale-university"
 
 
 def test_normalize_text_preserves_boundary_for_unicode_dash() -> None:

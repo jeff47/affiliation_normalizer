@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "affiliation_normalizer"
+version = "0.1.0"
+description = "Normalize affiliation strings to curated canonical institutions."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.setuptools]
+packages = ["affiliation_normalizer"]
+
+[tool.setuptools.package-data]
+affiliation_normalizer = ["data/*.json"]
