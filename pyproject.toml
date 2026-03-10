@@ -14,4 +14,4 @@ dependencies = []
 packages = ["affiliation_normalizer"]
 
 [tool.setuptools.package-data]
-affiliation_normalizer = ["data/*.json"]
+affiliation_normalizer = ["data/*.json", "py.typed"]
