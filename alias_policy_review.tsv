@@ -1,0 +1,34 @@
+alias	policy	source	reason	candidate_canonical_ids	candidate_canonical_names	notes
+MED	deny	manual_guardrail	overly broad generic token			
+U	deny	manual_guardrail	single-letter token			
+UNIV	deny	manual_guardrail	overly broad generic abbreviation			
+HARVARD UNIVERSITY D/B/A HARVARD SCHOOL OF PUBLIC HEALTH	allow	manual_addition	funded institute variant	us-ma-harvard-university	Harvard University	
+HARVARD UNIVERSITY	allow	manual_addition	funded institute variant	us-ma-harvard-university	Harvard University	
+BOSTON UNIVERSITY (CHARLES RIVER CAMPUS)	allow	manual_addition	funded institute variant	us-ma-boston-university	Boston University	
+BRI	review_only	auto_collision	acronym maps to 2 institutions in seed	us-ca-beckman-research-institute|us-wa-benaroya-research-institute	Beckman Research Institute|Benaroya Research Institute	
+BU	review_only	auto_collision	acronym maps to 2 institutions in seed	us-ma-boston-university|us-ri-brown-university	Boston University|Brown University	
+CU	review_only	auto_collision	acronym maps to 4 institutions in seed	us-ne-creighton-university|us-ny-columbia-university|us-ny-cornell-university|us-sc-clemson-university	Clemson University|Columbia University|Cornell University|Creighton University	
+DU	review_only	auto_collision	acronym maps to 2 institutions in seed	us-nc-duke-university|us-pa-drexel-university	Drexel University|Duke University	
+HUMC	review_only	auto_collision	acronym maps to 2 institutions in seed	us-ca-harbor-ucla-medical-center|us-nj-hackensack-university-medical-center	Hackensack University Medical Center|Harbor-UCLA Medical Center	
+NU	review_only	auto_collision	acronym maps to 2 institutions in seed	us-il-northwestern-university|us-ma-northeastern-university	Northeastern University|Northwestern University	
+PU	review_only	auto_collision	acronym maps to 2 institutions in seed	us-in-purdue-university|us-nj-princeton-university	Princeton University|Purdue University	
+RU	review_only	auto_collision	acronym maps to 2 institutions in seed	us-ny-rockefeller-university|us-tx-rice-university	Rice University|Rockefeller University	
+SRI	review_only	auto_collision	acronym maps to 2 institutions in seed	us-ca-scripps-research-institute|us-ca-stanford-research-institute	Scripps Research Institute|Stanford Research Institute	
+SUNY	review_only	manual_guardrail	system-level abbreviation, campus unspecified			
+TU	review_only	auto_collision	acronym maps to 3 institutions in seed	us-la-tulane-university|us-ma-tufts-university|us-pa-temple-university	Temple University|Tufts University|Tulane University	
+UC	review_only	auto_collision	acronym maps to 2 institutions in seed	us-il-university-of-chicago|us-oh-university-of-cincinnati	University of Chicago|University of Cincinnati	
+UCB	review_only	auto_collision	acronym maps to 2 institutions in seed	us-ca-university-of-california-berkeley|us-co-university-of-colorado-boulder	University of California, Berkeley|University of Colorado Boulder	
+UCD	review_only	auto_collision	acronym maps to 2 institutions in seed	us-ca-university-of-california-davis|us-co-university-of-colorado-denver	University of California, Davis|University of Colorado Denver	
+UCS	review_only	manual_guardrail	under-specified UC campus form			
+UM	review_only	auto_collision	acronym maps to 2 institutions in seed	us-mn-university-of-minnesota|us-mt-university-of-montana	University of Minnesota|University of Montana	
+UND	review_only	auto_collision	acronym maps to 2 institutions in seed	us-in-university-of-notre-dame|us-nd-university-of-north-dakota	University of North Dakota|University of Notre Dame	
+UP	review_only	auto_collision	acronym maps to 2 institutions in seed	us-pa-university-of-pennsylvania|us-pa-university-of-pittsburgh	University of Pennsylvania|University of Pittsburgh	
+UPENN	review_only	manual_guardrail	often safe but can appear as noisy token; require context			
+USC	review_only	auto_collision	acronym maps to 2 institutions in seed	us-ca-university-of-southern-california|us-sc-university-of-south-carolina	University of South Carolina|University of Southern California	
+UT	review_only	manual_guardrail	ambiguous across Texas/Tennessee and others			
+UTHSC	review_only	auto_collision	acronym maps to 3 institutions in seed	us-oh-university-of-toledo-health-science-campus|us-tn-university-of-tennessee-health-science-center|us-tx-university-of-texas-health-science-center	University of Tennessee Health Science Center|University of Texas Health Science Center|University of Toledo Health Science Campus	
+UV	review_only	auto_collision	acronym maps to 2 institutions in seed	us-va-university-of-virginia|us-vt-university-of-vermont	University of Vermont|University of Virginia	
+UW	review_only	manual_guardrail	ambiguous across institutions (e.g., Washington/Wisconsin/others)	us-wa-university-of-washington	University of Washington	
+WASHU	review_only	manual_guardrail	short form can collide/noisy in free text			
+WSU	review_only	auto_collision	acronym maps to 2 institutions in seed	us-mi-wayne-state-university|us-wa-washington-state-university	Washington State University|Wayne State University	
+WUSTL	review_only	manual_guardrail	short form can collide/noisy in free text			

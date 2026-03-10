@@ -1,0 +1,406 @@
+from __future__ import annotations
+
+import pytest
+
+from affiliation_normalizer import AffiliationNormalizer, match_email_domain, match_grid, match_record, match_ror
+from affiliation_normalizer.build_rules import normalize_text as build_normalize_text
+from affiliation_normalizer.matcher import DEFAULT_RULES_PATH, normalize_text
+
+
+def _normalizer() -> AffiliationNormalizer:
+    return AffiliationNormalizer.from_rules_json(DEFAULT_RULES_PATH)
+
+
+def test_matches_yale_affiliation() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match(
+        "Yale Cancer Center, Yale University, New Haven, CT, USA. david.calderwood@yale.edu."
+    )
+    assert result.status == "matched"
+    assert result.canonical_id == "us-ct-yale-university"
+    assert result.canonical_name == "Yale University"
+    assert result.standardized_name == "Yale University, New Haven, CT"
+    assert result.state == "CT"
+
+
+def test_precedence_brigham_over_harvard() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match(
+        "Division of Rheumatology, Brigham and Women's Hospital and Harvard Medical School, Boston, MA, USA."
+    )
+    assert result.status == "matched"
+    assert result.canonical_id == "us-ma-brigham-and-women-s-hospital"
+
+
+def test_precedence_mgh_over_harvard() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match(
+        "Department of Neurology, Massachusetts General Hospital, Harvard Medical School, Boston, MA, USA."
+    )
+    assert result.status == "matched"
+    assert result.canonical_id == "us-ma-massachusetts-general-hospital"
+
+
+def test_returns_ambiguous_for_multiple_unresolved_candidates() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match(
+        "Albany Medical College and Harvard Medical School, USA."
+    )
+    assert result.status == "ambiguous"
+    assert "us-ma-harvard-university" in result.candidate_ids
+    assert "us-ny-albany-medical-college" in result.candidate_ids
+
+
+def test_returns_not_found_for_non_seed_foreign_affiliation() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match(
+        "Department of Clinical Medicine, University of Copenhagen, Copenhagen, Denmark."
+    )
+    assert result.status == "not_found"
+
+
+def test_manual_alias_variants_match_existing_canonical_institutions() -> None:
+    normalizer = _normalizer()
+
+    harvard = normalizer.match("HARVARD UNIVERSITY D/B/A HARVARD SCHOOL OF PUBLIC HEALTH, Boston, MA")
+    assert harvard.status == "matched"
+    assert harvard.canonical_id == "us-ma-harvard-university"
+
+    bu = normalizer.match("BOSTON UNIVERSITY (CHARLES RIVER CAMPUS), Boston, MA")
+    assert bu.status == "matched"
+    assert bu.canonical_id == "us-ma-boston-university"
+
+
+def test_new_seed_institution_hss_matches() -> None:
+    normalizer = _normalizer()
+
+    hss = normalizer.match("Hospital for Special Surgery, New York, NY")
+    assert hss.status == "matched"
+    assert hss.canonical_id == "us-ny-hospital-for-special-surgery"
+
+
+def test_matches_ror_bare_id() -> None:
+    normalizer = _normalizer()
+
+    result = normalizer.match_ror("03v76x132")
+    assert result.status == "matched"
+    assert result.canonical_id == "us-ct-yale-university"
+    assert result.canonical_name == "Yale University"
+
+
+def test_matches_ror_url() -> None:
+    result = match_ror("https://ror.org/03v76x132")
+    assert result.status == "matched"
+    assert result.canonical_id == "us-ct-yale-university"
+
+
+def test_returns_not_found_for_unknown_ror() -> None:
+    normalizer = _normalizer()
+
+    result = normalizer.match_ror("https://ror.org/000000000")
+    assert result.status == "not_found"
+    assert result.reason == "no_ror_match"
+
+
+def test_matches_grid_bare_id() -> None:
+    normalizer = _normalizer()
+
+    result = normalizer.match_grid("grid.47100.32")
+    assert result.status == "matched"
+    assert result.canonical_id == "us-ct-yale-university"
+    assert result.canonical_name == "Yale University"
+    assert result.grid_id == "grid.47100.32"
+
+
+def test_matches_grid_url() -> None:
+    result = match_grid("https://www.grid.ac/institutes/grid.47100.32")
+    assert result.status == "matched"
+    assert result.canonical_id == "us-ct-yale-university"
+
+
+def test_returns_not_found_for_unknown_grid() -> None:
+    normalizer = _normalizer()
+
+    result = normalizer.match_grid("grid.000000.0")
+    assert result.status == "not_found"
+    assert result.reason == "no_grid_match"
+
+
+def test_maps_grid_id_to_bloomington() -> None:
+    normalizer = _normalizer()
+
+    result = normalizer.match_grid("grid.257410.5")
+    assert result.status == "matched"
+    assert result.reason == "grid_match"
+    assert result.canonical_id == "us-in-indiana-university-bloomington"
+
+
+def test_matches_email_domain_from_full_email() -> None:
+    rules = {
+        "institutions": {
+            "inst-a": {
+                "canonical_id": "inst-a",
+                "canonical_name": "Alpha University",
+                "city": "Alpha City",
+                "state": "AA",
+                "country": "US",
+                "ror_id": "",
+                "grid_id": "",
+                "email_domains": "alpha.edu",
+                "openalex_id": "",
+            }
+        },
+        "alias_rules": [],
+        "precedence_rules": [],
+    }
+    normalizer = AffiliationNormalizer(rules)
+
+    result = normalizer.match_email_domain("person@dept.alpha.edu")
+    assert result.status == "matched"
+    assert result.canonical_id == "inst-a"
+    assert result.reason == "email_domain_match"
+
+
+def test_email_domain_disambiguates_alias_candidates() -> None:
+    rules = {
+        "institutions": {
+            "inst-a": {
+                "canonical_id": "inst-a",
+                "canonical_name": "Alpha University",
+                "city": "Alpha City",
+                "state": "AA",
+                "country": "US",
+                "ror_id": "",
+                "grid_id": "",
+                "email_domains": "alpha.edu",
+                "openalex_id": "",
+            },
+            "inst-b": {
+                "canonical_id": "inst-b",
+                "canonical_name": "Beta Institute",
+                "city": "Beta City",
+                "state": "BB",
+                "country": "US",
+                "ror_id": "",
+                "grid_id": "",
+                "email_domains": "beta.edu",
+                "openalex_id": "",
+            },
+        },
+        "alias_rules": [
+            {
+                "alias": "Medical Center",
+                "alias_norm": "medical center",
+                "canonical_id": "inst-a",
+                "alias_type": "manual_alias",
+                "policy": "allow",
+            },
+            {
+                "alias": "Medical Center",
+                "alias_norm": "medical center",
+                "canonical_id": "inst-b",
+                "alias_type": "manual_alias",
+                "policy": "allow",
+            },
+        ],
+        "precedence_rules": [],
+    }
+    normalizer = AffiliationNormalizer(rules)
+
+    result = normalizer.match("Medical Center, contact: jane@dept.beta.edu")
+    assert result.status == "matched"
+    assert result.canonical_id == "inst-b"
+    assert result.reason == "email_domain_match"
+
+
+def test_module_match_email_domain_no_match_with_default_rules() -> None:
+    result = match_email_domain("example.org")
+    assert result.status == "not_found"
+    assert result.reason == "no_email_domain_match"
+
+
+def test_email_match_has_priority_over_text_match() -> None:
+    rules = {
+        "institutions": {
+            "inst-a": {
+                "canonical_id": "inst-a",
+                "canonical_name": "Alpha University",
+                "city": "Alpha City",
+                "state": "AA",
+                "country": "US",
+                "ror_id": "",
+                "grid_id": "",
+                "email_domains": "",
+                "openalex_id": "",
+            },
+            "inst-b": {
+                "canonical_id": "inst-b",
+                "canonical_name": "Beta Institute",
+                "city": "Beta City",
+                "state": "BB",
+                "country": "US",
+                "ror_id": "",
+                "grid_id": "",
+                "email_domains": "beta.edu",
+                "openalex_id": "",
+            },
+        },
+        "alias_rules": [
+            {
+                "alias": "Alpha University",
+                "alias_norm": "alpha university",
+                "canonical_id": "inst-a",
+                "alias_type": "manual_alias",
+                "policy": "allow",
+            }
+        ],
+        "precedence_rules": [],
+    }
+    normalizer = AffiliationNormalizer(rules)
+
+    result = normalizer.match("Alpha University, contact: person@beta.edu")
+    assert result.status == "matched"
+    assert result.canonical_id == "inst-b"
+    assert result.reason == "email_domain_match"
+
+
+def test_match_record_applies_identifier_email_text_priority() -> None:
+    rules = {
+        "institutions": {
+            "inst-ror": {
+                "canonical_id": "inst-ror",
+                "canonical_name": "ROR Institution",
+                "city": "City R",
+                "state": "RR",
+                "country": "US",
+                "ror_id": "03v76x132",
+                "grid_id": "",
+                "email_domains": "",
+                "openalex_id": "",
+            },
+            "inst-grid": {
+                "canonical_id": "inst-grid",
+                "canonical_name": "GRID Institution",
+                "city": "City G",
+                "state": "GG",
+                "country": "US",
+                "ror_id": "",
+                "grid_id": "grid.47100.32",
+                "email_domains": "",
+                "openalex_id": "",
+            },
+            "inst-email": {
+                "canonical_id": "inst-email",
+                "canonical_name": "Email Institution",
+                "city": "City E",
+                "state": "EE",
+                "country": "US",
+                "ror_id": "",
+                "grid_id": "",
+                "email_domains": "email.edu",
+                "openalex_id": "",
+            },
+            "inst-text": {
+                "canonical_id": "inst-text",
+                "canonical_name": "Text Institution",
+                "city": "City T",
+                "state": "TT",
+                "country": "US",
+                "ror_id": "",
+                "grid_id": "",
+                "email_domains": "",
+                "openalex_id": "",
+            },
+        },
+        "alias_rules": [
+            {
+                "alias": "Text Institution",
+                "alias_norm": "text institution",
+                "canonical_id": "inst-text",
+                "alias_type": "manual_alias",
+                "policy": "allow",
+            }
+        ],
+        "precedence_rules": [],
+    }
+    normalizer = AffiliationNormalizer(rules)
+
+    ror_result = normalizer.match_record(
+        affiliation_text="Text Institution",
+        ror_id="03v76x132",
+        grid_id="grid.47100.32",
+        email="person@email.edu",
+    )
+    assert ror_result.status == "matched"
+    assert ror_result.canonical_id == "inst-ror"
+    assert ror_result.reason == "ror_match"
+
+    grid_result = normalizer.match_record(
+        affiliation_text="Text Institution",
+        grid_id="grid.47100.32",
+        email="person@email.edu",
+    )
+    assert grid_result.status == "matched"
+    assert grid_result.canonical_id == "inst-grid"
+    assert grid_result.reason == "grid_match"
+
+    email_result = normalizer.match_record(
+        affiliation_text="Text Institution",
+        email="person@email.edu",
+    )
+    assert email_result.status == "matched"
+    assert email_result.canonical_id == "inst-email"
+    assert email_result.reason == "email_domain_match"
+
+    text_result = normalizer.match_record(
+        affiliation_text="Text Institution",
+    )
+    assert text_result.status == "matched"
+    assert text_result.canonical_id == "inst-text"
+    assert text_result.reason == "precedence_or_direct_match"
+
+
+def test_module_match_record_default_not_found_for_empty_input() -> None:
+    result = match_record()
+    assert result.status == "not_found"
+    assert result.reason == "empty_input"
+
+
+def test_normalize_text_preserves_boundary_for_unicode_dash() -> None:
+    assert normalize_text("Harvard Medical School–Brigham") == "harvard medical school brigham"
+
+
+def test_unicode_dash_and_curly_apostrophe_match_brigham() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match("Harvard Medical School–Brigham and Women’s Hospital, Boston, MA")
+    assert result.status == "matched"
+    assert result.canonical_id == "us-ma-brigham-and-women-s-hospital"
+
+
+@pytest.mark.parametrize(
+    ("input_text", "expected_norm"),
+    [
+        ("Harvard Medical School–Brigham", "harvard medical school brigham"),
+        ("Harvard Medical School—Brigham", "harvard medical school brigham"),
+        ("Harvard Medical School‑Brigham", "harvard medical school brigham"),
+        ("Brigham and Women’s Hospital", "brigham and womens hospital"),
+        ("Brigham and Women's Hospital", "brigham and womens hospital"),
+        ("O’Neill Institute", "oneill institute"),
+        ("O'Neill Institute", "oneill institute"),
+    ],
+)
+def test_normalize_text_unicode_variants(input_text: str, expected_norm: str) -> None:
+    assert normalize_text(input_text) == expected_norm
+
+
+@pytest.mark.parametrize(
+    "input_text",
+    [
+        "Harvard Medical School–Brigham and Women’s Hospital",
+        "Harvard Medical School—Brigham and Women's Hospital",
+        "O’Neill Institute for National and Global Health Law",
+        "UC–San Diego",
+    ],
+)
+def test_build_and_runtime_normalize_text_parity(input_text: str) -> None:
+    assert normalize_text(input_text) == build_normalize_text(input_text)

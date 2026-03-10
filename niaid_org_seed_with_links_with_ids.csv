@@ -1,0 +1,189 @@
+canonical_id,nih_reporter_name,nih_reporter_ipf_code,org_city,org_state,org_country,canonical_name,ror_link,openalex_link
+us-al-university-of-alabama-birmingham,UNIVERSITY OF ALABAMA AT BIRMINGHAM,1288803,BIRMINGHAM,AL,USA,University of Alabama Birmingham,https://ror.org/008s83205,https://openalex.org/i32389192
+us-ar-arkansas-children-s-hospital-research-institute,ARKANSAS CHILDREN'S HOSPITAL RES INST,491702,LITTLE ROCK,AR,USA,Arkansas Children's Hospital Research Institute,https://ror.org/01t33qq42,https://openalex.org/i1301864278
+us-ar-university-of-arkansas-for-medical-sciences,UNIVERSITY OF ARKANSAS FOR MEDICAL SCIENCES,1471106,LITTLE ROCK,AR,USA,University of Arkansas for Medical Sciences,https://ror.org/005k4dn45,https://openalex.org/i79620101
+us-az-arizona-state-university-tempe,ARIZONA STATE UNIVERSITY-TEMPE CAMPUS,488301,SCOTTSDALE,AZ,USA,Arizona State University-Tempe,https://ror.org/03efmqc40,https://openalex.org/i55732556
+us-az-mayo-clinic-arizona,MAYO CLINIC ARIZONA,4976104,SCOTTSDALE,AZ,USA,Mayo Clinic Arizona,https://ror.org/03jp40720,https://openalex.org/i4210125099
+us-az-university-of-arizona,UNIVERSITY OF ARIZONA,490201,TUCSON,AZ,USA,University of Arizona,https://ror.org/03m2x1q45,https://openalex.org/i138006243
+us-ca-university-of-california-berkeley,UNIVERSITY OF CALIFORNIA BERKELEY,577502,BERKELEY,CA,USA,"University of California, Berkeley",https://ror.org/01an7q238,https://openalex.org/i95457486
+us-ca-university-of-california-davis,UNIVERSITY OF CALIFORNIA AT DAVIS,577503,DAVIS,CA,USA,"University of California, Davis",https://ror.org/05rrcem69,https://openalex.org/i84218800
+us-ca-beckman-research-institute,BECKMAN RESEARCH INSTITUTE/CITY OF HOPE,3058203,DUARTE,CA,USA,Beckman Research Institute,https://ror.org/05fazth07,https://openalex.org/i4387156432
+us-ca-university-of-california-irvine,UNIVERSITY OF CALIFORNIA-IRVINE,577504,IRVINE,CA,USA,"University of California, Irvine",https://ror.org/04gyf1771,https://openalex.org/i204250578
+us-ca-la-jolla-institute-for-immunology,LA JOLLA INSTITUTE FOR IMMUNOLOGY,2465301,LA JOLLA,CA,USA,La Jolla Institute for Immunology,https://ror.org/05vkpd318,https://openalex.org/i1311191458
+us-ca-salk-institute-for-biological-studies,SALK INSTITUTE FOR BIOLOGICAL STUDIES,7210001,La Jolla,CA,USA,Salk Institute for Biological Studies,https://ror.org/03xez1567,https://openalex.org/i1307098950
+us-ca-sanford-burnham-medical-research-institute,SANFORD BURNHAM PREBYS MEDICAL DISCOVERY INSTITUTE,1180101,LA JOLLA,CA,USA,Sanford Burnham Medical Research Institute,https://ror.org/03m1g2s55,https://openalex.org/i188891513
+us-ca-scripps-research-institute,"SCRIPPS RESEARCH INSTITUTE, THE",7375802,LA JOLLA,CA,USA,Scripps Research Institute,https://ror.org/02dxx6824,https://openalex.org/i123431417
+us-ca-university-of-california-san-diego,"UNIVERSITY OF CALIFORNIA, SAN DIEGO",577507,LA JOLLA,CA,USA,University of California San Diego,https://ror.org/0168r3w48,https://openalex.org/i36258959
+us-ca-cedars-sinai-medical-center,CEDARS-SINAI MEDICAL CENTER,1225501,LOS ANGELES,CA,USA,Cedars-Sinai Medical Center,https://ror.org/02pammg90,https://openalex.org/i1282927834
+us-ca-university-of-california-los-angeles,UNIVERSITY OF CALIFORNIA LOS ANGELES,577505,LOS ANGELES,CA,USA,University of California Los Angeles,https://ror.org/046rm7j60,https://openalex.org/i161318765
+us-ca-university-of-southern-california,UNIVERSITY OF SOUTHERN CALIFORNIA,7636101,Los Angeles,CA,USA,University of Southern California,https://ror.org/03taz7m60,https://openalex.org/i1174212
+us-ca-stanford-research-institute,SRI INTERNATIONAL,8042701,MENLO PARK,CA,USA,Stanford Research Institute,https://ror.org/05s570m15,https://openalex.org/i1298353152
+us-ca-university-of-california-merced,"UNIVERSITY OF CALIFORNIA, MERCED",10002981,MERCED,CA,USA,University of California Merced,https://ror.org/00d9ah105,https://openalex.org/i156087764
+us-ca-kaiser-foundation-research-institute,KAISER FOUNDATION RESEARCH INSTITUTE,3497005,Oakland,CA,USA,Kaiser Foundation Research Institute,https://ror.org/00t60zh31,https://openalex.org/i4210148877
+us-ca-california-institute-of-technology,CALIFORNIA INSTITUTE OF TECHNOLOGY,1073501,PASADENA,CA,USA,California Institute of Technology,https://ror.org/05dxps055,https://openalex.org/i122411786
+us-ca-university-of-california-riverside,UNIVERSITY OF CALIFORNIA RIVERSIDE,577506,RIVERSIDE,CA,USA,"University of California, Riverside",https://ror.org/03nawhv43,https://openalex.org/i103635307
+us-ca-gladstone-institutes,J. DAVID GLADSTONE INSTITUTES,1567601,SAN FRANCISCO,CA,USA,Gladstone Institutes,https://ror.org/038321296,https://openalex.org/i1321430492
+us-ca-university-of-california-san-francisco,"UNIVERSITY OF CALIFORNIA, SAN FRANCISCO",577508,SAN FRANCISCO,CA,USA,"University of California, San Francisco",https://ror.org/043mz5j54,https://openalex.org/i180670191
+us-ca-university-of-california-santa-cruz,UNIVERSITY OF CALIFORNIA SANTA CRUZ,577510,SANTA CRUZ,CA,USA,"University of California, Santa Cruz",https://ror.org/03s65by71,https://openalex.org/i185103710
+us-ca-stanford-university,STANFORD UNIVERSITY,8046501,STANFORD,CA,USA,Stanford University,https://ror.org/00f54p054,https://openalex.org/i97018004
+us-ca-harbor-ucla-medical-center,LUNDQUIST INSTITUTE FOR BIOMEDICAL INNOVATION AT HARBOR-UCLA MEDICAL CENTER,2543101,TORRANCE,CA,USA,Harbor-UCLA Medical Center,https://ror.org/05h4zj272,https://openalex.org/i4210165985
+us-co-university-of-colorado-denver,UNIVERSITY OF COLORADO DENVER,1199905,Aurora,CO,USA,University of Colorado Denver,https://ror.org/02hh7en24,https://openalex.org/i921990950
+us-co-university-of-colorado-boulder,UNIVERSITY OF COLORADO,1199902,Boulder,CO,USA,University of Colorado Boulder,https://ror.org/02ttsq026,https://openalex.org/i188538660
+us-co-national-jewish-health,NATIONAL JEWISH HEALTH,5720901,DENVER,CO,USA,National Jewish Health,https://ror.org/016z2bp30,https://openalex.org/i3019586173
+us-co-colorado-state-university,COLORADO STATE UNIVERSITY,1725201,FORT COLLINS,CO,USA,Colorado State University,https://ror.org/03k1gpj17,https://openalex.org/i92446798
+us-ct-university-of-connecticut-school-of-medicine,UNIVERSITY OF CONNECTICUT SCHOOL OF MED/DNT,1506603,FARMINGTON,CT,USA,University of Connecticut School of Medicine,https://ror.org/02kzs4y22,https://openalex.org/i75929689
+us-ct-yale-university,YALE UNIVERSITY,9420201,NEW HAVEN,CT,USA,Yale University,https://ror.org/03v76x132,https://openalex.org/i32971472
+us-dc-george-washington-university,GEORGE WASHINGTON UNIVERSITY,2863301,WASHINGTON,DC,USA,George Washington University,https://ror.org/00y4zzh67,https://openalex.org/i193531525
+us-dc-georgetown-university,GEORGETOWN UNIVERSITY,2869001,WASHINGTON,DC,USA,Georgetown University,https://ror.org/05vzafd60,https://openalex.org/i184565670
+us-fl-university-of-miami-school-of-medicine,UNIVERSITY OF MIAMI SCHOOL OF MEDICINE,5221250,CORAL GABLES,FL,USA,University of Miami School of Medicine,https://ror.org/02dgjyy92,https://openalex.org/i145608581
+us-fl-university-of-florida,UNIVERSITY OF FLORIDA,513806,GAINESVILLE,FL,USA,University of Florida,https://ror.org/02y3ad647,https://openalex.org/i33213144
+us-fl-scripps-florida,SCRIPPS FLORIDA,10005569,JUPITER,FL,USA,Scripps Florida,https://ror.org/056pdzs28,https://openalex.org/i4387156289
+us-fl-florida-international-university,FLORIDA INTERNATIONAL UNIVERSITY,513809,MIAMI,FL,USA,Florida International University,https://ror.org/02gz6gg07,https://openalex.org/i19700959
+us-fl-university-of-central-florida,UNIVERSITY OF CENTRAL FLORIDA,513805,ORLANDO,FL,USA,University of Central Florida,https://ror.org/036nfer12,https://openalex.org/i106165777
+us-fl-florida-state-university,FLORIDA STATE UNIVERSITY,513804,TALLAHASSEE,FL,USA,Florida State University,https://ror.org/05g3dte14,https://openalex.org/i103163165
+us-fl-university-of-south-florida,UNIVERSITY OF SOUTH FLORIDA,513807,TAMPA,FL,USA,University of South Florida,https://ror.org/032db5x82,https://openalex.org/i2613432
+us-ga-university-of-georgia,UNIVERSITY OF GEORGIA,676602,ATHENS,GA,USA,University of Georgia,https://ror.org/00te3t702,https://openalex.org/i165733156
+us-ga-emory-university,EMORY UNIVERSITY,2384501,ATLANTA,GA,USA,Emory University,https://ror.org/03czfpz43,https://openalex.org/i150468666
+us-ga-georgia-institute-of-technology,GEORGIA INSTITUTE OF TECHNOLOGY,676603,ATLANTA,GA,USA,Georgia Institute of Technology,https://ror.org/01zkghx44,https://openalex.org/i130701444
+us-ga-georgia-state-university,GEORGIA STATE UNIVERSITY,676604,ATLANTA,GA,USA,Georgia State University,https://ror.org/03qt6ba18,https://openalex.org/i181565077
+us-ia-iowa-state-university,IOWA STATE UNIVERSITY,3974801,AMES,IA,USA,Iowa State University,https://ror.org/04rswrd78,https://openalex.org/i173911158
+us-ia-university-of-iowa,UNIVERSITY OF IOWA,3972901,IOWA CITY,IA,USA,University of Iowa,https://ror.org/036jqmy94,https://openalex.org/i126307644
+us-il-university-of-illinois-urbana-champaign,UNIVERSITY OF ILLINOIS AT URBANA-CHAMPAIGN,577704,CHAMPAIGN,IL,USA,University of Illinois Urbana-Champaign,https://ror.org/047426m28,https://openalex.org/i157725225
+us-il-lurie-children-s-hospital,LURIE CHILDREN'S HOSPITAL OF CHICAGO,1525701,CHICAGO,IL,USA,Lurie Children's Hospital,https://ror.org/03a6zw892,https://openalex.org/i1294278766
+us-il-northwestern-university,NORTHWESTERN UNIVERSITY AT CHICAGO,6144650,CHICAGO,IL,USA,Northwestern University,https://ror.org/00m6w7z96,https://openalex.org/i111979921
+us-il-rush-university-medical-center,RUSH UNIVERSITY MEDICAL CENTER,6644301,CHICAGO,IL,USA,Rush University Medical Center,https://ror.org/01j7c0b24,https://openalex.org/i1285301757
+us-il-university-of-chicago,UNIVERSITY OF CHICAGO,1413601,CHICAGO,IL,USA,University of Chicago,https://ror.org/024mw5h28,https://openalex.org/i40347166
+us-il-university-of-illinois-chicago,UNIVERSITY OF ILLINOIS AT CHICAGO,577703,Chicago,IL,USA,University of Illinois Chicago,https://ror.org/02mpq6x41,https://openalex.org/i39422238
+us-il-loyola-university-chicago,LOYOLA UNIVERSITY CHICAGO,4689203,MAYWOOD,IL,USA,Loyola University Chicago,https://ror.org/04b6x2g63,https://openalex.org/i1925986
+us-in-indiana-university-bloomington,TRUSTEES OF INDIANA UNIVERSITY,577805,BLOOMINGTON,IN,USA,Indiana University Bloomington,https://ror.org/01kg8sb98,https://openalex.org/i4210119109
+us-in-indiana-university-indianapolis,INDIANA UNIVERSITY INDIANAPOLIS,577806,INDIANAPOLIS,IN,USA,Indiana University Indianapolis,https://ror.org/03eftgw80,https://openalex.org/i4388446366
+us-in-university-of-notre-dame,UNIVERSITY OF NOTRE DAME,6169301,NOTRE DAME,IN,USA,University of Notre Dame,https://ror.org/04mwhg379,https://openalex.org/i107639228
+us-in-purdue-university,PURDUE UNIVERSITY,1481402,WEST LAFAYETTE,IN,USA,Purdue University,https://ror.org/05p8z3f47,https://openalex.org/i219193219
+us-ks-university-of-kansas-medical-center,UNIVERSITY OF KANSAS MEDICAL CENTER,1484303,KANSAS CITY,KS,USA,University of Kansas Medical Center,https://ror.org/036c9yv20,https://openalex.org/i4210128618
+us-ks-university-of-kansas-lawrence,UNIVERSITY OF KANSAS LAWRENCE,1484302,LAWRENCE,KS,USA,University of Kansas Lawrence,https://ror.org/001tmjg57,https://openalex.org/i146416000
+us-ks-kansas-state-university,KANSAS STATE UNIVERSITY,4202801,MANHATTAN,KS,USA,Kansas State University,https://ror.org/05p1j8758,https://openalex.org/i189590672
+us-ky-university-of-kentucky,UNIVERSITY OF KENTUCKY,2793601,LEXINGTON,KY,USA,University of Kentucky,https://ror.org/02k3smh20,https://openalex.org/i143302722
+us-ky-university-of-louisville,UNIVERSITY OF LOUISVILLE,4679701,LOUISVILLE,KY,USA,University of Louisville,https://ror.org/01ckdn478,https://openalex.org/i142740786
+us-la-louisiana-state-university-baton-rouge,LOUISIANA STATE UNIVERSITY A&M COL BATON ROUGE,577907,BATON ROUGE,LA,USA,Louisiana State University Baton Rouge,https://ror.org/05ect4e57,https://openalex.org/i121820613
+us-la-tulane-university,TULANE UNIVERSITY OF LOUISIANA,8424601,NEW ORLEANS,LA,USA,Tulane University,https://ror.org/04vmvtb21,https://openalex.org/i114832834
+us-ma-beth-israel-deaconess-medical-center,BETH ISRAEL DEACONESS MEDICAL CENTER,758101,BOSTON,MA,USA,Beth Israel Deaconess Medical Center,https://ror.org/04drvxt59,https://openalex.org/i1316535847
+us-ma-boston-children-s-hospital,BOSTON CHILDREN'S HOSPITAL,1504801,BOSTON,MA,USA,Boston Children's Hospital,https://ror.org/00dvg7y05,https://openalex.org/i1288882113
+us-ma-boston-medical-center,BOSTON MEDICAL CENTER,3617301,BOSTON,MA,USA,Boston Medical Center,https://ror.org/010b9wj87,https://openalex.org/i1286490081
+us-ma-boston-university,BOSTON UNIVERSITY MEDICAL CAMPUS,894901,BOSTON,MA,USA,Boston University,https://ror.org/05qwgg493,https://openalex.org/i111088046
+us-ma-brigham-and-women-s-hospital,BRIGHAM AND WOMEN'S HOSPITAL,1080401,BOSTON,MA,USA,Brigham and Women's Hospital,https://ror.org/04b6nzv94,https://openalex.org/i1283280774
+us-ma-dana-farber-cancer-institute,DANA-FARBER CANCER INST,1464901,BOSTON,MA,USA,Dana-Farber Cancer Institute,https://ror.org/02jzgtq86,https://openalex.org/i4210117453
+us-ma-harvard-university,HARVARD MEDICAL SCHOOL,3212902,BOSTON,MA,USA,Harvard University,https://ror.org/03vek6s52,https://openalex.org/i136199984
+us-ma-massachusetts-general-hospital,MASSACHUSETTS GENERAL HOSPITAL,4907701,BOSTON,MA,USA,Massachusetts General Hospital,https://ror.org/002pd6e78,https://openalex.org/i4210087915
+us-ma-northeastern-university,NORTHEASTERN UNIVERSITY,6116101,BOSTON,MA,USA,Northeastern University,https://ror.org/04t5xt781,https://openalex.org/i12912129
+us-ma-tufts-university,TUFTS UNIVERSITY BOSTON,8422704,BOSTON,MA,USA,Tufts University,https://ror.org/05wvpxv85,https://openalex.org/i121934306
+us-ma-broad-institute,"BROAD INSTITUTE, INC.",10021177,CAMBRIDGE,MA,USA,Broad Institute,https://ror.org/05a0ya142,https://openalex.org/i107606265
+us-ma-massachusetts-institute-of-technology,MASSACHUSETTS INSTITUTE OF TECHNOLOGY,4911501,CAMBRIDGE,MA,USA,Massachusetts Institute of Technology,https://ror.org/042nb2s44,https://openalex.org/i63966007
+us-ma-boston-college,BOSTON COLLEGE,872101,CHESTNUT HILL,MA,USA,Boston College,https://ror.org/02n2fzt79,https://openalex.org/i103531236
+us-ma-university-of-massachusetts-amherst,UNIVERSITY OF MASSACHUSETTS AMHERST,850904,HADLEY,MA,USA,University of Massachusetts Amherst,https://ror.org/0072zz521,https://openalex.org/i24603500
+us-ma-university-of-massachusetts-chan-medical-school,UNIVERSITY OF MASSACHUSETTS MEDICAL SCHOOL WORCESTER,850903,WORCESTER,MA,USA,University of Massachusetts Chan Medical School,https://ror.org/0464eyp60,https://openalex.org/i166722992
+us-md-johns-hopkins-university,JOHNS HOPKINS UNIVERSITY,4134401,BALTIMORE,MD,USA,Johns Hopkins University,https://ror.org/00za53h95,https://openalex.org/i145311948
+us-md-university-of-maryland-baltimore,UNIVERSITY OF MARYLAND BALTIMORE,820104,BALTIMORE,MD,USA,"University of Maryland, Baltimore",https://ror.org/04rq5mt64,https://openalex.org/i126744593
+us-md-henry-m-jackson-foundation,HENRY M. JACKSON FDN FOR THE ADV MIL/MED,1809301,BETHESDA,MD,USA,Henry M. Jackson Foundation,https://ror.org/04q9tew83,https://openalex.org/i1280259254
+us-md-university-of-maryland-college-park,"UNIVERSITY OF MARYLAND, COLLEGE PARK",820102,COLLEGE PARK,MD,USA,"University of Maryland, College Park",https://ror.org/047s2c258,https://openalex.org/i66946132
+us-me-jackson-laboratory,JACKSON LABORATORY,7096501,BAR HARBOR,ME,USA,Jackson Laboratory,https://ror.org/021sy4w91,https://openalex.org/i4210115256
+us-mi-university-of-michigan-at-ann-arbor,UNIVERSITY OF MICHIGAN AT ANN ARBOR,1506502,ANN ARBOR,MI,USA,University of Michigan at Ann Arbor,https://ror.org/00jmfr291,https://openalex.org/i27837315
+us-mi-wayne-state-university,WAYNE STATE UNIVERSITY,9110501,DETROIT,MI,USA,Wayne State University,https://ror.org/01070mq45,https://openalex.org/i185443292
+us-mi-michigan-state-university,MICHIGAN STATE UNIVERSITY,5245901,EAST LANSING,MI,USA,Michigan State University,https://ror.org/05hs6h993,https://openalex.org/i87216513
+us-mn-university-of-minnesota,UNIVERSITY OF MINNESOTA,1450402,MINNEAPOLIS,MN,USA,University of Minnesota,https://ror.org/017zqws13,https://openalex.org/i130238516
+us-mn-mayo-clinic-rochester,MAYO CLINIC ROCHESTER,4976101,ROCHESTER,MN,USA,Mayo Clinic Rochester,https://ror.org/02qp3tb03,https://openalex.org/i1330342723
+us-mo-university-of-missouri-columbia,UNIVERSITY OF MISSOURI-COLUMBIA,578002,COLUMBIA,MO,USA,University of Missouri-Columbia,https://ror.org/02ymw8z06,https://openalex.org/i76835614
+us-mo-saint-louis-university,SAINT LOUIS UNIVERSITY,7915401,SAINT LOUIS,MO,USA,Saint Louis University,https://ror.org/01p7jjy08,https://openalex.org/i47838141
+us-mo-washington-university,WASHINGTON UNIVERSITY,9083901,SAINT LOUIS,MO,USA,Washington University,https://ror.org/01yc7t268,https://openalex.org/i204465549
+us-mt-montana-state-university-bozeman,MONTANA STATE UNIVERSITY - BOZEMAN,1381004,BOZEMAN,MT,USA,Montana State University Bozeman,https://ror.org/02w0trx84,https://openalex.org/i23732399
+us-mt-university-of-montana,UNIVERSITY OF MONTANA,1381006,MISSOULA,MT,USA,University of Montana,https://ror.org/0078xmk34,https://openalex.org/i6750721
+us-nc-university-of-north-carolina-chapel-hill,UNIVERSITY OF NORTH CAROLINA CHAPEL HILL,578206,CHAPEL HILL,NC,USA,University of North Carolina Chapel Hill,https://ror.org/0130frc33,https://openalex.org/i114027177
+us-nc-duke-university,DUKE UNIVERSITY,2221101,DURHAM,NC,USA,Duke University,https://ror.org/00py81415,https://openalex.org/i170897317
+us-nc-east-carolina-university,EAST CAROLINA UNIVERSITY,578209,GREENVILLE,NC,USA,East Carolina University,https://ror.org/01vx35703,https://openalex.org/i186335123
+us-nc-north-carolina-state-university-raleigh,NORTH CAROLINA STATE UNIVERSITY RALEIGH,578204,RALEIGH,NC,USA,North Carolina State University Raleigh,https://ror.org/04tj63d06,https://openalex.org/i137902535
+us-nc-research-triangle-institute,RESEARCH TRIANGLE INSTITUTE,6939101,RESEARCH TRIANGLE PARK,NC,USA,Research Triangle Institute,https://ror.org/052tfza37,https://openalex.org/i180297670
+us-nc-wake-forest-university-health-sciences,WAKE FOREST UNIVERSITY HEALTH SCIENCES,9021205,WINSTON-SALEM,NC,USA,Wake Forest University Health Sciences,https://ror.org/0207ad724,https://openalex.org/i47251452
+us-nd-university-of-north-dakota,UNIVERSITY OF NORTH DAKOTA,6093301,GRAND FORKS,ND,USA,University of North Dakota,https://ror.org/04a5szx83,https://openalex.org/i24571045
+us-ne-creighton-university,CREIGHTON UNIVERSITY,1943701,OMAHA,NE,USA,Creighton University,https://ror.org/05wf30g94,https://openalex.org/i114493937
+us-ne-university-of-nebraska-medical-center,UNIVERSITY OF NEBRASKA MEDICAL CENTER,578104,OMAHA,NE,USA,University of Nebraska Medical Center,https://ror.org/00thqtb16,https://openalex.org/i59130452
+us-nh-dartmouth-college,DARTMOUTH COLLEGE,2021601,HANOVER,NH,USA,Dartmouth College,https://ror.org/049s0rh22,https://openalex.org/i107672454
+us-nj-hackensack-university-medical-center,HACKENSACK UNIVERSITY MEDICAL CENTER,3117901,HACKENSACK,NJ,USA,Hackensack University Medical Center,https://ror.org/008zj0x80,https://openalex.org/i1324520350
+us-nj-rutgers-new-jersey-medical-school,RBHS-NEW JERSEY MEDICAL SCHOOL,10034169,NEWARK,NJ,USA,Rutgers New Jersey Medical School,https://ror.org/014ye1258,https://openalex.org/i4402554120
+us-nj-rutgers-biomedical-and-health-sciences,RUTGERS BIOMEDICAL AND HEALTH SCIENCES,10034168,Newark,NJ,USA,Rutgers Biomedical and Health Sciences,https://ror.org/029z02k15,https://openalex.org/i4390039302
+us-nj-rutgers,"RUTGERS, THE STATE UNIVERSITY OF N.J.",1196203,PISCATAWAY,NJ,USA,Rutgers,https://ror.org/05vt9qd57,https://openalex.org/i102322142
+us-nj-princeton-university,PRINCETON UNIVERSITY,6661401,Princeton,NJ,USA,Princeton University,https://ror.org/00hx57361,https://openalex.org/i20089843
+us-nm-university-of-new-mexico-health-sciences-center,UNIVERSITY OF NEW MEXICO HEALTH SCIENCES CTR,10021612,ALBUQUERQUE,NM,USA,University of New Mexico Health Sciences Center,https://ror.org/02jvjmd55,https://openalex.org/i4405255059
+us-nv-university-of-nevada-reno,UNIVERSITY OF NEVADA RENO,829903,RENO,NV,USA,University of Nevada Reno,https://ror.org/01keh0577,https://openalex.org/i134113660
+us-ny-albany-medical-college,ALBANY MEDICAL COLLEGE,8455007,ALBANY,NY,USA,Albany Medical College,https://ror.org/03g66yt05,https://openalex.org/i4405260259
+us-ny-state-university-of-new-york-at-buffalo,STATE UNIVERSITY OF NEW YORK AT BUFFALO,5992614,AMHERST,NY,USA,State University of New York at Buffalo,https://ror.org/01y64my43,https://openalex.org/i63190737
+us-ny-albert-einstein-college-of-medicine,ALBERT EINSTEIN COLLEGE OF MEDICINE,10053556,BRONX,NY,USA,Albert Einstein College of Medicine,https://ror.org/05cf8a891,https://openalex.org/i129975664
+us-ny-cold-spring-harbor-laboratory,COLD SPRING HARBOR LABORATORY,4577101,COLD SPRING HARBOR,NY,USA,Cold Spring Harbor Laboratory,https://ror.org/02qz8b764,https://openalex.org/i2750212522
+us-ny-cornell-university,CORNELL UNIVERSITY,1514802,ITHACA,NY,USA,Cornell University,https://ror.org/05bnh6r87,https://openalex.org/i205783295
+us-ny-feinstein-institute-for-medical-research,FEINSTEIN INSTITUTE FOR MEDICAL RESEARCH,4155008,MANHASSET,NY,USA,Feinstein Institute for Medical Research,https://ror.org/05dnene97,https://openalex.org/i1327576362
+us-ny-wadsworth-center,WADSWORTH CENTER,5966012,MENANDS,NY,USA,Wadsworth Center,https://ror.org/050kf9c55,https://openalex.org/i1339417872
+us-ny-columbia-university,COLUMBIA UNIVERSITY HEALTH SCIENCES,1833205,NEW YORK,NY,USA,Columbia University,https://ror.org/00hj8s172,https://openalex.org/i78577930
+us-ny-icahn-school-of-medicine-at-mount-sinai,ICAHN SCHOOL OF MEDICINE AT MOUNT SINAI,3839801,NEW YORK,NY,USA,Icahn School of Medicine at Mount Sinai,https://ror.org/04a9tmd77,https://openalex.org/i98704320
+us-ny-new-york-blood-center,NEW YORK BLOOD CENTER,1782801,NEW YORK,NY,USA,New York Blood Center,https://ror.org/01xvcf081,https://openalex.org/i1343675862
+us-ny-new-york-university-school-of-medicine,NEW YORK UNIVERSITY SCHOOL OF MEDICINE,5998304,NEW YORK,NY,USA,New York University School of Medicine,https://ror.org/0190ak572,https://openalex.org/i57206974
+us-ny-rockefeller-university,ROCKEFELLER UNIVERSITY,7056601,NEW YORK,NY,USA,Rockefeller University,https://ror.org/0420db125,https://openalex.org/i83399316
+us-ny-memorial-sloan-kettering,SLOAN-KETTERING INSTITUTE CANCER RESEARCH,5079202,NEW YORK,NY,USA,Memorial Sloan-Kettering,https://ror.org/02yrq0923,https://openalex.org/i1334819555
+us-ny-weill-cornell-medicine,WEILL MEDICAL COLL OF CORNELL UNIV,1514803,NEW YORK,NY,USA,Weill Cornell Medicine,https://ror.org/02r109517,https://openalex.org/i4387153466
+us-ny-university-of-rochester,UNIVERSITY OF ROCHESTER,7047101,ROCHESTER,NY,USA,University of Rochester,https://ror.org/022kthw22,https://openalex.org/i5388228
+us-ny-state-university-new-york-stony-brook,STATE UNIVERSITY NEW YORK STONY BROOK,5992612,STONY BROOK,NY,USA,State University New York Stony Brook,https://ror.org/05qghxh33,https://openalex.org/i59553526
+us-ny-upstate-medical-university,UPSTATE MEDICAL UNIVERSITY,5992619,SYRACUSE,NY,USA,Upstate Medical University,https://ror.org/040kfrw16,https://openalex.org/i20388574
+us-oh-cincinnati-childrens-hospital-medical-center,CINCINNATI CHILDRENS HOSP MEDICAL CTR,615001,CINCINNATI,OH,USA,Cincinnati Children’S Hospital Medical Center,https://ror.org/01hcyya48,https://openalex.org/i1285204247
+us-oh-university-of-cincinnati,UNIVERSITY OF CINCINNATI,1523902,CINCINNATI,OH,USA,University of Cincinnati,https://ror.org/01e3m7079,https://openalex.org/i63135867
+us-oh-case-western-reserve-university,CASE WESTERN RESERVE UNIVERSITY,218601,CLEVELAND,OH,USA,Case Western Reserve University,https://ror.org/051fd9666,https://openalex.org/i58956616
+us-oh-cleveland-clinic,CLEVELAND CLINIC LERNER COM-CWRU,10000858,CLEVELAND,OH,USA,Cleveland Clinic,https://ror.org/02x4b0932,https://openalex.org/i36373038
+us-oh-ohio-state-university,OHIO STATE UNIVERSITY,6218701,Columbus,OH,USA,Ohio State University,https://ror.org/00rs6vg23,https://openalex.org/i52357470
+us-oh-nationwide-children-s-hospital,RESEARCH INSTITUTE NATIONWIDE CHILDREN'S HOSP,1495302,COLUMBUS,OH,USA,Nationwide Children's Hospital,https://ror.org/003rfsp33,https://openalex.org/i1314135232
+us-oh-university-of-toledo-health-science-campus,UNIVERSITY OF TOLEDO HEALTH SCI CAMPUS,229501,TOLEDO,OH,USA,University of Toledo Health Science Campus,https://ror.org/01pbdzh19,https://openalex.org/i12057038
+us-ok-university-of-oklahoma,UNIVERSITY OF OKLAHOMA,1524002,NORMAN,OK,USA,University of Oklahoma,https://ror.org/02aqsxs83,https://openalex.org/i8692664
+us-ok-oklahoma-medical-research-foundation,OKLAHOMA MEDICAL RESEARCH FOUNDATION,6239601,OKLAHOMA CITY,OK,USA,Oklahoma Medical Research Foundation,https://ror.org/035z6xf33,https://openalex.org/i30558944
+us-ok-university-of-oklahoma-health-sciences-center,UNIVERSITY OF OKLAHOMA HLTH SCIENCES CTR,1524003,OKLAHOMA CITY,OK,USA,University of Oklahoma Health Sciences Center,https://ror.org/0457zbj98,https://openalex.org/i49332381
+us-ok-oklahoma-state-university-stillwater,OKLAHOMA STATE UNIVERSITY STILLWATER,1450502,STILLWATER,OK,USA,Oklahoma State University Stillwater,https://ror.org/01g9vbr38,https://openalex.org/i115475287
+us-or-oregon-health-science-university,OREGON HEALTH & SCIENCE UNIVERSITY,6297007,PORTLAND,OR,USA,Oregon Health & Science University,https://ror.org/009avj582,https://openalex.org/i165690674
+us-pa-pennsylvania-state-university-hershey-medical-center,PENNSYLVANIA STATE UNIVERSITY HERSHEY MEDICAL CTR,1524204,HERSHEY,PA,USA,Pennsylvania State University Hershey Medical Center,https://ror.org/01h22ap11,https://openalex.org/i82783531
+us-pa-children-s-hosp-of-philadelphia,CHILDREN'S HOSP OF PHILADELPHIA,1499101,PHILADELPHIA,PA,USA,Children's Hosp of Philadelphia,https://ror.org/01z7r7q48,https://openalex.org/i1335321130
+us-pa-drexel-university,DREXEL UNIVERSITY,2205901,PHILADELPHIA,PA,USA,Drexel University,https://ror.org/04bdffz58,https://openalex.org/i72816309
+us-pa-fox-chase-cancer-center,RESEARCH INSTITUTE OF FOX CHASE CANCER CTR,1190002,PHILADELPHIA,PA,USA,Fox Chase Cancer Center,https://ror.org/0567t7073,https://openalex.org/i1289437631
+us-pa-temple-university,TEMPLE UNIVERSITY OF THE COMMONWEALTH,8240301,PHILADELPHIA,PA,USA,Temple University,https://ror.org/00kx1jb78,https://openalex.org/i84392919
+us-pa-thomas-jefferson-university,THOMAS JEFFERSON UNIVERSITY,4050801,PHILADELPHIA,PA,USA,Thomas Jefferson University,https://ror.org/00ysqcn41,https://openalex.org/i149251103
+us-pa-university-of-pennsylvania,UNIVERSITY OF PENNSYLVANIA,6463801,PHILADELPHIA,PA,USA,University of Pennsylvania,https://ror.org/00b30xv10,https://openalex.org/i79576946
+us-pa-wistar-institute,WISTAR INSTITUTE,9340401,PHILADELPHIA,PA,USA,Wistar Institute,https://ror.org/04wncat98,https://openalex.org/i102322052
+us-pa-university-of-pittsburgh,UNIVERSITY OF PITTSBURGH AT PITTSBURGH,2059802,PITTSBURGH,PA,USA,University of Pittsburgh,https://ror.org/01an3r305,https://openalex.org/i170201317
+us-pa-pennsylvania-state-university,"PENNSYLVANIA STATE UNIVERSITY, THE",1524202,UNIVERSITY PARK,PA,USA,Pennsylvania State University,https://ror.org/04p491231,https://openalex.org/i130769515
+us-ri-brown-university,BROWN UNIVERSITY,1003201,PROVIDENCE,RI,USA,Brown University,https://ror.org/05gq02987,https://openalex.org/i27804330
+us-ri-rhode-island-hospital,RHODE ISLAND HOSPITAL,6959701,PROVIDENCE,RI,USA,Rhode Island Hospital,https://ror.org/01aw9fv09,https://openalex.org/i2800446032
+us-sc-medical-university-of-south-carolina,MEDICAL UNIVERSITY OF SOUTH CAROLINA,7575301,CHARLESTON,SC,USA,Medical University of South Carolina,https://ror.org/012jban78,https://openalex.org/i153297377
+us-sc-clemson-university,CLEMSON UNIVERSITY,1626401,CLEMSON,SC,USA,Clemson University,https://ror.org/037s24f05,https://openalex.org/i8078737
+us-sc-university-of-south-carolina,UNIVERSITY OF SOUTH CAROLINA AT COLUMBIA,1524302,COLUMBIA,SC,USA,University of South Carolina,https://ror.org/02b6qw903,https://openalex.org/i155781252
+us-tn-st-jude-children-s-research-hospital,ST. JUDE CHILDREN'S RESEARCH HOSPITAL,7893501,MEMPHIS,TN,USA,St. Jude Children's Research Hospital,https://ror.org/02r3e0967,https://openalex.org/i1313298211
+us-tn-university-of-tennessee-health-science-center,UNIVERSITY OF TENNESSEE HEALTH SCI CTR,578302,MEMPHIS,TN,USA,University of Tennessee Health Science Center,https://ror.org/0011qv509,https://openalex.org/i160606119
+us-tn-vanderbilt-university,VANDERBILT UNIVERSITY,8721001,Nashville,TN,USA,Vanderbilt University,https://ror.org/02vm5rt34,https://openalex.org/i200719446
+us-tn-vanderbilt-university-medical-center,VANDERBILT UNIVERSITY MEDICAL CENTER,10040927,NASHVILLE,TN,USA,Vanderbilt University Medical Center,https://ror.org/05dq2gs74,https://openalex.org/i901861585
+us-tx-university-of-texas-at-austin,UNIVERSITY OF TEXAS AT AUSTIN,578403,AUSTIN,TX,USA,University of Texas at Austin,https://ror.org/00hj54h04,https://openalex.org/i86519309
+us-tx-texas-a-m,TEXAS A&M AGRILIFE RESEARCH,8266920,College Station,TX,USA,Texas a&M,https://ror.org/01f5ytq51,https://openalex.org/i91045830
+us-tx-ut-southwestern-medical-center,UT SOUTHWESTERN MEDICAL CENTER,578404,DALLAS,TX,USA,UT Southwestern Medical Center,https://ror.org/05byvp690,https://openalex.org/i867280407
+us-tx-university-of-texas-medical-galveston,UNIVERSITY OF TEXAS MEDICAL BR GALVESTON,578406,GALVESTON,TX,USA,University of Texas Medical Galveston,https://ror.org/016tfm930,https://openalex.org/i55302922
+us-tx-baylor-college-of-medicine,BAYLOR COLLEGE OF MEDICINE,481201,HOUSTON,TX,USA,Baylor College of Medicine,https://ror.org/02pttbw34,https://openalex.org/i181547552
+us-tx-methodist-hospital-research-institute,METHODIST HOSPITAL RESEARCH INSTITUTE,10005742,HOUSTON,TX,USA,Methodist Hospital Research Institute,https://ror.org/027zt9171,https://openalex.org/i1295876152
+us-tx-rice-university,RICE UNIVERSITY,9291001,HOUSTON,TX,USA,Rice University,https://ror.org/008zs3103,https://openalex.org/i74775410
+us-tx-university-of-texas-health-science-center-houston,UNIVERSITY OF TEXAS HLTH SCI CTR HOUSTON,578417,HOUSTON,TX,USA,University of Texas Health Science Center Houston,https://ror.org/03gds6c39,https://openalex.org/i919571938
+us-tx-md-anderson-cancer-center,UNIVERSITY OF TX MD ANDERSON CANCER CTR,578407,HOUSTON,TX,USA,Md Anderson Cancer Center,https://ror.org/04twxam07,https://openalex.org/i1343551460
+us-tx-texas-biomedical-research-institute,TEXAS BIOMEDICAL RESEARCH INSTITUTE,7660801,SAN ANTONIO,TX,USA,Texas Biomedical Research Institute,https://ror.org/00wbskb04,https://openalex.org/i1289525096
+us-tx-university-of-texas-health-science-center,UNIVERSITY OF TEXAS HLTH SCIENCE CENTER,578418,SAN ANTONIO,TX,USA,University of Texas Health Science Center,https://ror.org/02f6dcw23,https://openalex.org/i165951966
+us-tx-university-of-texas-san-antonio,UNIVERSITY OF TEXAS SAN ANTONIO,578416,SAN ANTONIO,TX,USA,University of Texas San Antonio,https://ror.org/01kd65564,https://openalex.org/i45438204
+us-ut-university-of-utah,UTAH STATE HIGHER EDUCATION SYSTEM--UNIVERSITY OF UTAH,514002,SALT LAKE CITY,UT,USA,University of Utah,https://ror.org/03r0ha626,https://openalex.org/i223532165
+us-va-virginia-polytechnic-institute,VIRGINIA POLYTECHNIC INSTITUTE AND ST UNIV,8968001,BLACKSBURG,VA,USA,Virginia Polytechnic Institute,https://ror.org/02smfhw86,https://openalex.org/i859038795
+us-va-university-of-virginia,UNIVERSITY OF VIRGINIA,1526402,CHARLOTTESVILLE,VA,USA,University of Virginia,https://ror.org/0153tk833,https://openalex.org/i51556381
+us-va-virginia-commonwealth-university,VIRGINIA COMMONWEALTH UNIVERSITY,353201,RICHMOND,VA,USA,Virginia Commonwealth University,https://ror.org/02nkdxk79,https://openalex.org/i184840846
+us-vt-university-of-vermont,UNIVERSITY OF VERMONT & ST AGRIC COLLEGE,8738101,BURLINGTON,VT,USA,University of Vermont,https://ror.org/0155zta11,https://openalex.org/i111236770
+us-wa-washington-state-university,WASHINGTON STATE UNIVERSITY,9082001,PULLMAN,WA,USA,Washington State University,https://ror.org/05dk0ce17,https://openalex.org/i72951846
+us-wa-benaroya-research-institute,BENAROYA RESEARCH INSTITUTE AT VIRGINIA MASON,8961401,SEATTLE,WA,USA,Benaroya Research Institute,https://ror.org/04j9rp686,https://openalex.org/i4391012615
+us-wa-fred-hutchinson-cancer-research-center,FRED HUTCHINSON CANCER RESEARCH CENTER,861001,SEATTLE,WA,USA,Fred Hutchinson Cancer Research Center,https://ror.org/007ps6h72,https://openalex.org/i4210089486
+us-wa-seattle-children-s-hospital,SEATTLE CHILDREN'S HOSPITAL,1531401,SEATTLE,WA,USA,Seattle Children's Hospital,https://ror.org/01njes783,https://openalex.org/i1295499534
+us-wa-university-of-washington,UNIVERSITY OF WASHINGTON,9087701,SEATTLE,WA,USA,University of Washington,https://ror.org/00cvxb145,https://openalex.org/i201448701
+us-wi-university-of-wisconsin-madison,UNIVERSITY OF WISCONSIN-MADISON,578503,MADISON,WI,USA,University of Wisconsin-Madison,https://ror.org/01y2jtd41,https://openalex.org/i135310074
+us-wi-medical-college-of-wisconsin,MEDICAL COLLEGE OF WISCONSIN,46001,MILWAUKEE,WI,USA,Medical College of Wisconsin,https://ror.org/00qqv6244,https://openalex.org/i204308271
+us-wv-west-virginia-university,WEST VIRGINIA UNIVERSITY,9163701,MORGANTOWN,WV,USA,West Virginia University,https://ror.org/011vxgd24,https://openalex.org/i12097938
+us-ny-northwell-health,NORTHWELL HEALTH,4155008,NEW HYDE PARK,NY,USA,Northwell Health,https://ror.org/02bxt4m23,https://openalex.org/i1302444339
