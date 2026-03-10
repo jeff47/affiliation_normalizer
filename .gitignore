@@ -51,3 +51,4 @@ node_modules/
 *.password
 *.token
 
+combined.txt
