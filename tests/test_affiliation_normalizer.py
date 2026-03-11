@@ -30,6 +30,40 @@ def test_matches_yale_affiliation() -> None:
     assert result.state == "CT"
 
 
+def test_matches_yale_school_of_medicine_subunit_affiliation() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match(
+        "Department of Medicine, Section of Infectious Diseases, Yale School of Medicine, "
+        "New Haven, Connecticut, USA."
+    )
+    assert result.status == "matched"
+    assert result.canonical_id == "us-ct-yale-university"
+    assert result.canonical_name == "Yale University"
+
+
+def test_matches_weill_cornell_medical_college_legacy_alias() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match("Weill Cornell Medical College, New York, NY, USA.")
+    assert result.status == "matched"
+    assert result.canonical_id == "us-ny-weill-cornell-medicine"
+    assert result.canonical_name == "Weill Cornell Medicine"
+
+
+def test_nyu_grossman_and_legacy_variants_resolve_to_nyu_grossman() -> None:
+    normalizer = _normalizer()
+
+    for text in (
+        "New York University Grossman School of Medicine",
+        "New York University School of Medicine",
+        "NYU Grossman School of Medicine",
+        "NYU School of Medicine",
+    ):
+        result = normalizer.match(text)
+        assert result.status == "matched"
+        assert result.canonical_id == "us-ny-new-york-university-school-of-medicine"
+        assert result.canonical_name == "New York University Grossman School of Medicine"
+
+
 def test_precedence_brigham_over_harvard() -> None:
     normalizer = _normalizer()
     result = normalizer.match(

@@ -5,6 +5,11 @@ UNIV	deny	manual_guardrail	overly broad generic abbreviation
 HARVARD UNIVERSITY D/B/A HARVARD SCHOOL OF PUBLIC HEALTH	allow	manual_addition	funded institute variant	us-ma-harvard-university	Harvard University	
 HARVARD UNIVERSITY	allow	manual_addition	funded institute variant	us-ma-harvard-university	Harvard University	
 BOSTON UNIVERSITY (CHARLES RIVER CAMPUS)	allow	manual_addition	funded institute variant	us-ma-boston-university	Boston University	
+YALE SCHOOL OF MEDICINE	allow	manual_addition	subunit string should resolve to parent institution	us-ct-yale-university	Yale University	
+WEILL CORNELL MEDICAL COLLEGE	allow	manual_addition	legacy naming variant	us-ny-weill-cornell-medicine	Weill Cornell Medicine	
+NEW YORK UNIVERSITY SCHOOL OF MEDICINE	allow	manual_addition	legacy naming variant	us-ny-new-york-university-school-of-medicine	New York University Grossman School of Medicine	
+NYU SCHOOL OF MEDICINE	allow	manual_addition	common NYU short form	us-ny-new-york-university-school-of-medicine	New York University Grossman School of Medicine	
+NYU GROSSMAN SCHOOL OF MEDICINE	allow	manual_addition	common NYU short form	us-ny-new-york-university-school-of-medicine	New York University Grossman School of Medicine	
 BRI	review_only	auto_collision	acronym maps to 2 institutions in seed	us-ca-beckman-research-institute|us-wa-benaroya-research-institute	Beckman Research Institute|Benaroya Research Institute	
 BU	review_only	auto_collision	acronym maps to 2 institutions in seed	us-ma-boston-university|us-ri-brown-university	Boston University|Brown University	
 CU	review_only	auto_collision	acronym maps to 4 institutions in seed	us-ne-creighton-university|us-ny-columbia-university|us-ny-cornell-university|us-sc-clemson-university	Clemson University|Columbia University|Cornell University|Creighton University	

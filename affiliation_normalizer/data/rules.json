@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "generated_at_utc": "2026-03-10T18:25:48.347729+00:00",
+    "generated_at_utc": "2026-03-11T18:21:45.161754+00:00",
     "master_path": "niaid_org_seed_master.csv",
     "alias_policy_path": "alias_policy_review.tsv",
     "precedence_path": "canonical_precedence.tsv",
     "institution_count": 190,
-    "alias_rule_count": 584
+    "alias_rule_count": 589
   },
   "institutions": {
     "us-al-university-of-alabama-birmingham": {
@@ -1622,7 +1622,7 @@
     },
     "us-ny-new-york-university-school-of-medicine": {
       "canonical_id": "us-ny-new-york-university-school-of-medicine",
-      "canonical_name": "New York University School of Medicine",
+      "canonical_name": "New York University Grossman School of Medicine",
       "city": "New York",
       "state": "NY",
       "country": "US",
@@ -4035,17 +4035,24 @@
       "policy": "allow"
     },
     {
-      "alias": "New York University School of Medicine",
-      "alias_norm": "new york university school of medicine",
+      "alias": "New York University Grossman School of Medicine",
+      "alias_norm": "new york university grossman school of medicine",
       "canonical_id": "us-ny-new-york-university-school-of-medicine",
       "alias_type": "canonical_name",
       "policy": "allow"
     },
     {
-      "alias": "New York University School of Medicine, NEW YORK, NY",
-      "alias_norm": "new york university school of medicine new york ny",
+      "alias": "New York University Grossman School of Medicine, NEW YORK, NY",
+      "alias_norm": "new york university grossman school of medicine new york ny",
       "canonical_id": "us-ny-new-york-university-school-of-medicine",
       "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
+      "alias": "NEW YORK UNIVERSITY SCHOOL OF MEDICINE",
+      "alias_norm": "new york university school of medicine",
+      "canonical_id": "us-ny-new-york-university-school-of-medicine",
+      "alias_type": "nih_name",
       "policy": "allow"
     },
     {
@@ -4126,8 +4133,22 @@
       "policy": "allow"
     },
     {
-      "alias": "NYUSM",
-      "alias_norm": "nyusm",
+      "alias": "NYU GROSSMAN SCHOOL OF MEDICINE",
+      "alias_norm": "nyu grossman school of medicine",
+      "canonical_id": "us-ny-new-york-university-school-of-medicine",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
+      "alias": "NYU SCHOOL OF MEDICINE",
+      "alias_norm": "nyu school of medicine",
+      "canonical_id": "us-ny-new-york-university-school-of-medicine",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
+      "alias": "NYUGSM",
+      "alias_norm": "nyugsm",
       "canonical_id": "us-ny-new-york-university-school-of-medicine",
       "alias_type": "acronym",
       "policy": "allow"
@@ -6478,6 +6499,13 @@
       "policy": "allow"
     },
     {
+      "alias": "WEILL CORNELL MEDICAL COLLEGE",
+      "alias_norm": "weill cornell medical college",
+      "canonical_id": "us-ny-weill-cornell-medicine",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
       "alias": "Weill Cornell Medicine",
       "alias_norm": "weill cornell medicine",
       "canonical_id": "us-ny-weill-cornell-medicine",
@@ -6552,6 +6580,13 @@
       "alias_norm": "wvu",
       "canonical_id": "us-wv-west-virginia-university",
       "alias_type": "acronym",
+      "policy": "allow"
+    },
+    {
+      "alias": "YALE SCHOOL OF MEDICINE",
+      "alias_norm": "yale school of medicine",
+      "canonical_id": "us-ct-yale-university",
+      "alias_type": "manual_alias",
       "policy": "allow"
     },
     {
