@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "generated_at_utc": "2026-03-11T18:21:45.161754+00:00",
+    "generated_at_utc": "2026-03-11T18:50:27.286431+00:00",
     "master_path": "niaid_org_seed_master.csv",
     "alias_policy_path": "alias_policy_review.tsv",
     "precedence_path": "canonical_precedence.tsv",
     "institution_count": 190,
-    "alias_rule_count": 589
+    "alias_rule_count": 590
   },
   "institutions": {
     "us-al-university-of-alabama-birmingham": {
@@ -5796,6 +5796,13 @@
       "alias_norm": "university of new mexico health sciences ctr",
       "canonical_id": "us-nm-university-of-new-mexico-health-sciences-center",
       "alias_type": "nih_name",
+      "policy": "allow"
+    },
+    {
+      "alias": "UNIVERSITY OF NORTH CAROLINA AT CHAPEL HILL",
+      "alias_norm": "university of north carolina at chapel hill",
+      "canonical_id": "us-nc-university-of-north-carolina-chapel-hill",
+      "alias_type": "manual_alias",
       "policy": "allow"
     },
     {

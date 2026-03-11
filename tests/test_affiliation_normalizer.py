@@ -64,6 +64,19 @@ def test_nyu_grossman_and_legacy_variants_resolve_to_nyu_grossman() -> None:
         assert result.canonical_name == "New York University Grossman School of Medicine"
 
 
+def test_unc_chapel_hill_at_variant_resolves() -> None:
+    normalizer = _normalizer()
+
+    for text in (
+        "University of North Carolina at Chapel Hill",
+        "The University of North Carolina at Chapel Hill, Chapel Hill, NC, USA.",
+    ):
+        result = normalizer.match(text)
+        assert result.status == "matched"
+        assert result.canonical_id == "us-nc-university-of-north-carolina-chapel-hill"
+        assert result.canonical_name == "University of North Carolina Chapel Hill"
+
+
 def test_precedence_brigham_over_harvard() -> None:
     normalizer = _normalizer()
     result = normalizer.match(
