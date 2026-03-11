@@ -11,6 +11,10 @@ NEW YORK UNIVERSITY SCHOOL OF MEDICINE	allow	manual_addition	legacy naming varia
 NYU SCHOOL OF MEDICINE	allow	manual_addition	common NYU short form	us-ny-new-york-university-school-of-medicine	New York University Grossman School of Medicine	
 NYU GROSSMAN SCHOOL OF MEDICINE	allow	manual_addition	common NYU short form	us-ny-new-york-university-school-of-medicine	New York University Grossman School of Medicine	
 UNIVERSITY OF NORTH CAROLINA AT CHAPEL HILL	allow	manual_addition	common institution name variant	us-nc-university-of-north-carolina-chapel-hill	University of North Carolina Chapel Hill	
+FRED HUTCHINSON CANCER CENTER	allow	manual_addition	renamed institution variant	us-wa-fred-hutchinson-cancer-research-center	Fred Hutchinson Cancer Research Center	
+CHILDREN'S HOSPITAL OF PHILADELPHIA	allow	manual_addition	common full-name variant	us-pa-children-s-hosp-of-philadelphia	Children's Hosp of Philadelphia	
+CHOP	allow	manual_addition	common acronym variant	us-pa-children-s-hosp-of-philadelphia	Children's Hosp of Philadelphia	
+ICAHN SCHOOL OF MEDICINE	allow	manual_addition	common shortened variant	us-ny-icahn-school-of-medicine-at-mount-sinai	Icahn School of Medicine at Mount Sinai	
 BRI	review_only	auto_collision	acronym maps to 2 institutions in seed	us-ca-beckman-research-institute|us-wa-benaroya-research-institute	Beckman Research Institute|Benaroya Research Institute	
 BU	review_only	auto_collision	acronym maps to 2 institutions in seed	us-ma-boston-university|us-ri-brown-university	Boston University|Brown University	
 CU	review_only	auto_collision	acronym maps to 4 institutions in seed	us-ne-creighton-university|us-ny-columbia-university|us-ny-cornell-university|us-sc-clemson-university	Clemson University|Columbia University|Cornell University|Creighton University	

@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "generated_at_utc": "2026-03-11T18:50:27.286431+00:00",
+    "generated_at_utc": "2026-03-11T19:03:05.720902+00:00",
     "master_path": "niaid_org_seed_master.csv",
     "alias_policy_path": "alias_policy_review.tsv",
     "precedence_path": "canonical_precedence.tsv",
     "institution_count": 190,
-    "alias_rule_count": 590
+    "alias_rule_count": 594
   },
   "institutions": {
     "us-al-university-of-alabama-birmingham": {
@@ -2880,6 +2880,20 @@
       "policy": "allow"
     },
     {
+      "alias": "CHILDREN'S HOSPITAL OF PHILADELPHIA",
+      "alias_norm": "childrens hospital of philadelphia",
+      "canonical_id": "us-pa-children-s-hosp-of-philadelphia",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
+      "alias": "CHOP",
+      "alias_norm": "chop",
+      "canonical_id": "us-pa-children-s-hosp-of-philadelphia",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
       "alias": "CINCINNATI CHILDRENS HOSP MEDICAL CTR",
       "alias_norm": "cincinnati childrens hosp medical ctr",
       "canonical_id": "us-oh-cincinnati-childrens-hospital-medical-center",
@@ -3244,6 +3258,13 @@
       "policy": "allow"
     },
     {
+      "alias": "FRED HUTCHINSON CANCER CENTER",
+      "alias_norm": "fred hutchinson cancer center",
+      "canonical_id": "us-wa-fred-hutchinson-cancer-research-center",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
       "alias": "Fred Hutchinson Cancer Research Center",
       "alias_norm": "fred hutchinson cancer research center",
       "canonical_id": "us-wa-fred-hutchinson-cancer-research-center",
@@ -3473,6 +3494,13 @@
       "canonical_id": "us-nj-hackensack-university-medical-center",
       "alias_type": "acronym",
       "policy": "review_only"
+    },
+    {
+      "alias": "ICAHN SCHOOL OF MEDICINE",
+      "alias_norm": "icahn school of medicine",
+      "canonical_id": "us-ny-icahn-school-of-medicine-at-mount-sinai",
+      "alias_type": "manual_alias",
+      "policy": "allow"
     },
     {
       "alias": "Icahn School of Medicine at Mount Sinai",

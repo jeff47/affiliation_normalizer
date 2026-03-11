@@ -77,6 +77,41 @@ def test_unc_chapel_hill_at_variant_resolves() -> None:
         assert result.canonical_name == "University of North Carolina Chapel Hill"
 
 
+def test_fred_hutchinson_cancer_center_renamed_variant_resolves() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match("Fred Hutchinson Cancer Center, Seattle, WA, USA.")
+    assert result.status == "matched"
+    assert result.canonical_id == "us-wa-fred-hutchinson-cancer-research-center"
+    assert result.canonical_name == "Fred Hutchinson Cancer Research Center"
+
+
+def test_chop_full_name_and_acronym_resolve() -> None:
+    normalizer = _normalizer()
+
+    for text in (
+        "Children's Hospital of Philadelphia",
+        "The Children's Hospital of Philadelphia, Philadelphia, PA, USA.",
+        "CHOP",
+    ):
+        result = normalizer.match(text)
+        assert result.status == "matched"
+        assert result.canonical_id == "us-pa-children-s-hosp-of-philadelphia"
+        assert result.canonical_name == "Children's Hosp of Philadelphia"
+
+
+def test_icahn_school_of_medicine_short_form_resolves() -> None:
+    normalizer = _normalizer()
+
+    for text in (
+        "Icahn school of medicine",
+        "Icahn School of Medicine, New York, NY, USA.",
+    ):
+        result = normalizer.match(text)
+        assert result.status == "matched"
+        assert result.canonical_id == "us-ny-icahn-school-of-medicine-at-mount-sinai"
+        assert result.canonical_name == "Icahn School of Medicine at Mount Sinai"
+
+
 def test_precedence_brigham_over_harvard() -> None:
     normalizer = _normalizer()
     result = normalizer.match(
