@@ -1,4 +1,9 @@
 preferred_canonical_id	demoted_canonical_id	reason	active
 us-ma-brigham-and-women-s-hospital	us-ma-harvard-university	User rule: Brigham over Harvard when both present	true
 us-ma-massachusetts-general-hospital	us-ma-harvard-university	User rule: MGH over Harvard when both present	true
-
+us-ma-ragon-institute-of-mgh-mit-and-harvard	us-ma-massachusetts-general-hospital	User rule: Ragon over MGH when both present	true
+us-ma-ragon-institute-of-mgh-mit-and-harvard	us-ma-massachusetts-institute-of-technology	User rule: Ragon over MIT when both present	true
+us-ma-ragon-institute-of-mgh-mit-and-harvard	us-ma-harvard-university	User rule: Ragon over Harvard when both present	true
+us-ma-broad-institute	us-ma-massachusetts-institute-of-technology	User rule: Broad over MIT when both present	true
+us-ma-broad-institute	us-ma-harvard-university	User rule: Broad over Harvard when both present	true
+us-ma-harvard-th-chan-school-of-public-health	us-ma-harvard-university	User rule: TH Chan School over Harvard when both present	true

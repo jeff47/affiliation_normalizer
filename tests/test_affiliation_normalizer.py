@@ -168,6 +168,212 @@ def test_new_seed_institution_hss_matches() -> None:
     assert hss.canonical_id == "us-ny-hospital-for-special-surgery"
 
 
+def test_penn_state_college_of_medicine_variants_resolve_to_hershey() -> None:
+    normalizer = _normalizer()
+
+    for text in (
+        "Penn State College of Medicine",
+        "Penn State Milton S. Hershey Medical Center",
+    ):
+        result = normalizer.match(text)
+        assert result.status == "matched"
+        assert result.canonical_id == "us-pa-pennsylvania-state-university-hershey-medical-center"
+        assert result.canonical_name == "Pennsylvania State University Hershey Medical Center"
+
+
+def test_albert_einstein_school_of_medicine_resolves_to_college_of_medicine() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match("Albert Einstein School of Medicine")
+    assert result.status == "matched"
+    assert result.canonical_id == "us-ny-albert-einstein-college-of-medicine"
+    assert result.canonical_name == "Albert Einstein College of Medicine"
+
+
+def test_baylor_school_of_medicine_resolves_to_baylor_college_of_medicine() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match("Baylor School of Medicine")
+    assert result.status == "matched"
+    assert result.canonical_id == "us-tx-baylor-college-of-medicine"
+    assert result.canonical_name == "Baylor College of Medicine"
+
+
+def test_caltech_resolves_to_california_institute_of_technology() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match("Caltech")
+    assert result.status == "matched"
+    assert result.canonical_id == "us-ca-california-institute-of-technology"
+    assert result.canonical_name == "California Institute of Technology"
+
+
+def test_virginia_tech_resolves_to_virginia_polytechnic_institute() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match("Virginia Tech")
+    assert result.status == "matched"
+    assert result.canonical_id == "us-va-virginia-polytechnic-institute"
+    assert result.canonical_name == "Virginia Polytechnic Institute"
+
+
+def test_university_of_new_mexico_health_science_center_resolves_to_health_sciences_center() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match("University of New Mexico Health Science Center")
+    assert result.status == "matched"
+    assert result.canonical_id == "us-nm-university-of-new-mexico-health-sciences-center"
+    assert result.canonical_name == "University of New Mexico Health Sciences Center"
+
+
+def test_johns_hopkins_medicine_seed_and_aliases_match() -> None:
+    normalizer = _normalizer()
+
+    for text in (
+        "Johns Hopkins University School of Medicine",
+        "Johns Hopkins  School of Medicine",
+    ):
+        result = normalizer.match(text)
+        assert result.status == "matched"
+        assert result.canonical_id == "us-md-johns-hopkins-medicine"
+        assert result.canonical_name == "Johns Hopkins Medicine"
+
+    ror_result = normalizer.match_ror("037zgn354")
+    assert ror_result.status == "matched"
+    assert ror_result.canonical_id == "us-md-johns-hopkins-medicine"
+
+    grid_result = normalizer.match_grid("grid.469474.c")
+    assert grid_result.status == "matched"
+    assert grid_result.canonical_id == "us-md-johns-hopkins-medicine"
+
+
+def test_new_seed_eastern_virginia_medical_school_matches() -> None:
+    normalizer = _normalizer()
+
+    text_result = normalizer.match("Eastern Virginia Medical School")
+    assert text_result.status == "matched"
+    assert text_result.canonical_id == "us-va-eastern-virginia-medical-school"
+    assert text_result.canonical_name == "Eastern Virginia Medical School"
+
+    ror_result = normalizer.match_ror("056hr4255")
+    assert ror_result.status == "matched"
+    assert ror_result.canonical_id == "us-va-eastern-virginia-medical-school"
+
+    grid_result = normalizer.match_grid("grid.255414.3")
+    assert grid_result.status == "matched"
+    assert grid_result.canonical_id == "us-va-eastern-virginia-medical-school"
+
+
+def test_feinstein_plural_variant_resolves() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match(
+        "Center for Autoimmune Musculoskeletal and Hematopoietic Diseases, "
+        "The Feinstein Institutes for Medical Research, Manhasset, NY."
+    )
+    assert result.status == "matched"
+    assert result.canonical_id == "us-ny-feinstein-institute-for-medical-research"
+    assert result.canonical_name == "Feinstein Institute for Medical Research"
+
+
+def test_harvard_th_chan_variants_resolve_to_subunit_not_global_harvard() -> None:
+    normalizer = _normalizer()
+
+    for text in (
+        "Harvard T.H. Chan School of Public Health",
+        "Harvard T. H. Chan School of Public Health",
+        "Harvard TH Chan School of Public Health",
+        "Harvard T. H. Chan School of Public Health, Harvard University, Boston, MA",
+    ):
+        result = normalizer.match(text)
+        assert result.status == "matched"
+        assert result.canonical_id == "us-ma-harvard-th-chan-school-of-public-health"
+        assert result.canonical_name == "Harvard T. H. Chan School of Public Health"
+
+
+def test_new_seed_rensselaer_polytechnic_institute_matches() -> None:
+    normalizer = _normalizer()
+
+    text_result = normalizer.match("Rensselaer Polytechnic Institute")
+    assert text_result.status == "matched"
+    assert text_result.canonical_id == "us-ny-rensselaer-polytechnic-institute"
+    assert text_result.canonical_name == "Rensselaer Polytechnic Institute"
+
+    ror_result = normalizer.match_ror("01rtyzb94")
+    assert ror_result.status == "matched"
+    assert ror_result.canonical_id == "us-ny-rensselaer-polytechnic-institute"
+
+    grid_result = normalizer.match_grid("grid.33647.35")
+    assert grid_result.status == "matched"
+    assert grid_result.canonical_id == "us-ny-rensselaer-polytechnic-institute"
+
+
+def test_barbara_davis_center_variants_resolve_to_uc_anschutz() -> None:
+    normalizer = _normalizer()
+
+    for text in (
+        "Barbara Davis Center for Diabetes",
+        "Barbara Davis Center for Childhood Diabetes",
+    ):
+        result = normalizer.match(text)
+        assert result.status == "matched"
+        assert result.canonical_id == "us-co-university-of-colorado-anschutz-medical-campus"
+        assert result.canonical_name == "University of Colorado Anschutz Medical Campus"
+
+
+def test_university_of_colorado_aurora_variants_resolve_to_uc_anschutz_not_boulder() -> None:
+    normalizer = _normalizer()
+
+    for text in (
+        "University of Colorado in Aurora",
+        "University of Colorado, Aurora",
+        "University of Colorado at Aurora",
+    ):
+        result = normalizer.match(text)
+        assert result.status == "matched"
+        assert result.canonical_id == "us-co-university-of-colorado-anschutz-medical-campus"
+        assert result.canonical_name == "University of Colorado Anschutz Medical Campus"
+
+
+def test_new_seed_ragon_institute_matches_by_text_and_identifiers() -> None:
+    normalizer = _normalizer()
+
+    text_result = normalizer.match("Ragon Institute of MGH, MIT and Harvard")
+    assert text_result.status == "matched"
+    assert text_result.canonical_id == "us-ma-ragon-institute-of-mgh-mit-and-harvard"
+    assert text_result.canonical_name == "Ragon Institute of MGH, MIT and Harvard"
+
+    ror_result = normalizer.match_ror("053r20n13")
+    assert ror_result.status == "matched"
+    assert ror_result.canonical_id == "us-ma-ragon-institute-of-mgh-mit-and-harvard"
+
+    grid_result = normalizer.match_grid("grid.461656.6")
+    assert grid_result.status == "matched"
+    assert grid_result.canonical_id == "us-ma-ragon-institute-of-mgh-mit-and-harvard"
+
+
+def test_ragon_institute_precedence_over_mgh_mit_harvard() -> None:
+    normalizer = _normalizer()
+
+    for text in (
+        "Ragon Institute, MGH, MIT and Harvard, Cambridge, MA",
+        "Ragon Institute of Mass General Brigham, MIT, and Harvard, Cambridge, MA 02139, USA.",
+    ):
+        result = normalizer.match(text)
+        assert result.status == "matched"
+        assert result.canonical_id == "us-ma-ragon-institute-of-mgh-mit-and-harvard"
+        assert result.canonical_name == "Ragon Institute of MGH, MIT and Harvard"
+
+
+def test_broad_institute_precedence_over_harvard_and_mit() -> None:
+    normalizer = _normalizer()
+
+    for text in (
+        "Broad Institute of Harvard and MIT",
+        "Broad Institute of Harvard and Massachusetts Institute of Technology",
+        "Broad Institute, Harvard University, Cambridge, MA",
+        "Broad Institute, Massachusetts Institute of Technology, Cambridge, MA",
+    ):
+        result = normalizer.match(text)
+        assert result.status == "matched"
+        assert result.canonical_id == "us-ma-broad-institute"
+        assert result.canonical_name == "Broad Institute"
+
+
 def test_matches_ror_bare_id() -> None:
     normalizer = _normalizer()
 

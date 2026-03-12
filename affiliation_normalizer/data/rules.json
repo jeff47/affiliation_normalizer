@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "generated_at_utc": "2026-03-11T19:03:05.720902+00:00",
+    "generated_at_utc": "2026-03-12T01:01:39.938234+00:00",
     "master_path": "niaid_org_seed_master.csv",
     "alias_policy_path": "alias_policy_review.tsv",
     "precedence_path": "canonical_precedence.tsv",
-    "institution_count": 190,
-    "alias_rule_count": 594
+    "institution_count": 195,
+    "alias_rule_count": 628
   },
   "institutions": {
     "us-al-university-of-alabama-birmingham": {
@@ -2477,6 +2477,71 @@
       "openalex_id": "I51713134",
       "nih_reporter_name": "University of Colorado Denver | Anschutz Medical Campus",
       "nih_reporter_ipf_code": "1199905"
+    },
+    "us-ma-ragon-institute-of-mgh-mit-and-harvard": {
+      "canonical_id": "us-ma-ragon-institute-of-mgh-mit-and-harvard",
+      "canonical_name": "Ragon Institute of MGH, MIT and Harvard",
+      "city": "Cambridge",
+      "state": "MA",
+      "country": "US",
+      "ror_id": "053r20n13",
+      "grid_id": "grid.461656.6",
+      "email_domains": "",
+      "openalex_id": "I2802422659",
+      "nih_reporter_name": "",
+      "nih_reporter_ipf_code": ""
+    },
+    "us-md-johns-hopkins-medicine": {
+      "canonical_id": "us-md-johns-hopkins-medicine",
+      "canonical_name": "Johns Hopkins Medicine",
+      "city": "Baltimore",
+      "state": "MD",
+      "country": "US",
+      "ror_id": "037zgn354",
+      "grid_id": "grid.469474.c",
+      "email_domains": "",
+      "openalex_id": "I2799853436",
+      "nih_reporter_name": "",
+      "nih_reporter_ipf_code": ""
+    },
+    "us-va-eastern-virginia-medical-school": {
+      "canonical_id": "us-va-eastern-virginia-medical-school",
+      "canonical_name": "Eastern Virginia Medical School",
+      "city": "Norfolk",
+      "state": "VA",
+      "country": "US",
+      "ror_id": "056hr4255",
+      "grid_id": "grid.255414.3",
+      "email_domains": "",
+      "openalex_id": "I156802259",
+      "nih_reporter_name": "",
+      "nih_reporter_ipf_code": ""
+    },
+    "us-ma-harvard-th-chan-school-of-public-health": {
+      "canonical_id": "us-ma-harvard-th-chan-school-of-public-health",
+      "canonical_name": "Harvard T. H. Chan School of Public Health",
+      "city": "Boston",
+      "state": "MA",
+      "country": "US",
+      "ror_id": "",
+      "grid_id": "",
+      "email_domains": "",
+      "openalex_id": "",
+      "nih_reporter_name": "",
+      "nih_reporter_ipf_code": ""
+    },
+    "us-ny-rensselaer-polytechnic-institute": {
+      "canonical_id": "us-ny-rensselaer-polytechnic-institute",
+      "canonical_name": "Rensselaer Polytechnic Institute",
+      "city": "Troy",
+      "state": "NY",
+      "country": "US",
+      "ror_id": "01rtyzb94",
+      "grid_id": "grid.33647.35",
+      "email_domains": "rpi.edu",
+      "openalex_id": "I165799507",
+      "nih_reporter_name": "",
+      "nih_reporter_ipf_code": ""
     }
   },
   "alias_rules": [
@@ -2520,6 +2585,13 @@
       "alias_norm": "albert einstein college of medicine bronx ny",
       "canonical_id": "us-ny-albert-einstein-college-of-medicine",
       "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
+      "alias": "ALBERT EINSTEIN SCHOOL OF MEDICINE",
+      "alias_norm": "albert einstein school of medicine",
+      "canonical_id": "us-ny-albert-einstein-college-of-medicine",
+      "alias_type": "manual_alias",
       "policy": "allow"
     },
     {
@@ -2579,6 +2651,20 @@
       "policy": "allow"
     },
     {
+      "alias": "BARBARA DAVIS CENTER FOR CHILDHOOD DIABETES",
+      "alias_norm": "barbara davis center for childhood diabetes",
+      "canonical_id": "us-co-university-of-colorado-anschutz-medical-campus",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
+      "alias": "BARBARA DAVIS CENTER FOR DIABETES",
+      "alias_norm": "barbara davis center for diabetes",
+      "canonical_id": "us-co-university-of-colorado-anschutz-medical-campus",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
       "alias": "Baylor College of Medicine",
       "alias_norm": "baylor college of medicine",
       "canonical_id": "us-tx-baylor-college-of-medicine",
@@ -2590,6 +2676,13 @@
       "alias_norm": "baylor college of medicine houston tx",
       "canonical_id": "us-tx-baylor-college-of-medicine",
       "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
+      "alias": "BAYLOR SCHOOL OF MEDICINE",
+      "alias_norm": "baylor school of medicine",
+      "canonical_id": "us-tx-baylor-college-of-medicine",
+      "alias_type": "manual_alias",
       "policy": "allow"
     },
     {
@@ -2796,6 +2889,20 @@
       "policy": "allow"
     },
     {
+      "alias": "BROAD INSTITUTE OF HARVARD AND MASSACHUSETTS INSTITUTE OF TECHNOLOGY",
+      "alias_norm": "broad institute of harvard and massachusetts institute of technology",
+      "canonical_id": "us-ma-broad-institute",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
+      "alias": "BROAD INSTITUTE OF HARVARD AND MIT",
+      "alias_norm": "broad institute of harvard and mit",
+      "canonical_id": "us-ma-broad-institute",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
       "alias": "Brown University",
       "alias_norm": "brown university",
       "canonical_id": "us-ri-brown-university",
@@ -2828,6 +2935,13 @@
       "alias_norm": "california institute of technology pasadena ca",
       "canonical_id": "us-ca-california-institute-of-technology",
       "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
+      "alias": "CALTECH",
+      "alias_norm": "caltech",
+      "canonical_id": "us-ca-california-institute-of-technology",
+      "alias_type": "manual_alias",
       "policy": "allow"
     },
     {
@@ -3153,6 +3267,20 @@
       "policy": "allow"
     },
     {
+      "alias": "Eastern Virginia Medical School",
+      "alias_norm": "eastern virginia medical school",
+      "canonical_id": "us-va-eastern-virginia-medical-school",
+      "alias_type": "canonical_name",
+      "policy": "allow"
+    },
+    {
+      "alias": "Eastern Virginia Medical School, NORFOLK, VA",
+      "alias_norm": "eastern virginia medical school norfolk va",
+      "canonical_id": "us-va-eastern-virginia-medical-school",
+      "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
       "alias": "ECU",
       "alias_norm": "ecu",
       "canonical_id": "us-nc-east-carolina-university",
@@ -3171,6 +3299,13 @@
       "alias_norm": "emory university atlanta ga",
       "canonical_id": "us-ga-emory-university",
       "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
+      "alias": "EVMS",
+      "alias_norm": "evms",
+      "canonical_id": "us-va-eastern-virginia-medical-school",
+      "alias_type": "acronym",
       "policy": "allow"
     },
     {
@@ -3412,6 +3547,27 @@
       "policy": "allow"
     },
     {
+      "alias": "Harvard T. H. Chan School of Public Health",
+      "alias_norm": "harvard t h chan school of public health",
+      "canonical_id": "us-ma-harvard-th-chan-school-of-public-health",
+      "alias_type": "canonical_name",
+      "policy": "allow"
+    },
+    {
+      "alias": "Harvard T. H. Chan School of Public Health, BOSTON, MA",
+      "alias_norm": "harvard t h chan school of public health boston ma",
+      "canonical_id": "us-ma-harvard-th-chan-school-of-public-health",
+      "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
+      "alias": "HARVARD TH CHAN SCHOOL OF PUBLIC HEALTH",
+      "alias_norm": "harvard th chan school of public health",
+      "canonical_id": "us-ma-harvard-th-chan-school-of-public-health",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
       "alias": "Harvard University",
       "alias_norm": "harvard university",
       "canonical_id": "us-ma-harvard-university",
@@ -3478,6 +3634,13 @@
       "alias": "HSS",
       "alias_norm": "hss",
       "canonical_id": "us-ny-hospital-for-special-surgery",
+      "alias_type": "acronym",
+      "policy": "allow"
+    },
+    {
+      "alias": "HTHCSPH",
+      "alias_norm": "hthcsph",
+      "canonical_id": "us-ma-harvard-th-chan-school-of-public-health",
       "alias_type": "acronym",
       "policy": "allow"
     },
@@ -3608,10 +3771,38 @@
       "policy": "allow"
     },
     {
+      "alias": "JHM",
+      "alias_norm": "jhm",
+      "canonical_id": "us-md-johns-hopkins-medicine",
+      "alias_type": "acronym",
+      "policy": "allow"
+    },
+    {
       "alias": "JHU",
       "alias_norm": "jhu",
       "canonical_id": "us-md-johns-hopkins-university",
       "alias_type": "acronym",
+      "policy": "allow"
+    },
+    {
+      "alias": "Johns Hopkins Medicine",
+      "alias_norm": "johns hopkins medicine",
+      "canonical_id": "us-md-johns-hopkins-medicine",
+      "alias_type": "canonical_name",
+      "policy": "allow"
+    },
+    {
+      "alias": "Johns Hopkins Medicine, BALTIMORE, MD",
+      "alias_norm": "johns hopkins medicine baltimore md",
+      "canonical_id": "us-md-johns-hopkins-medicine",
+      "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
+      "alias": "JOHNS HOPKINS  SCHOOL OF MEDICINE",
+      "alias_norm": "johns hopkins school of medicine",
+      "canonical_id": "us-md-johns-hopkins-medicine",
+      "alias_type": "manual_alias",
       "policy": "allow"
     },
     {
@@ -3626,6 +3817,13 @@
       "alias_norm": "johns hopkins university baltimore md",
       "canonical_id": "us-md-johns-hopkins-university",
       "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
+      "alias": "JOHNS HOPKINS UNIVERSITY SCHOOL OF MEDICINE",
+      "alias_norm": "johns hopkins university school of medicine",
+      "canonical_id": "us-md-johns-hopkins-medicine",
+      "alias_type": "manual_alias",
       "policy": "allow"
     },
     {
@@ -4266,6 +4464,20 @@
       "policy": "allow"
     },
     {
+      "alias": "PENN STATE COLLEGE OF MEDICINE",
+      "alias_norm": "penn state college of medicine",
+      "canonical_id": "us-pa-pennsylvania-state-university-hershey-medical-center",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
+      "alias": "PENN STATE MILTON S. HERSHEY MEDICAL CENTER",
+      "alias_norm": "penn state milton s hershey medical center",
+      "canonical_id": "us-pa-pennsylvania-state-university-hershey-medical-center",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
       "alias": "Pennsylvania State University",
       "alias_norm": "pennsylvania state university",
       "canonical_id": "us-pa-pennsylvania-state-university",
@@ -4350,6 +4562,27 @@
       "policy": "allow"
     },
     {
+      "alias": "RAGON INSTITUTE",
+      "alias_norm": "ragon institute",
+      "canonical_id": "us-ma-ragon-institute-of-mgh-mit-and-harvard",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
+      "alias": "Ragon Institute of MGH, MIT and Harvard",
+      "alias_norm": "ragon institute of mgh mit and harvard",
+      "canonical_id": "us-ma-ragon-institute-of-mgh-mit-and-harvard",
+      "alias_type": "canonical_name",
+      "policy": "allow"
+    },
+    {
+      "alias": "Ragon Institute of MGH, MIT and Harvard, CAMBRIDGE, MA",
+      "alias_norm": "ragon institute of mgh mit and harvard cambridge ma",
+      "canonical_id": "us-ma-ragon-institute-of-mgh-mit-and-harvard",
+      "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
       "alias": "RBHS",
       "alias_norm": "rbhs",
       "canonical_id": "us-nj-rutgers-biomedical-and-health-sciences",
@@ -4361,6 +4594,20 @@
       "alias_norm": "rbhs new jersey medical school",
       "canonical_id": "us-nj-rutgers-new-jersey-medical-school",
       "alias_type": "nih_name",
+      "policy": "allow"
+    },
+    {
+      "alias": "Rensselaer Polytechnic Institute",
+      "alias_norm": "rensselaer polytechnic institute",
+      "canonical_id": "us-ny-rensselaer-polytechnic-institute",
+      "alias_type": "canonical_name",
+      "policy": "allow"
+    },
+    {
+      "alias": "Rensselaer Polytechnic Institute, TROY, NY",
+      "alias_norm": "rensselaer polytechnic institute troy ny",
+      "canonical_id": "us-ny-rensselaer-polytechnic-institute",
+      "alias_type": "canonical_with_geo",
       "policy": "allow"
     },
     {
@@ -4427,6 +4674,13 @@
       "policy": "allow"
     },
     {
+      "alias": "RIMMH",
+      "alias_norm": "rimmh",
+      "canonical_id": "us-ma-ragon-institute-of-mgh-mit-and-harvard",
+      "alias_type": "acronym",
+      "policy": "allow"
+    },
+    {
       "alias": "RNJMS",
       "alias_norm": "rnjms",
       "canonical_id": "us-nj-rutgers-new-jersey-medical-school",
@@ -4445,6 +4699,13 @@
       "alias_norm": "rockefeller university new york ny",
       "canonical_id": "us-ny-rockefeller-university",
       "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
+      "alias": "RPI",
+      "alias_norm": "rpi",
+      "canonical_id": "us-ny-rensselaer-polytechnic-institute",
+      "alias_type": "acronym",
       "policy": "allow"
     },
     {
@@ -4830,6 +5091,13 @@
       "alias_norm": "texas biomedical research institute san antonio tx",
       "canonical_id": "us-tx-texas-biomedical-research-institute",
       "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
+      "alias": "THE FEINSTEIN INSTITUTES FOR MEDICAL RESEARCH",
+      "alias_norm": "the feinstein institutes for medical research",
+      "canonical_id": "us-ny-feinstein-institute-for-medical-research",
+      "alias_type": "manual_alias",
       "policy": "allow"
     },
     {
@@ -5449,6 +5717,20 @@
       "policy": "allow"
     },
     {
+      "alias": "UNIVERSITY OF COLORADO AT AURORA",
+      "alias_norm": "university of colorado at aurora",
+      "canonical_id": "us-co-university-of-colorado-anschutz-medical-campus",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
+      "alias": "UNIVERSITY OF COLORADO AURORA",
+      "alias_norm": "university of colorado aurora",
+      "canonical_id": "us-co-university-of-colorado-anschutz-medical-campus",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
       "alias": "University of Colorado Boulder",
       "alias_norm": "university of colorado boulder",
       "canonical_id": "us-co-university-of-colorado-boulder",
@@ -5481,6 +5763,13 @@
       "alias_norm": "university of colorado denver aurora co",
       "canonical_id": "us-co-university-of-colorado-denver",
       "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
+      "alias": "UNIVERSITY OF COLORADO IN AURORA",
+      "alias_norm": "university of colorado in aurora",
+      "canonical_id": "us-co-university-of-colorado-anschutz-medical-campus",
+      "alias_type": "manual_alias",
       "policy": "allow"
     },
     {
@@ -5803,6 +6092,13 @@
       "alias_norm": "university of nevada reno reno nv",
       "canonical_id": "us-nv-university-of-nevada-reno",
       "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
+      "alias": "UNIVERSITY OF NEW MEXICO HEALTH SCIENCE CENTER",
+      "alias_norm": "university of new mexico health science center",
+      "canonical_id": "us-nm-university-of-new-mexico-health-sciences-center",
+      "alias_type": "manual_alias",
       "policy": "allow"
     },
     {
@@ -6443,6 +6739,13 @@
       "policy": "allow"
     },
     {
+      "alias": "VIRGINIA TECH",
+      "alias_norm": "virginia tech",
+      "canonical_id": "us-va-virginia-polytechnic-institute",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
       "alias": "VPI",
       "alias_norm": "vpi",
       "canonical_id": "us-va-virginia-polytechnic-institute",
@@ -6649,6 +6952,36 @@
       "preferred": "us-ma-massachusetts-general-hospital",
       "demoted": "us-ma-harvard-university",
       "reason": "User rule: MGH over Harvard when both present"
+    },
+    {
+      "preferred": "us-ma-ragon-institute-of-mgh-mit-and-harvard",
+      "demoted": "us-ma-massachusetts-general-hospital",
+      "reason": "User rule: Ragon over MGH when both present"
+    },
+    {
+      "preferred": "us-ma-ragon-institute-of-mgh-mit-and-harvard",
+      "demoted": "us-ma-massachusetts-institute-of-technology",
+      "reason": "User rule: Ragon over MIT when both present"
+    },
+    {
+      "preferred": "us-ma-ragon-institute-of-mgh-mit-and-harvard",
+      "demoted": "us-ma-harvard-university",
+      "reason": "User rule: Ragon over Harvard when both present"
+    },
+    {
+      "preferred": "us-ma-broad-institute",
+      "demoted": "us-ma-massachusetts-institute-of-technology",
+      "reason": "User rule: Broad over MIT when both present"
+    },
+    {
+      "preferred": "us-ma-broad-institute",
+      "demoted": "us-ma-harvard-university",
+      "reason": "User rule: Broad over Harvard when both present"
+    },
+    {
+      "preferred": "us-ma-harvard-th-chan-school-of-public-health",
+      "demoted": "us-ma-harvard-university",
+      "reason": "User rule: TH Chan School over Harvard when both present"
     }
   ]
 }

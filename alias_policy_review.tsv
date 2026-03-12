@@ -4,6 +4,11 @@ U	deny	manual_guardrail	single-letter token
 UNIV	deny	manual_guardrail	overly broad generic abbreviation			
 HARVARD UNIVERSITY D/B/A HARVARD SCHOOL OF PUBLIC HEALTH	allow	manual_addition	funded institute variant	us-ma-harvard-university	Harvard University	
 HARVARD UNIVERSITY	allow	manual_addition	funded institute variant	us-ma-harvard-university	Harvard University	
+HARVARD T.H. CHAN SCHOOL OF PUBLIC HEALTH	allow	manual_addition	subunit variant should resolve to TH Chan school	us-ma-harvard-th-chan-school-of-public-health	Harvard T. H. Chan School of Public Health	
+HARVARD T. H. CHAN SCHOOL OF PUBLIC HEALTH	allow	manual_addition	subunit variant should resolve to TH Chan school	us-ma-harvard-th-chan-school-of-public-health	Harvard T. H. Chan School of Public Health	
+HARVARD TH CHAN SCHOOL OF PUBLIC HEALTH	allow	manual_addition	subunit variant should resolve to TH Chan school	us-ma-harvard-th-chan-school-of-public-health	Harvard T. H. Chan School of Public Health	
+VIRGINIA TECH	allow	manual_addition	common short form	us-va-virginia-polytechnic-institute	Virginia Polytechnic Institute	
+UNIVERSITY OF NEW MEXICO HEALTH SCIENCE CENTER	allow	manual_addition	singular/plural naming variant	us-nm-university-of-new-mexico-health-sciences-center	University of New Mexico Health Sciences Center	
 BOSTON UNIVERSITY (CHARLES RIVER CAMPUS)	allow	manual_addition	funded institute variant	us-ma-boston-university	Boston University	
 YALE SCHOOL OF MEDICINE	allow	manual_addition	subunit string should resolve to parent institution	us-ct-yale-university	Yale University	
 WEILL CORNELL MEDICAL COLLEGE	allow	manual_addition	legacy naming variant	us-ny-weill-cornell-medicine	Weill Cornell Medicine	
@@ -15,6 +20,22 @@ FRED HUTCHINSON CANCER CENTER	allow	manual_addition	renamed institution variant	
 CHILDREN'S HOSPITAL OF PHILADELPHIA	allow	manual_addition	common full-name variant	us-pa-children-s-hosp-of-philadelphia	Children's Hosp of Philadelphia	
 CHOP	allow	manual_addition	common acronym variant	us-pa-children-s-hosp-of-philadelphia	Children's Hosp of Philadelphia	
 ICAHN SCHOOL OF MEDICINE	allow	manual_addition	common shortened variant	us-ny-icahn-school-of-medicine-at-mount-sinai	Icahn School of Medicine at Mount Sinai	
+PENN STATE COLLEGE OF MEDICINE	allow	manual_addition	common Penn State COM variant	us-pa-pennsylvania-state-university-hershey-medical-center	Pennsylvania State University Hershey Medical Center	
+PENN STATE MILTON S. HERSHEY MEDICAL CENTER	allow	manual_addition	common Penn State Hershey full variant	us-pa-pennsylvania-state-university-hershey-medical-center	Pennsylvania State University Hershey Medical Center	
+ALBERT EINSTEIN SCHOOL OF MEDICINE	allow	manual_addition	common legacy naming variant	us-ny-albert-einstein-college-of-medicine	Albert Einstein College of Medicine	
+BAYLOR SCHOOL OF MEDICINE	allow	manual_addition	common naming variant	us-tx-baylor-college-of-medicine	Baylor College of Medicine	
+CALTECH	allow	manual_addition	common short form	us-ca-california-institute-of-technology	California Institute of Technology	
+JOHNS HOPKINS UNIVERSITY SCHOOL OF MEDICINE	allow	manual_addition	user-requested school of medicine alias	us-md-johns-hopkins-medicine	Johns Hopkins Medicine	
+JOHNS HOPKINS  SCHOOL OF MEDICINE	allow	manual_addition	user-requested spacing variant alias	us-md-johns-hopkins-medicine	Johns Hopkins Medicine	
+BARBARA DAVIS CENTER FOR DIABETES	allow	manual_addition	subunit variant for Anschutz campus	us-co-university-of-colorado-anschutz-medical-campus	University of Colorado Anschutz Medical Campus	
+BARBARA DAVIS CENTER FOR CHILDHOOD DIABETES	allow	manual_addition	subunit variant for Anschutz campus	us-co-university-of-colorado-anschutz-medical-campus	University of Colorado Anschutz Medical Campus	
+UNIVERSITY OF COLORADO IN AURORA	allow	manual_addition	legacy name variant should resolve to Anschutz campus	us-co-university-of-colorado-anschutz-medical-campus	University of Colorado Anschutz Medical Campus	
+UNIVERSITY OF COLORADO AURORA	allow	manual_addition	legacy name variant should resolve to Anschutz campus	us-co-university-of-colorado-anschutz-medical-campus	University of Colorado Anschutz Medical Campus	
+UNIVERSITY OF COLORADO AT AURORA	allow	manual_addition	legacy name variant should resolve to Anschutz campus	us-co-university-of-colorado-anschutz-medical-campus	University of Colorado Anschutz Medical Campus	
+RAGON INSTITUTE	allow	manual_addition	common short form should resolve to Ragon institute seed	us-ma-ragon-institute-of-mgh-mit-and-harvard	Ragon Institute of MGH, MIT and Harvard	
+BROAD INSTITUTE OF HARVARD AND MIT	allow	manual_addition	common co-mention form should resolve to Broad	us-ma-broad-institute	Broad Institute	
+BROAD INSTITUTE OF HARVARD AND MASSACHUSETTS INSTITUTE OF TECHNOLOGY	allow	manual_addition	common expanded co-mention form should resolve to Broad	us-ma-broad-institute	Broad Institute	
+THE FEINSTEIN INSTITUTES FOR MEDICAL RESEARCH	allow	manual_addition	plural naming variant should resolve to Feinstein seed	us-ny-feinstein-institute-for-medical-research	Feinstein Institute for Medical Research	
 BRI	review_only	auto_collision	acronym maps to 2 institutions in seed	us-ca-beckman-research-institute|us-wa-benaroya-research-institute	Beckman Research Institute|Benaroya Research Institute	
 BU	review_only	auto_collision	acronym maps to 2 institutions in seed	us-ma-boston-university|us-ri-brown-university	Boston University|Brown University	
 CU	review_only	auto_collision	acronym maps to 4 institutions in seed	us-ne-creighton-university|us-ny-columbia-university|us-ny-cornell-university|us-sc-clemson-university	Clemson University|Columbia University|Cornell University|Creighton University	
