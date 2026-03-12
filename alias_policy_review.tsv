@@ -9,6 +9,10 @@ HARVARD T. H. CHAN SCHOOL OF PUBLIC HEALTH	allow	manual_addition	subunit variant
 HARVARD TH CHAN SCHOOL OF PUBLIC HEALTH	allow	manual_addition	subunit variant should resolve to TH Chan school	us-ma-harvard-th-chan-school-of-public-health	Harvard T. H. Chan School of Public Health	
 VIRGINIA TECH	allow	manual_addition	common short form	us-va-virginia-polytechnic-institute	Virginia Polytechnic Institute	
 UNIVERSITY OF NEW MEXICO HEALTH SCIENCE CENTER	allow	manual_addition	singular/plural naming variant	us-nm-university-of-new-mexico-health-sciences-center	University of New Mexico Health Sciences Center	
+UNIVERSITY OF MARYLAND SCHOOL OF MEDICINE	allow	manual_addition	subunit should resolve to UMSOM, not UMB	us-md-university-of-maryland-school-of-medicine	University of Maryland School of Medicine	
+SLOAN KETTERING INSTITUTE	allow	manual_addition	common subunit phrasing for MSK	us-ny-memorial-sloan-kettering	Memorial Sloan-Kettering	
+GEISEL SCHOOL OF MEDICINE AT DARTMOUTH	allow	manual_addition	subunit should resolve to Dartmouth canonical institution	us-nh-dartmouth-college	Dartmouth College	
+UNIVERSITY OF MIAMI MILLER SCHOOL OF MEDICINE	allow	manual_addition	renamed/extended school name variant	us-fl-university-of-miami-school-of-medicine	University of Miami School of Medicine	
 BOSTON UNIVERSITY (CHARLES RIVER CAMPUS)	allow	manual_addition	funded institute variant	us-ma-boston-university	Boston University	
 YALE SCHOOL OF MEDICINE	allow	manual_addition	subunit string should resolve to parent institution	us-ct-yale-university	Yale University	
 WEILL CORNELL MEDICAL COLLEGE	allow	manual_addition	legacy naming variant	us-ny-weill-cornell-medicine	Weill Cornell Medicine	

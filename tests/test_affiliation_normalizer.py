@@ -221,6 +221,48 @@ def test_university_of_new_mexico_health_science_center_resolves_to_health_scien
     assert result.canonical_name == "University of New Mexico Health Sciences Center"
 
 
+def test_umaryland_school_of_medicine_string_and_domain_resolve_to_umsom() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match(
+        "University of Maryland School of Medicine, Baltimore, MD, USA. som.umaryland.edu"
+    )
+    assert result.status == "matched"
+    assert result.canonical_id == "us-md-university-of-maryland-school-of-medicine"
+    assert result.canonical_name == "University of Maryland School of Medicine"
+
+    som_email_result = normalizer.match_email_domain("som.umaryland.edu")
+    assert som_email_result.status == "matched"
+    assert som_email_result.canonical_id == "us-md-university-of-maryland-school-of-medicine"
+
+    umb_email_result = normalizer.match_email_domain("umaryland.edu")
+    assert umb_email_result.status == "matched"
+    assert umb_email_result.canonical_id == "us-md-university-of-maryland-baltimore"
+
+
+def test_sloan_kettering_institute_variant_resolves_to_memorial_sloan_kettering() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match("Chemical Biology Program, Sloan Kettering Institute, New York, NY, USA.")
+    assert result.status == "matched"
+    assert result.canonical_id == "us-ny-memorial-sloan-kettering"
+    assert result.canonical_name == "Memorial Sloan-Kettering"
+
+
+def test_geisel_school_of_medicine_at_dartmouth_resolves_to_dartmouth_college() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match("Geisel School of Medicine at Dartmouth")
+    assert result.status == "matched"
+    assert result.canonical_id == "us-nh-dartmouth-college"
+    assert result.canonical_name == "Dartmouth College"
+
+
+def test_university_of_miami_miller_school_of_medicine_resolves_to_um_school_of_medicine() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match("University of Miami Miller School of Medicine")
+    assert result.status == "matched"
+    assert result.canonical_id == "us-fl-university-of-miami-school-of-medicine"
+    assert result.canonical_name == "University of Miami School of Medicine"
+
+
 def test_johns_hopkins_medicine_seed_and_aliases_match() -> None:
     normalizer = _normalizer()
 
@@ -300,6 +342,23 @@ def test_new_seed_rensselaer_polytechnic_institute_matches() -> None:
     grid_result = normalizer.match_grid("grid.33647.35")
     assert grid_result.status == "matched"
     assert grid_result.canonical_id == "us-ny-rensselaer-polytechnic-institute"
+
+
+def test_new_seed_george_mason_university_matches() -> None:
+    normalizer = _normalizer()
+
+    text_result = normalizer.match("George Mason University")
+    assert text_result.status == "matched"
+    assert text_result.canonical_id == "us-va-george-mason-university"
+    assert text_result.canonical_name == "George Mason University"
+
+    ror_result = normalizer.match_ror("02jqj7156")
+    assert ror_result.status == "matched"
+    assert ror_result.canonical_id == "us-va-george-mason-university"
+
+    grid_result = normalizer.match_grid("grid.22448.38")
+    assert grid_result.status == "matched"
+    assert grid_result.canonical_id == "us-va-george-mason-university"
 
 
 def test_barbara_davis_center_variants_resolve_to_uc_anschutz() -> None:

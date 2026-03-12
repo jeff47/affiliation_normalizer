@@ -7,3 +7,4 @@ us-ma-ragon-institute-of-mgh-mit-and-harvard	us-ma-harvard-university	User rule:
 us-ma-broad-institute	us-ma-massachusetts-institute-of-technology	User rule: Broad over MIT when both present	true
 us-ma-broad-institute	us-ma-harvard-university	User rule: Broad over Harvard when both present	true
 us-ma-harvard-th-chan-school-of-public-health	us-ma-harvard-university	User rule: TH Chan School over Harvard when both present	true
+us-md-university-of-maryland-school-of-medicine	us-md-university-of-maryland-baltimore	User rule: UMSOM over UMB when both present	true

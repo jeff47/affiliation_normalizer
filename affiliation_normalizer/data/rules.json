@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "generated_at_utc": "2026-03-12T01:01:39.938234+00:00",
+    "generated_at_utc": "2026-03-12T01:37:14.067815+00:00",
     "master_path": "niaid_org_seed_master.csv",
     "alias_policy_path": "alias_policy_review.tsv",
     "precedence_path": "canonical_precedence.tsv",
-    "institution_count": 195,
-    "alias_rule_count": 628
+    "institution_count": 197,
+    "alias_rule_count": 637
   },
   "institutions": {
     "us-al-university-of-alabama-birmingham": {
@@ -1095,7 +1095,7 @@
       "country": "US",
       "ror_id": "04rq5mt64",
       "grid_id": "grid.411024.2",
-      "email_domains": "som.umaryland.edu",
+      "email_domains": "umaryland.edu",
       "openalex_id": "I126744593",
       "nih_reporter_name": "UNIVERSITY OF MARYLAND BALTIMORE",
       "nih_reporter_ipf_code": "820104"
@@ -2542,6 +2542,32 @@
       "openalex_id": "I165799507",
       "nih_reporter_name": "",
       "nih_reporter_ipf_code": ""
+    },
+    "us-md-university-of-maryland-school-of-medicine": {
+      "canonical_id": "us-md-university-of-maryland-school-of-medicine",
+      "canonical_name": "University of Maryland School of Medicine",
+      "city": "Baltimore",
+      "state": "MD",
+      "country": "US",
+      "ror_id": "",
+      "grid_id": "",
+      "email_domains": "som.umaryland.edu",
+      "openalex_id": "",
+      "nih_reporter_name": "",
+      "nih_reporter_ipf_code": ""
+    },
+    "us-va-george-mason-university": {
+      "canonical_id": "us-va-george-mason-university",
+      "canonical_name": "George Mason University",
+      "city": "Fairfax",
+      "state": "VA",
+      "country": "US",
+      "ror_id": "02jqj7156",
+      "grid_id": "grid.22448.38",
+      "email_domains": "gmu.edu",
+      "openalex_id": "I162714631",
+      "nih_reporter_name": "",
+      "nih_reporter_ipf_code": ""
     }
   },
   "alias_rules": [
@@ -3421,6 +3447,27 @@
       "policy": "allow"
     },
     {
+      "alias": "GEISEL SCHOOL OF MEDICINE AT DARTMOUTH",
+      "alias_norm": "geisel school of medicine at dartmouth",
+      "canonical_id": "us-nh-dartmouth-college",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
+      "alias": "George Mason University",
+      "alias_norm": "george mason university",
+      "canonical_id": "us-va-george-mason-university",
+      "alias_type": "canonical_name",
+      "policy": "allow"
+    },
+    {
+      "alias": "George Mason University, FAIRFAX, VA",
+      "alias_norm": "george mason university fairfax va",
+      "canonical_id": "us-va-george-mason-university",
+      "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
       "alias": "George Washington University",
       "alias_norm": "george washington university",
       "canonical_id": "us-dc-george-washington-university",
@@ -3495,6 +3542,13 @@
       "alias_norm": "gladstone institutes san francisco ca",
       "canonical_id": "us-ca-gladstone-institutes",
       "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
+      "alias": "GMU",
+      "alias_norm": "gmu",
+      "canonical_id": "us-va-george-mason-university",
+      "alias_type": "acronym",
       "policy": "allow"
     },
     {
@@ -4912,6 +4966,13 @@
       "policy": "allow"
     },
     {
+      "alias": "SLOAN KETTERING INSTITUTE",
+      "alias_norm": "sloan kettering institute",
+      "canonical_id": "us-ny-memorial-sloan-kettering",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
       "alias": "SLOAN-KETTERING INSTITUTE CANCER RESEARCH",
       "alias_norm": "sloan kettering institute cancer research",
       "canonical_id": "us-ny-memorial-sloan-kettering",
@@ -5444,6 +5505,13 @@
       "policy": "allow"
     },
     {
+      "alias": "UMSM",
+      "alias_norm": "umsm",
+      "canonical_id": "us-md-university-of-maryland-school-of-medicine",
+      "alias_type": "acronym",
+      "policy": "allow"
+    },
+    {
       "alias": "UMU",
       "alias_norm": "umu",
       "canonical_id": "us-ny-upstate-medical-university",
@@ -5962,6 +6030,20 @@
       "policy": "allow"
     },
     {
+      "alias": "University of Maryland School of Medicine",
+      "alias_norm": "university of maryland school of medicine",
+      "canonical_id": "us-md-university-of-maryland-school-of-medicine",
+      "alias_type": "canonical_name",
+      "policy": "allow"
+    },
+    {
+      "alias": "University of Maryland School of Medicine, BALTIMORE, MD",
+      "alias_norm": "university of maryland school of medicine baltimore md",
+      "canonical_id": "us-md-university-of-maryland-school-of-medicine",
+      "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
       "alias": "University of Massachusetts Amherst",
       "alias_norm": "university of massachusetts amherst",
       "canonical_id": "us-ma-university-of-massachusetts-amherst",
@@ -5994,6 +6076,13 @@
       "alias_norm": "university of massachusetts medical school worcester",
       "canonical_id": "us-ma-university-of-massachusetts-chan-medical-school",
       "alias_type": "nih_name",
+      "policy": "allow"
+    },
+    {
+      "alias": "UNIVERSITY OF MIAMI MILLER SCHOOL OF MEDICINE",
+      "alias_norm": "university of miami miller school of medicine",
+      "canonical_id": "us-fl-university-of-miami-school-of-medicine",
+      "alias_type": "manual_alias",
       "policy": "allow"
     },
     {
@@ -6982,6 +7071,11 @@
       "preferred": "us-ma-harvard-th-chan-school-of-public-health",
       "demoted": "us-ma-harvard-university",
       "reason": "User rule: TH Chan School over Harvard when both present"
+    },
+    {
+      "preferred": "us-md-university-of-maryland-school-of-medicine",
+      "demoted": "us-md-university-of-maryland-baltimore",
+      "reason": "User rule: UMSOM over UMB when both present"
     }
   ]
 }

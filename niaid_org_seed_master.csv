@@ -82,7 +82,7 @@ us-ma-boston-college,BOSTON COLLEGE,872101,CHESTNUT HILL,MA,US,Boston College,ht
 us-ma-university-of-massachusetts-amherst,UNIVERSITY OF MASSACHUSETTS AMHERST,850904,HADLEY,MA,US,University of Massachusetts Amherst,https://ror.org/0072zz521,0072zz521,grid.266683.f,umass.edu,https://openalex.org/i24603500,I24603500
 us-ma-university-of-massachusetts-chan-medical-school,UNIVERSITY OF MASSACHUSETTS MEDICAL SCHOOL WORCESTER,850903,WORCESTER,MA,US,University of Massachusetts Chan Medical School,https://ror.org/0464eyp60,0464eyp60,grid.168645.8,umassmed.edu,https://openalex.org/i166722992,I166722992
 us-md-johns-hopkins-university,JOHNS HOPKINS UNIVERSITY,4134401,BALTIMORE,MD,US,Johns Hopkins University,https://ror.org/00za53h95,00za53h95,grid.21107.35,jhmi.edu|jhu.edu,https://openalex.org/i145311948,I145311948
-us-md-university-of-maryland-baltimore,UNIVERSITY OF MARYLAND BALTIMORE,820104,BALTIMORE,MD,US,"University of Maryland, Baltimore",https://ror.org/04rq5mt64,04rq5mt64,grid.411024.2,som.umaryland.edu,https://openalex.org/i126744593,I126744593
+us-md-university-of-maryland-baltimore,UNIVERSITY OF MARYLAND BALTIMORE,820104,BALTIMORE,MD,US,"University of Maryland, Baltimore",https://ror.org/04rq5mt64,04rq5mt64,grid.411024.2,umaryland.edu,https://openalex.org/i126744593,I126744593
 us-md-henry-m-jackson-foundation,HENRY M. JACKSON FDN FOR THE ADV MIL/MED,1809301,BETHESDA,MD,US,Henry M. Jackson Foundation,https://ror.org/04q9tew83,04q9tew83,grid.201075.1,,https://openalex.org/i1280259254,I1280259254
 us-md-university-of-maryland-college-park,"UNIVERSITY OF MARYLAND, COLLEGE PARK",820102,COLLEGE PARK,MD,US,"University of Maryland, College Park",https://ror.org/047s2c258,047s2c258,grid.164295.d,umd.edu,https://openalex.org/i66946132,I66946132
 us-me-jackson-laboratory,JACKSON LABORATORY,7096501,BAR HARBOR,ME,US,Jackson Laboratory,https://ror.org/021sy4w91,021sy4w91,grid.249880.f,jax.org,https://openalex.org/i4210115256,I4210115256
@@ -194,3 +194,5 @@ us-md-johns-hopkins-medicine,,,BALTIMORE,MD,US,Johns Hopkins Medicine,https://ro
 us-va-eastern-virginia-medical-school,,,NORFOLK,VA,US,Eastern Virginia Medical School,https://ror.org/056hr4255,056hr4255,grid.255414.3,,https://openalex.org/i156802259,I156802259
 us-ma-harvard-th-chan-school-of-public-health,,,BOSTON,MA,US,Harvard T. H. Chan School of Public Health,,,,,,
 us-ny-rensselaer-polytechnic-institute,,,TROY,NY,US,Rensselaer Polytechnic Institute,https://ror.org/01rtyzb94,01rtyzb94,grid.33647.35,rpi.edu,https://openalex.org/i165799507,I165799507
+us-md-university-of-maryland-school-of-medicine,,,BALTIMORE,MD,US,University of Maryland School of Medicine,,,,som.umaryland.edu,,
+us-va-george-mason-university,,,FAIRFAX,VA,US,George Mason University,https://ror.org/02jqj7156,02jqj7156,grid.22448.38,gmu.edu,https://openalex.org/i162714631,I162714631
