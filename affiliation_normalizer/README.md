@@ -81,6 +81,28 @@ result = match_record(
 - Priority lookup: `match_record(...)` using `ROR/GRID > email > text`
 - Alias policy supports `allow`, `allow_if_geo`, `review_only`, and `deny`
 
+## Policy behavior
+
+- `allow`: alias can match directly.
+- `allow_if_geo`: alias requires location evidence in the same string (city, or state+country).
+- `review_only`: candidate hint only; no automatic match.
+- `deny`: alias is blocked.
+
+Common operational implication:
+- bare acronym may be intentionally rejected (`geo_policy_no_match`) until location is present.
+- example: `Mayo Clinic` -> `not_found`, but `Mayo Clinic, Rochester, MN` / `... Scottsdale, AZ` / `... Jacksonville, FL` resolve to campus-specific records.
+
+## Common `reason` values
+
+- `precedence_or_direct_match`
+- `longest_alias_tiebreak`
+- `email_domain_match`
+- `email_domain_disambiguation`
+- `multiple_candidates`
+- `review_only_match`
+- `geo_policy_no_match`
+- `multi_author_input`
+
 ## Rule rebuild
 
 When `niaid_org_seed_master.csv` or `alias_policy_review.tsv` changes:

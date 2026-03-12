@@ -20,6 +20,11 @@ Use the `affiliation_normalizer` package for institution matching from affiliati
 - `match_email_domain(email_domain: str) -> MatchResult`
 - `match_record(*, affiliation_text: str = "", ror_id: str = "", grid_id: str = "", email: str = "") -> MatchResult`
 - Priority policy in `match_record`: `ROR/GRID > email > text`.
+- Alias policies:
+  - `allow`: normal runtime matching
+  - `allow_if_geo`: alias match requires geo evidence in text (city, or state+country)
+  - `review_only`: never auto-resolved at runtime
+  - `deny`: blocked alias
 - `MatchResult.status`:
   - `matched`: single resolved institution
   - `ambiguous`: multiple unresolved candidates
@@ -32,6 +37,11 @@ Use the `affiliation_normalizer` package for institution matching from affiliati
 - For `ambiguous`/`not_found`, check:
   - `reason`
   - `candidate_ids`
+  - common `not_found` reasons include:
+    - `no_match`
+    - `review_only_match`
+    - `geo_policy_no_match`
+    - `multi_author_input`
 
 ## Rule sources and rebuild
 - Master data: `niaid_org_seed_master.csv`
@@ -60,12 +70,14 @@ python -m affiliation_normalizer.build_rules \
 - If both Harvard and Massachusetts General Hospital are matched, prefer MGH.
 
 ## Known limitations
-1. US-centric coverage; international institutions are usually `not_found`.
-2. Coverage is bounded by curated seed + aliases. Missing institutions require seed updates.
+1. Coverage is curated and seed-bounded. Missing institutions or variants require seed/alias updates.
+2. Coverage is still mostly US-focused, with selective non-US additions (for example, Imperial College London and Karolinska Institutet).
 3. `review_only` aliases are not auto-matched at runtime.
-4. Multi-institution AD strings may still produce `ambiguous` when no deterministic tie-break exists.
-5. Regex is not the primary matcher; current runtime is alias/normalization-driven with precedence + specificity tie-breaks.
-6. Email-domain mappings can be ambiguous for parent/subunit institutions; these return `ambiguous` unless other signals resolve them.
+4. `allow_if_geo` aliases intentionally fail when text omits location context (`geo_policy_no_match`).
+5. Author-list narrative affiliation blobs are gated (`multi_author_input`).
+6. Multi-institution AD strings may still produce `ambiguous` when no deterministic tie-break exists.
+7. Email-domain mappings can be ambiguous for parent/subunit institutions; these return `ambiguous` unless other signals resolve them.
+8. Regex is not the primary matcher; runtime behavior is alias/normalization-driven with precedence + specificity tie-breaks.
 
 ## Verification after matcher/rule changes
 Run:
