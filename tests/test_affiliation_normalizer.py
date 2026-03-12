@@ -238,6 +238,40 @@ def test_new_seeds_wrair_cdc_imperial_karolinska_match() -> None:
         assert result.canonical_id == expected_id
 
 
+def test_high_value_collision_acronyms_are_geo_gated() -> None:
+    normalizer = _normalizer()
+
+    usc = normalizer.match("USC")
+    assert usc.status == "not_found"
+    assert usc.reason == "geo_policy_no_match"
+    assert set(usc.candidate_ids) == {
+        "us-ca-university-of-southern-california",
+        "us-sc-university-of-south-carolina",
+    }
+    assert normalizer.match("USC, Los Angeles, CA").canonical_id == "us-ca-university-of-southern-california"
+    assert normalizer.match("USC, Columbia, SC").canonical_id == "us-sc-university-of-south-carolina"
+
+    ucd = normalizer.match("UCD")
+    assert ucd.status == "not_found"
+    assert ucd.reason == "geo_policy_no_match"
+    assert set(ucd.candidate_ids) == {
+        "us-ca-university-of-california-davis",
+        "us-co-university-of-colorado-denver",
+    }
+    assert normalizer.match("UCD, Davis, CA").canonical_id == "us-ca-university-of-california-davis"
+    assert normalizer.match("UCD, Aurora, CO").canonical_id == "us-co-university-of-colorado-denver"
+
+    wsu = normalizer.match("WSU")
+    assert wsu.status == "not_found"
+    assert wsu.reason == "geo_policy_no_match"
+    assert set(wsu.candidate_ids) == {
+        "us-mi-wayne-state-university",
+        "us-wa-washington-state-university",
+    }
+    assert normalizer.match("WSU, Pullman, WA").canonical_id == "us-wa-washington-state-university"
+    assert normalizer.match("WSU, Detroit, MI").canonical_id == "us-mi-wayne-state-university"
+
+
 def test_albert_einstein_school_of_medicine_resolves_to_college_of_medicine() -> None:
     normalizer = _normalizer()
     result = normalizer.match("Albert Einstein School of Medicine")

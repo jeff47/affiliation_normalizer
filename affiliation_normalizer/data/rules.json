@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "generated_at_utc": "2026-03-12T13:48:40.537157+00:00",
+    "generated_at_utc": "2026-03-12T14:25:09.257466+00:00",
     "master_path": "niaid_org_seed_master.csv",
     "alias_policy_path": "alias_policy_review.tsv",
     "precedence_path": "canonical_precedence.tsv",
@@ -6373,14 +6373,14 @@
       "alias_norm": "sri",
       "canonical_id": "us-ca-scripps-research-institute",
       "alias_type": "acronym",
-      "policy": "review_only"
+      "policy": "allow_if_geo"
     },
     {
       "alias": "SRI",
       "alias_norm": "sri",
       "canonical_id": "us-ca-stanford-research-institute",
       "alias_type": "acronym",
-      "policy": "review_only"
+      "policy": "allow_if_geo"
     },
     {
       "alias": "SRI INTERNATIONAL",
@@ -6737,14 +6737,14 @@
       "alias_norm": "ucd",
       "canonical_id": "us-ca-university-of-california-davis",
       "alias_type": "acronym",
-      "policy": "review_only"
+      "policy": "allow_if_geo"
     },
     {
       "alias": "UCD",
       "alias_norm": "ucd",
       "canonical_id": "us-co-university-of-colorado-denver",
       "alias_type": "acronym",
-      "policy": "review_only"
+      "policy": "allow_if_geo"
     },
     {
       "alias": "UCF",
@@ -8060,14 +8060,14 @@
       "alias_norm": "usc",
       "canonical_id": "us-ca-university-of-southern-california",
       "alias_type": "acronym",
-      "policy": "review_only"
+      "policy": "allow_if_geo"
     },
     {
       "alias": "USC",
       "alias_norm": "usc",
       "canonical_id": "us-sc-university-of-south-carolina",
       "alias_type": "acronym",
-      "policy": "review_only"
+      "policy": "allow_if_geo"
     },
     {
       "alias": "USF",
@@ -8417,14 +8417,14 @@
       "alias_norm": "wsu",
       "canonical_id": "us-mi-wayne-state-university",
       "alias_type": "acronym",
-      "policy": "review_only"
+      "policy": "allow_if_geo"
     },
     {
       "alias": "WSU",
       "alias_norm": "wsu",
       "canonical_id": "us-wa-washington-state-university",
       "alias_type": "acronym",
-      "policy": "review_only"
+      "policy": "allow_if_geo"
     },
     {
       "alias": "WVU",
