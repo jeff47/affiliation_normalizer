@@ -13,6 +13,14 @@ UNIVERSITY OF MARYLAND SCHOOL OF MEDICINE	allow	manual_addition	subunit should r
 SLOAN KETTERING INSTITUTE	allow	manual_addition	common subunit phrasing for MSK	us-ny-memorial-sloan-kettering	Memorial Sloan-Kettering	
 GEISEL SCHOOL OF MEDICINE AT DARTMOUTH	allow	manual_addition	subunit should resolve to Dartmouth canonical institution	us-nh-dartmouth-college	Dartmouth College	
 UNIVERSITY OF MIAMI MILLER SCHOOL OF MEDICINE	allow	manual_addition	renamed/extended school name variant	us-fl-university-of-miami-school-of-medicine	University of Miami School of Medicine	
+MAYO CLINIC	allow_if_geo	manual_addition	generic Mayo name; require geo evidence to disambiguate campus	us-mn-mayo-clinic-rochester	Mayo Clinic Rochester	
+MAYO CLINIC	allow_if_geo	manual_addition	generic Mayo name; require geo evidence to disambiguate campus	us-az-mayo-clinic-arizona	Mayo Clinic Arizona	
+MAYO CLINIC	allow_if_geo	manual_addition	generic Mayo name; require geo evidence to disambiguate campus	us-fl-mayo-clinic-florida	Mayo Clinic Florida	
+MAYO CLINIC FLORIDA	allow	manual_addition	common campus name variant	us-fl-mayo-clinic-florida	Mayo Clinic Florida	
+MAYO CLINIC JACKSONVILLE	allow	manual_addition	common city campus variant	us-fl-mayo-clinic-florida	Mayo Clinic Florida	
+MAYO CLINIC SCOTTSDALE	allow	manual_addition	common city campus variant	us-az-mayo-clinic-arizona	Mayo Clinic Arizona	
+MAYO CLINIC PHOENIX	allow	manual_addition	common city campus variant	us-az-mayo-clinic-arizona	Mayo Clinic Arizona	
+MAYO CLINIC ARIZONA PHOENIX	allow	manual_addition	common expanded city campus variant	us-az-mayo-clinic-arizona	Mayo Clinic Arizona	
 UNIVERSITY OF MICHIGAN	allow	manual_addition	common naming variant should resolve to Ann Arbor campus	us-mi-university-of-michigan-at-ann-arbor	University of Michigan at Ann Arbor	
 UNIVERSITY OF MICHIGAN SCHOOL OF MEDICINE	allow	manual_addition	subunit variant should resolve to Ann Arbor campus	us-mi-university-of-michigan-at-ann-arbor	University of Michigan at Ann Arbor	
 UNIVERSITY OF MICHIGAN MEDICAL SCHOOL	allow	manual_addition	subunit variant should resolve to Ann Arbor campus	us-mi-university-of-michigan-at-ann-arbor	University of Michigan at Ann Arbor	
@@ -44,6 +52,44 @@ RAGON INSTITUTE	allow	manual_addition	common short form should resolve to Ragon 
 BROAD INSTITUTE OF HARVARD AND MIT	allow	manual_addition	common co-mention form should resolve to Broad	us-ma-broad-institute	Broad Institute	
 BROAD INSTITUTE OF HARVARD AND MASSACHUSETTS INSTITUTE OF TECHNOLOGY	allow	manual_addition	common expanded co-mention form should resolve to Broad	us-ma-broad-institute	Broad Institute	
 THE FEINSTEIN INSTITUTES FOR MEDICAL RESEARCH	allow	manual_addition	plural naming variant should resolve to Feinstein seed	us-ny-feinstein-institute-for-medical-research	Feinstein Institute for Medical Research	
+NIAID	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-institute-of-allergy-and-infectious-diseases	National Institute of Allergy and Infectious Diseases	
+NCI	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-cancer-institute	National Cancer Institute	
+NLM	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-library-of-medicine	National Library of Medicine	
+NHLBI	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-heart-lung-and-blood-institute	National Heart, Lung, and Blood Institute	
+NIDDK	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-institute-of-diabetes-and-digestive-and-kidney-diseases	National Institute of Diabetes and Digestive and Kidney Diseases	
+NINDS	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-institute-of-neurological-disorders-and-stroke	National Institute of Neurological Disorders and Stroke	
+NIEHS	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-nc-national-institute-of-environmental-health-sciences	National Institute of Environmental Health Sciences	
+NHGRI	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-human-genome-research-institute	National Human Genome Research Institute	
+NCATS	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-center-for-advancing-translational-sciences	National Center for Advancing Translational Sciences	
+FIC	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-fogarty-international-center	Fogarty International Center	
+NIDCR	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-institute-of-dental-and-craniofacial-research	National Institute of Dental and Craniofacial Research	
+NIA	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-institute-on-aging	National Institute on Aging	
+NIMH	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-institute-of-mental-health	National Institute of Mental Health	
+NIAAA	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-institute-on-alcohol-abuse-and-alcoholism	National Institute on Alcohol Abuse and Alcoholism	
+NIDA	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-institute-on-drug-abuse	National Institute on Drug Abuse	
+NEI	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-eye-institute	National Eye Institute	
+NIGMS	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-institute-of-general-medical-sciences	National Institute of General Medical Sciences	
+NIDCD	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-institute-on-deafness-and-other-communication-disorders	National Institute on Deafness and Other Communication Disorders	
+NINR	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-institute-of-nursing-research	National Institute of Nursing Research	
+NIBIB	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-institute-of-biomedical-imaging-and-bioengineering	National Institute of Biomedical Imaging and Bioengineering	
+NCCIH	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-center-for-complementary-and-integrative-health	National Center for Complementary and Integrative Health	
+NIMHD	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-national-institute-on-minority-health-and-health-disparities	National Institute on Minority Health and Health Disparities	
+CSR	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-center-for-scientific-review	Center for Scientific Review	
+FNLCR	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-md-frederick-national-laboratory-for-cancer-research	Frederick National Laboratory for Cancer Research	
+LLNL	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-ca-lawrence-livermore-national-laboratory	Lawrence Livermore National Laboratory	
+LANL	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-nm-los-alamos-national-laboratory	Los Alamos National Laboratory	
+ANL	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-il-argonne-national-laboratory	Argonne National Laboratory	
+PNNL	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-wa-pacific-northwest-national-laboratory	Pacific Northwest National Laboratory	
+ORNL	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-tn-oak-ridge-national-laboratory	Oak Ridge National Laboratory	
+BNL	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-ny-brookhaven-national-laboratory	Brookhaven National Laboratory	
+SNL	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-nm-sandia-national-laboratories	Sandia National Laboratories	
+NREL	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-co-national-renewable-energy-laboratory	National Renewable Energy Laboratory	
+SLAC	allow_if_geo	manual_addition	acronym requires geo evidence for precision	us-ca-slac-national-accelerator-laboratory	SLAC National Accelerator Laboratory	
+FREDERICK NATIONAL LABORATORY	allow	manual_addition	common short-name variant	us-md-frederick-national-laboratory-for-cancer-research	Frederick National Laboratory for Cancer Research	
+FREDERICK NATIONAL LABORATORIES FOR CANCER RESEARCH	allow	manual_addition	plural naming variant	us-md-frederick-national-laboratory-for-cancer-research	Frederick National Laboratory for Cancer Research	
+NATIONAL INSTITUTE OF ALLERGY AND INFECTIOUS DISEASE	allow	manual_addition	singular disease variant observed in corpus	us-md-national-institute-of-allergy-and-infectious-diseases	National Institute of Allergy and Infectious Diseases	
+SNAL	deny	manual_guardrail	auto-generated acronym artifact for SLAC canonical name			
+ICL	review_only	manual_guardrail	short acronym can be noisy outside affiliation context			
 BRI	review_only	auto_collision	acronym maps to 2 institutions in seed	us-ca-beckman-research-institute|us-wa-benaroya-research-institute	Beckman Research Institute|Benaroya Research Institute	
 BU	review_only	auto_collision	acronym maps to 2 institutions in seed	us-ma-boston-university|us-ri-brown-university	Boston University|Brown University	
 CU	review_only	auto_collision	acronym maps to 4 institutions in seed	us-ne-creighton-university|us-ny-columbia-university|us-ny-cornell-university|us-sc-clemson-university	Clemson University|Columbia University|Cornell University|Creighton University	

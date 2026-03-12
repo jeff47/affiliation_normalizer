@@ -10,12 +10,22 @@ from affiliation_normalizer import (
     match_record,
     match_ror,
 )
-from affiliation_normalizer.build_rules import normalize_text as build_normalize_text
+from affiliation_normalizer.build_rules import load_alias_policy, normalize_text as build_normalize_text
 from affiliation_normalizer.matcher import DEFAULT_RULES_PATH, normalize_text
 
 
 def _normalizer() -> AffiliationNormalizer:
     return AffiliationNormalizer.from_rules_json(DEFAULT_RULES_PATH)
+
+
+MULTI_AUTHOR_AFFILIATION_TEXT = (
+    "Adam M. Whalen, Alexander Furuya, Jessica Contreras, Asa Radix, and Dustin T. Duncan are with "
+    "the Department of Epidemiology, Mailman School of Public Health, Columbia University, New York, NY. "
+    "Asa Radix is also with the Callen-Lorde Community Health Center, New York, NY. "
+    "John A. Schneider is with the Department of Public Health Sciences, University of Chicago, Chicago, IL. "
+    "Sahnah Lim and Chau Trinh-Shevrin are with the Department of Population Health, Grossman School of "
+    "Medicine, New York University, New York, NY, and the Callen-Lorde Community Health Center, New York, NY."
+)
 
 
 def test_matches_yale_affiliation() -> None:
@@ -148,6 +158,13 @@ def test_returns_not_found_for_non_seed_foreign_affiliation() -> None:
     assert result.status == "not_found"
 
 
+def test_blocks_multi_author_affiliation_narrative_blob() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match(MULTI_AUTHOR_AFFILIATION_TEXT)
+    assert result.status == "not_found"
+    assert result.reason == "multi_author_input"
+
+
 def test_manual_alias_variants_match_existing_canonical_institutions() -> None:
     normalizer = _normalizer()
 
@@ -174,11 +191,51 @@ def test_penn_state_college_of_medicine_variants_resolve_to_hershey() -> None:
     for text in (
         "Penn State College of Medicine",
         "Penn State Milton S. Hershey Medical Center",
+        "1Department of Pediatrics, Penn State College of Medicine, Hershey, Pennsylvania.",
     ):
         result = normalizer.match(text)
         assert result.status == "matched"
         assert result.canonical_id == "us-pa-pennsylvania-state-university-hershey-medical-center"
         assert result.canonical_name == "Pennsylvania State University Hershey Medical Center"
+
+
+def test_mayo_clinic_geo_gated_alias_disambiguates_campuses() -> None:
+    normalizer = _normalizer()
+
+    generic = normalizer.match("Mayo Clinic")
+    assert generic.status == "not_found"
+    assert generic.reason == "geo_policy_no_match"
+    assert set(generic.candidate_ids) == {
+        "us-mn-mayo-clinic-rochester",
+        "us-az-mayo-clinic-arizona",
+        "us-fl-mayo-clinic-florida",
+    }
+
+    rochester = normalizer.match("Mayo Clinic, Rochester, MN")
+    assert rochester.status == "matched"
+    assert rochester.canonical_id == "us-mn-mayo-clinic-rochester"
+
+    scottsdale = normalizer.match("Mayo Clinic, Scottsdale, AZ")
+    assert scottsdale.status == "matched"
+    assert scottsdale.canonical_id == "us-az-mayo-clinic-arizona"
+
+    jacksonville = normalizer.match("Mayo Clinic, Jacksonville, FL")
+    assert jacksonville.status == "matched"
+    assert jacksonville.canonical_id == "us-fl-mayo-clinic-florida"
+
+
+def test_new_seeds_wrair_cdc_imperial_karolinska_match() -> None:
+    normalizer = _normalizer()
+
+    for text, expected_id in (
+        ("Walter Reed Army Institute of Research", "us-md-walter-reed-army-institute-of-research"),
+        ("Centers for Disease Control and Prevention", "us-ga-centers-for-disease-control-and-prevention"),
+        ("Imperial College London", "gb-imperial-college-london"),
+        ("Karolinska Institutet", "se-karolinska-institutet"),
+    ):
+        result = normalizer.match(text)
+        assert result.status == "matched"
+        assert result.canonical_id == expected_id
 
 
 def test_albert_einstein_school_of_medicine_resolves_to_college_of_medicine() -> None:
@@ -585,6 +642,99 @@ def test_email_domain_disambiguates_alias_candidates() -> None:
     assert result.reason == "email_domain_match"
 
 
+def test_allow_if_geo_requires_location_signal() -> None:
+    rules = {
+        "institutions": {
+            "inst-a": {
+                "canonical_id": "inst-a",
+                "canonical_name": "National Institute of Allergy and Infectious Diseases",
+                "city": "Bethesda",
+                "state": "MD",
+                "country": "US",
+                "ror_id": "",
+                "grid_id": "",
+                "email_domains": "",
+                "openalex_id": "",
+            },
+            "inst-b": {
+                "canonical_id": "inst-b",
+                "canonical_name": "National Institute of Allergy and Infectious Diseases",
+                "city": "Rockville",
+                "state": "MD",
+                "country": "US",
+                "ror_id": "",
+                "grid_id": "",
+                "email_domains": "",
+                "openalex_id": "",
+            },
+        },
+        "alias_rules": [
+            {
+                "alias": "NIAID",
+                "alias_norm": "niaid",
+                "canonical_id": "inst-a",
+                "alias_type": "manual_alias",
+                "policy": "allow_if_geo",
+            },
+            {
+                "alias": "NIAID",
+                "alias_norm": "niaid",
+                "canonical_id": "inst-b",
+                "alias_type": "manual_alias",
+                "policy": "allow_if_geo",
+            },
+        ],
+        "precedence_rules": [],
+    }
+    normalizer = AffiliationNormalizer(rules)
+
+    no_geo = normalizer.match("NIAID")
+    assert no_geo.status == "not_found"
+    assert no_geo.reason == "geo_policy_no_match"
+    assert no_geo.candidate_ids == ("inst-a", "inst-b")
+
+    bethesda = normalizer.match("Laboratory of Clinical Immunology and Microbiology, NIAID, Bethesda, MD.")
+    assert bethesda.status == "matched"
+    assert bethesda.canonical_id == "inst-a"
+
+    rockville = normalizer.match("NIAID, Rockville, MD")
+    assert rockville.status == "matched"
+    assert rockville.canonical_id == "inst-b"
+
+
+def test_allow_if_geo_accepts_state_and_country_when_city_absent() -> None:
+    rules = {
+        "institutions": {
+            "inst-a": {
+                "canonical_id": "inst-a",
+                "canonical_name": "Alpha Institute",
+                "city": "Alpha City",
+                "state": "MD",
+                "country": "US",
+                "ror_id": "",
+                "grid_id": "",
+                "email_domains": "",
+                "openalex_id": "",
+            }
+        },
+        "alias_rules": [
+            {
+                "alias": "AI",
+                "alias_norm": "ai",
+                "canonical_id": "inst-a",
+                "alias_type": "manual_alias",
+                "policy": "allow_if_geo",
+            }
+        ],
+        "precedence_rules": [],
+    }
+    normalizer = AffiliationNormalizer(rules)
+
+    result = normalizer.match("AI, MD, US")
+    assert result.status == "matched"
+    assert result.canonical_id == "inst-a"
+
+
 def test_module_match_email_domain_no_match_with_default_rules() -> None:
     result = match_email_domain("example.org")
     assert result.status == "not_found"
@@ -730,6 +880,31 @@ def test_match_record_applies_identifier_email_text_priority() -> None:
     assert text_result.status == "matched"
     assert text_result.canonical_id == "inst-text"
     assert text_result.reason == "precedence_or_direct_match"
+
+
+def test_match_record_ror_priority_overrides_multi_author_text_gate() -> None:
+    normalizer = _normalizer()
+    result = normalizer.match_record(
+        affiliation_text=MULTI_AUTHOR_AFFILIATION_TEXT,
+        ror_id="https://ror.org/03v76x132",
+    )
+    assert result.status == "matched"
+    assert result.reason == "ror_match"
+    assert result.canonical_id == "us-ct-yale-university"
+
+
+def test_load_alias_policy_supports_allow_if_geo_explicit_alias(tmp_path) -> None:
+    policy_file = tmp_path / "alias_policy.tsv"
+    policy_file.write_text(
+        "alias\tpolicy\treason\tcandidate_canonical_ids\tcandidate_names\tnotes\n"
+        "NIAID\tallow_if_geo\tgeo constrained\tinst-nih\tNIH\t\n",
+        encoding="utf-8",
+    )
+
+    policy_map, explicit_aliases = load_alias_policy(policy_file)
+
+    assert policy_map["niaid"] == "allow_if_geo"
+    assert explicit_aliases == [("NIAID", "inst-nih", "allow_if_geo")]
 
 
 def test_module_match_record_default_not_found_for_empty_input() -> None:

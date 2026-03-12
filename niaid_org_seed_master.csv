@@ -36,6 +36,7 @@ us-ct-yale-university,YALE UNIVERSITY,9420201,NEW HAVEN,CT,US,Yale University,ht
 us-dc-george-washington-university,GEORGE WASHINGTON UNIVERSITY,2863301,WASHINGTON,DC,US,George Washington University,https://ror.org/00y4zzh67,00y4zzh67,grid.253615.6,gwu.edu,https://openalex.org/i193531525,I193531525
 us-dc-georgetown-university,GEORGETOWN UNIVERSITY,2869001,WASHINGTON,DC,US,Georgetown University,https://ror.org/05vzafd60,05vzafd60,grid.213910.8,georgetown.edu,https://openalex.org/i184565670,I184565670
 us-fl-university-of-miami-school-of-medicine,UNIVERSITY OF MIAMI SCHOOL OF MEDICINE,5221250,CORAL GABLES,FL,US,University of Miami School of Medicine,https://ror.org/02dgjyy92,02dgjyy92,grid.26790.3a,med.miami.edu,https://openalex.org/i145608581,I145608581
+us-fl-mayo-clinic-florida,MAYO CLINIC FLORIDA,,JACKSONVILLE,FL,US,Mayo Clinic Florida,,,,mayo.edu,,
 us-fl-university-of-florida,UNIVERSITY OF FLORIDA,513806,GAINESVILLE,FL,US,University of Florida,https://ror.org/02y3ad647,02y3ad647,grid.15276.37,ufl.edu,https://openalex.org/i33213144,I33213144
 us-fl-scripps-florida,SCRIPPS FLORIDA,10005569,JUPITER,FL,US,Scripps Florida,https://ror.org/056pdzs28,056pdzs28,,,https://openalex.org/i4387156289,I4387156289
 us-fl-florida-international-university,FLORIDA INTERNATIONAL UNIVERSITY,513809,MIAMI,FL,US,Florida International University,https://ror.org/02gz6gg07,02gz6gg07,grid.65456.34,fiu.edu,https://openalex.org/i19700959,I19700959
@@ -196,3 +197,41 @@ us-ma-harvard-th-chan-school-of-public-health,,,BOSTON,MA,US,Harvard T. H. Chan 
 us-ny-rensselaer-polytechnic-institute,,,TROY,NY,US,Rensselaer Polytechnic Institute,https://ror.org/01rtyzb94,01rtyzb94,grid.33647.35,rpi.edu,https://openalex.org/i165799507,I165799507
 us-md-university-of-maryland-school-of-medicine,,,BALTIMORE,MD,US,University of Maryland School of Medicine,,,,som.umaryland.edu,,
 us-va-george-mason-university,,,FAIRFAX,VA,US,George Mason University,https://ror.org/02jqj7156,02jqj7156,grid.22448.38,gmu.edu,https://openalex.org/i162714631,I162714631
+us-md-national-institute-of-allergy-and-infectious-diseases,NATIONAL INSTITUTE OF ALLERGY AND INFECTIOUS DISEASES,,BETHESDA,MD,US,National Institute of Allergy and Infectious Diseases,,,,niaid.nih.gov,,
+us-md-national-cancer-institute,NATIONAL CANCER INSTITUTE,,BETHESDA,MD,US,National Cancer Institute,,,,nci.nih.gov|cancer.gov,,
+us-md-national-library-of-medicine,NATIONAL LIBRARY OF MEDICINE,,BETHESDA,MD,US,National Library of Medicine,,,,nlm.nih.gov,,
+us-md-national-heart-lung-and-blood-institute,"NATIONAL HEART, LUNG, AND BLOOD INSTITUTE",,BETHESDA,MD,US,"National Heart, Lung, and Blood Institute",,,,nhlbi.nih.gov,,
+us-md-national-institute-of-diabetes-and-digestive-and-kidney-diseases,NATIONAL INSTITUTE OF DIABETES AND DIGESTIVE AND KIDNEY DISEASES,,BETHESDA,MD,US,National Institute of Diabetes and Digestive and Kidney Diseases,,,,niddk.nih.gov,,
+us-md-national-institute-of-neurological-disorders-and-stroke,NATIONAL INSTITUTE OF NEUROLOGICAL DISORDERS AND STROKE,,BETHESDA,MD,US,National Institute of Neurological Disorders and Stroke,,,,ninds.nih.gov,,
+us-nc-national-institute-of-environmental-health-sciences,NATIONAL INSTITUTE OF ENVIRONMENTAL HEALTH SCIENCES,,RESEARCH TRIANGLE PARK,NC,US,National Institute of Environmental Health Sciences,,,,niehs.nih.gov,,
+us-md-national-human-genome-research-institute,NATIONAL HUMAN GENOME RESEARCH INSTITUTE,,BETHESDA,MD,US,National Human Genome Research Institute,,,,genome.gov|nhgri.nih.gov,,
+us-md-national-center-for-advancing-translational-sciences,NATIONAL CENTER FOR ADVANCING TRANSLATIONAL SCIENCES,,ROCKVILLE,MD,US,National Center for Advancing Translational Sciences,,,,ncats.nih.gov,,
+us-md-fogarty-international-center,FOGARTY INTERNATIONAL CENTER,,BETHESDA,MD,US,Fogarty International Center,,,,fic.nih.gov,,
+us-md-national-institute-of-dental-and-craniofacial-research,NATIONAL INSTITUTE OF DENTAL AND CRANIOFACIAL RESEARCH,,BETHESDA,MD,US,National Institute of Dental and Craniofacial Research,,,,nidcr.nih.gov,,
+us-md-national-institute-on-aging,NATIONAL INSTITUTE ON AGING,,BETHESDA,MD,US,National Institute on Aging,,,,nia.nih.gov,,
+us-md-national-institute-of-mental-health,NATIONAL INSTITUTE OF MENTAL HEALTH,,BETHESDA,MD,US,National Institute of Mental Health,,,,nimh.nih.gov,,
+us-md-national-institute-on-alcohol-abuse-and-alcoholism,NATIONAL INSTITUTE ON ALCOHOL ABUSE AND ALCOHOLISM,,BETHESDA,MD,US,National Institute on Alcohol Abuse and Alcoholism,,,,niaaa.nih.gov,,
+us-md-national-institute-on-drug-abuse,NATIONAL INSTITUTE ON DRUG ABUSE,,BETHESDA,MD,US,National Institute on Drug Abuse,,,,nida.nih.gov,,
+us-md-national-eye-institute,NATIONAL EYE INSTITUTE,,BETHESDA,MD,US,National Eye Institute,,,,nei.nih.gov,,
+us-md-national-institute-of-general-medical-sciences,NATIONAL INSTITUTE OF GENERAL MEDICAL SCIENCES,,BETHESDA,MD,US,National Institute of General Medical Sciences,,,,nigms.nih.gov,,
+us-md-national-institute-on-deafness-and-other-communication-disorders,NATIONAL INSTITUTE ON DEAFNESS AND OTHER COMMUNICATION DISORDERS,,BETHESDA,MD,US,National Institute on Deafness and Other Communication Disorders,,,,nidcd.nih.gov,,
+us-md-national-institute-of-nursing-research,NATIONAL INSTITUTE OF NURSING RESEARCH,,BETHESDA,MD,US,National Institute of Nursing Research,,,,ninr.nih.gov,,
+us-md-national-institute-of-biomedical-imaging-and-bioengineering,NATIONAL INSTITUTE OF BIOMEDICAL IMAGING AND BIOENGINEERING,,BETHESDA,MD,US,National Institute of Biomedical Imaging and Bioengineering,,,,nibib.nih.gov,,
+us-md-national-center-for-complementary-and-integrative-health,NATIONAL CENTER FOR COMPLEMENTARY AND INTEGRATIVE HEALTH,,BETHESDA,MD,US,National Center for Complementary and Integrative Health,,,,nccih.nih.gov,,
+us-md-national-institute-on-minority-health-and-health-disparities,NATIONAL INSTITUTE ON MINORITY HEALTH AND HEALTH DISPARITIES,,BETHESDA,MD,US,National Institute on Minority Health and Health Disparities,,,,nimhd.nih.gov,,
+us-md-center-for-scientific-review,CENTER FOR SCIENTIFIC REVIEW,,BETHESDA,MD,US,Center for Scientific Review,,,,csr.nih.gov,,
+us-md-nih-clinical-center,NIH CLINICAL CENTER,,BETHESDA,MD,US,NIH Clinical Center,,,,cc.nih.gov,,
+us-md-frederick-national-laboratory-for-cancer-research,FREDERICK NATIONAL LABORATORY FOR CANCER RESEARCH,,FREDERICK,MD,US,Frederick National Laboratory for Cancer Research,,,,frederick.cancer.gov|fnlcr.cancer.gov,,
+us-ca-lawrence-livermore-national-laboratory,LAWRENCE LIVERMORE NATIONAL LABORATORY,,LIVERMORE,CA,US,Lawrence Livermore National Laboratory,,,,llnl.gov,,
+us-nm-los-alamos-national-laboratory,LOS ALAMOS NATIONAL LABORATORY,,LOS ALAMOS,NM,US,Los Alamos National Laboratory,,,,lanl.gov,,
+us-il-argonne-national-laboratory,ARGONNE NATIONAL LABORATORY,,LEMONT,IL,US,Argonne National Laboratory,,,,anl.gov,,
+us-wa-pacific-northwest-national-laboratory,PACIFIC NORTHWEST NATIONAL LABORATORY,,RICHLAND,WA,US,Pacific Northwest National Laboratory,,,,pnnl.gov,,
+us-tn-oak-ridge-national-laboratory,OAK RIDGE NATIONAL LABORATORY,,OAK RIDGE,TN,US,Oak Ridge National Laboratory,,,,ornl.gov,,
+us-ny-brookhaven-national-laboratory,BROOKHAVEN NATIONAL LABORATORY,,UPTON,NY,US,Brookhaven National Laboratory,,,,bnl.gov,,
+us-nm-sandia-national-laboratories,SANDIA NATIONAL LABORATORIES,,ALBUQUERQUE,NM,US,Sandia National Laboratories,,,,sandia.gov,,
+us-co-national-renewable-energy-laboratory,NATIONAL RENEWABLE ENERGY LABORATORY,,GOLDEN,CO,US,National Renewable Energy Laboratory,,,,nrel.gov,,
+us-ca-slac-national-accelerator-laboratory,SLAC NATIONAL ACCELERATOR LABORATORY,,MENLO PARK,CA,US,SLAC National Accelerator Laboratory,,,,slac.stanford.edu,,
+us-md-walter-reed-army-institute-of-research,WALTER REED ARMY INSTITUTE OF RESEARCH,,SILVER SPRING,MD,US,Walter Reed Army Institute of Research,,,,,,
+us-ga-centers-for-disease-control-and-prevention,CENTERS FOR DISEASE CONTROL AND PREVENTION,,ATLANTA,GA,US,Centers for Disease Control and Prevention,,,,cdc.gov,,
+gb-imperial-college-london,IMPERIAL COLLEGE LONDON,,LONDON,,GB,Imperial College London,,,,imperial.ac.uk,,
+se-karolinska-institutet,KAROLINSKA INSTITUTET,,STOCKHOLM,,SE,Karolinska Institutet,,,,ki.se,,

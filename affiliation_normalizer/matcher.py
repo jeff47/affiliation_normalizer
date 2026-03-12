@@ -21,6 +21,8 @@ GRID_ID_RE = re.compile(r"grid\.[a-z0-9]+\.[a-z0-9]+")
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@([A-Za-z0-9.-]+\.[A-Za-z]{2,})")
 EMAIL_DOMAIN_RE = re.compile(r"^[a-z0-9][a-z0-9.-]*\.[a-z]{2,}$")
 IN_WORD_APOSTROPHE_RE = re.compile(r"(?<=\w)'(?=\w)")
+AUTHOR_WITH_CLAUSE_RE = re.compile(r"\b(?:is|are)\s+(?:also\s+)?with\b", re.IGNORECASE)
+PERSON_NAME_RE = re.compile(r"\b[A-Z][A-Za-z'-]+(?:\s+(?:[A-Z]\.|[A-Z][A-Za-z'-]+)){1,2}\b")
 
 DASH_CHARS = "-\u2010\u2011\u2012\u2013\u2014\u2015\u2212"
 APOSTROPHE_CHARS = "'\u2018\u2019\u2032\u02bc"
@@ -94,6 +96,14 @@ class AffiliationNormalizer:
             for domain in parse_email_domains(inst.get("email_domains") or ""):
                 self._email_domain_index[domain].add(canonical_id)
 
+        self._geo_hints: dict[str, tuple[str, str, str]] = {}
+        for canonical_id, inst in self._institutions.items():
+            self._geo_hints[canonical_id] = (
+                normalize_text(inst.get("city") or ""),
+                normalize_text(inst.get("state") or ""),
+                normalize_text(inst.get("country") or ""),
+            )
+
     @classmethod
     def from_rules_json(
         cls,
@@ -108,6 +118,9 @@ class AffiliationNormalizer:
         return cls(rules=rules)
 
     def match(self, affiliation_text: str) -> MatchResult:
+        if is_multi_author_affiliation_blob(affiliation_text):
+            return MatchResult(status="not_found", reason="multi_author_input")
+
         email_domains = extract_email_domains(affiliation_text)
         email_result: MatchResult | None = None
         if email_domains:
@@ -123,6 +136,7 @@ class AffiliationNormalizer:
         tokens = set(TOKEN_RE.findall(text))
 
         allow_hits: list[_AliasRule] = []
+        geo_blocked_hits: list[_AliasRule] = []
         review_hits: list[_AliasRule] = []
         seen = set()
 
@@ -136,12 +150,29 @@ class AffiliationNormalizer:
                 seen.add(key)
                 if rule.policy == "allow":
                     allow_hits.append(rule)
+                elif rule.policy == "allow_if_geo":
+                    if self._has_geo_evidence(
+                        canonical_id=rule.canonical_id,
+                        wrapped_text=wrapped,
+                        tokens=tokens,
+                    ):
+                        allow_hits.append(rule)
+                    else:
+                        geo_blocked_hits.append(rule)
                 else:
                     review_hits.append(rule)
 
         if not allow_hits:
             if email_result is not None and email_result.status == "ambiguous":
                 return email_result
+
+            if geo_blocked_hits:
+                candidates = tuple(sorted({r.canonical_id for r in geo_blocked_hits if r.canonical_id}))
+                return MatchResult(
+                    status="not_found",
+                    reason="geo_policy_no_match",
+                    candidate_ids=candidates,
+                )
 
             if review_hits:
                 candidates = tuple(sorted({r.canonical_id for r in review_hits if r.canonical_id}))
@@ -416,6 +447,20 @@ class AffiliationNormalizer:
             candidate_ids=(canonical_id,),
         )
 
+    def _has_geo_evidence(self, canonical_id: str, wrapped_text: str, tokens: set[str]) -> bool:
+        city_norm, state_norm, country_norm = self._geo_hints.get(canonical_id, ("", "", ""))
+
+        city_match = bool(city_norm and f" {city_norm} " in wrapped_text)
+        if city_match:
+            return True
+
+        if not (state_norm and country_norm):
+            return False
+
+        state_match = state_norm in tokens if " " not in state_norm else f" {state_norm} " in wrapped_text
+        country_match = country_norm in tokens if " " not in country_norm else f" {country_norm} " in wrapped_text
+        return state_match and country_match
+
 
 _DEFAULT_NORMALIZER: AffiliationNormalizer | None = None
 
@@ -507,6 +552,24 @@ def extract_email_domains(text: str) -> set[str]:
         if normalized:
             out.add(normalized)
     return out
+
+
+def is_multi_author_affiliation_blob(text: str) -> bool:
+    """Heuristic gate for author-list narrative strings spanning multiple affiliations."""
+    if len(text) < 80:
+        return False
+
+    with_clauses = list(AUTHOR_WITH_CLAUSE_RE.finditer(text))
+    if len(with_clauses) >= 2:
+        return True
+    if len(with_clauses) != 1:
+        return False
+
+    prefix = text[: with_clauses[0].start()]
+    if "," not in prefix and " and " not in prefix.lower():
+        return False
+
+    return len(PERSON_NAME_RE.findall(prefix)) >= 3
 
 
 def domain_suffixes(domain: str) -> tuple[str, ...]:

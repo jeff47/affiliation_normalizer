@@ -22,6 +22,7 @@ DASH_CHARS = "-\u2010\u2011\u2012\u2013\u2014\u2015\u2212"
 APOSTROPHE_CHARS = "'\u2018\u2019\u2032\u02bc"
 DASH_TRANSLATION = str.maketrans({ch: " " for ch in DASH_CHARS})
 APOSTROPHE_TRANSLATION = str.maketrans({ch: "'" for ch in APOSTROPHE_CHARS})
+VALID_ALIAS_POLICIES = {"allow", "allow_if_geo", "review_only", "deny"}
 
 
 @dataclass(frozen=True)
@@ -129,9 +130,9 @@ def generate_aliases(row: dict[str, str]) -> list[tuple[str, str]]:
     return out
 
 
-def load_alias_policy(path: Path) -> tuple[dict[str, str], list[tuple[str, str]]]:
+def load_alias_policy(path: Path) -> tuple[dict[str, str], list[tuple[str, str, str]]]:
     policy: dict[str, str] = {}
-    explicit_aliases: list[tuple[str, str]] = []
+    explicit_aliases: list[tuple[str, str, str]] = []
     with path.open("r", encoding="utf-8", newline="") as fh:
         reader = csv.DictReader(fh, delimiter="\t")
         for row in reader:
@@ -141,16 +142,21 @@ def load_alias_policy(path: Path) -> tuple[dict[str, str], list[tuple[str, str]]
                 continue
             this_policy = (row.get("policy") or "").strip().lower()
             normalized_policy = this_policy or "review_only"
+            if normalized_policy not in VALID_ALIAS_POLICIES:
+                raise ValueError(
+                    f"Unknown alias policy: {normalized_policy!r} for alias={alias!r}. "
+                    f"Expected one of {sorted(VALID_ALIAS_POLICIES)}"
+                )
             policy[alias_norm] = normalized_policy
 
-            if normalized_policy == "allow":
+            if normalized_policy in {"allow", "allow_if_geo"}:
                 candidates = [
                     token.strip()
                     for token in str(row.get("candidate_canonical_ids") or "").split("|")
                     if token.strip()
                 ]
                 if len(candidates) == 1:
-                    explicit_aliases.append((alias, candidates[0]))
+                    explicit_aliases.append((alias, candidates[0], normalized_policy))
     return policy, explicit_aliases
 
 
@@ -242,7 +248,7 @@ def build_rules(
                     )
                 )
 
-    for alias, canonical_id in explicit_aliases:
+    for alias, canonical_id, policy in explicit_aliases:
         if canonical_id not in institutions:
             raise ValueError(f"Alias policy references unknown canonical_id: {canonical_id} (alias={alias!r})")
         alias_norm = normalize_text(alias)
@@ -254,7 +260,7 @@ def build_rules(
                 alias_norm=alias_norm,
                 canonical_id=canonical_id,
                 alias_type="manual_alias",
-                policy="allow",
+                policy=policy,
             )
         )
 

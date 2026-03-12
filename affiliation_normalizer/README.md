@@ -79,6 +79,7 @@ result = match_record(
 - GRID lookup: `match_grid(grid_id: str)` (supports bare IDs and legacy GRID URLs)
 - Email lookup: `match_email_domain(email_domain: str)` (supports domains or full email addresses)
 - Priority lookup: `match_record(...)` using `ROR/GRID > email > text`
+- Alias policy supports `allow`, `allow_if_geo`, `review_only`, and `deny`
 
 ## Rule rebuild
 
@@ -94,5 +95,7 @@ This writes `affiliation_normalizer/data/rules.json`.
 
 1. US-centric and seed-driven: out-of-seed institutions often return `not_found`.
 2. `review_only` aliases do not auto-resolve.
-3. Multi-institution strings can still return `ambiguous`.
-4. Runtime matching is alias/normalization based; regex is not the primary mechanism.
+3. `allow_if_geo` aliases require matching location evidence (city, or state+country) and otherwise return `not_found` with reason `geo_policy_no_match`.
+4. Author-list narrative blobs (for example, `X and Y are with ... Z is with ...`) are gated and return `not_found` with reason `multi_author_input`.
+5. Multi-institution strings can still return `ambiguous`.
+6. Runtime matching is alias/normalization based; regex is not the primary mechanism.
