@@ -263,6 +263,24 @@ def test_university_of_miami_miller_school_of_medicine_resolves_to_um_school_of_
     assert result.canonical_name == "University of Miami School of Medicine"
 
 
+def test_university_of_michigan_variants_resolve_to_ann_arbor() -> None:
+    normalizer = _normalizer()
+
+    for text in (
+        "University of Michigan",
+        "University of Michigan, Ann Arbor, Michigan, USA",
+        "University of Michigan School of Medicine",
+        "University of Michigan Medical School",
+        "Department of Biological Chemistry, Computational Medicine and Bioinformatics, "
+        "University of Michigan, Ann Arbor, Michigan, USA.",
+        "Michigan Medicine, Ann Arbor, MI",
+    ):
+        result = normalizer.match(text)
+        assert result.status == "matched"
+        assert result.canonical_id == "us-mi-university-of-michigan-at-ann-arbor"
+        assert result.canonical_name == "University of Michigan at Ann Arbor"
+
+
 def test_johns_hopkins_medicine_seed_and_aliases_match() -> None:
     normalizer = _normalizer()
 

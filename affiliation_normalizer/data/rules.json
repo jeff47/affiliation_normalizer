@@ -1,11 +1,11 @@
 {
   "metadata": {
-    "generated_at_utc": "2026-03-12T01:37:14.067815+00:00",
+    "generated_at_utc": "2026-03-12T01:47:44.165244+00:00",
     "master_path": "niaid_org_seed_master.csv",
     "alias_policy_path": "alias_policy_review.tsv",
     "precedence_path": "canonical_precedence.tsv",
     "institution_count": 197,
-    "alias_rule_count": 637
+    "alias_rule_count": 641
   },
   "institutions": {
     "us-al-university-of-alabama-birmingham": {
@@ -4196,6 +4196,13 @@
       "policy": "allow"
     },
     {
+      "alias": "MICHIGAN MEDICINE",
+      "alias_norm": "michigan medicine",
+      "canonical_id": "us-mi-university-of-michigan-at-ann-arbor",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
       "alias": "Michigan State University",
       "alias_norm": "michigan state university",
       "canonical_id": "us-mi-michigan-state-university",
@@ -6100,6 +6107,13 @@
       "policy": "allow"
     },
     {
+      "alias": "UNIVERSITY OF MICHIGAN",
+      "alias_norm": "university of michigan",
+      "canonical_id": "us-mi-university-of-michigan-at-ann-arbor",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
       "alias": "University of Michigan at Ann Arbor",
       "alias_norm": "university of michigan at ann arbor",
       "canonical_id": "us-mi-university-of-michigan-at-ann-arbor",
@@ -6111,6 +6125,20 @@
       "alias_norm": "university of michigan at ann arbor ann arbor mi",
       "canonical_id": "us-mi-university-of-michigan-at-ann-arbor",
       "alias_type": "canonical_with_geo",
+      "policy": "allow"
+    },
+    {
+      "alias": "UNIVERSITY OF MICHIGAN MEDICAL SCHOOL",
+      "alias_norm": "university of michigan medical school",
+      "canonical_id": "us-mi-university-of-michigan-at-ann-arbor",
+      "alias_type": "manual_alias",
+      "policy": "allow"
+    },
+    {
+      "alias": "UNIVERSITY OF MICHIGAN SCHOOL OF MEDICINE",
+      "alias_norm": "university of michigan school of medicine",
+      "canonical_id": "us-mi-university-of-michigan-at-ann-arbor",
+      "alias_type": "manual_alias",
       "policy": "allow"
     },
     {

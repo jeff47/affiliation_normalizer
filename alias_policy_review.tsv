@@ -13,6 +13,10 @@ UNIVERSITY OF MARYLAND SCHOOL OF MEDICINE	allow	manual_addition	subunit should r
 SLOAN KETTERING INSTITUTE	allow	manual_addition	common subunit phrasing for MSK	us-ny-memorial-sloan-kettering	Memorial Sloan-Kettering	
 GEISEL SCHOOL OF MEDICINE AT DARTMOUTH	allow	manual_addition	subunit should resolve to Dartmouth canonical institution	us-nh-dartmouth-college	Dartmouth College	
 UNIVERSITY OF MIAMI MILLER SCHOOL OF MEDICINE	allow	manual_addition	renamed/extended school name variant	us-fl-university-of-miami-school-of-medicine	University of Miami School of Medicine	
+UNIVERSITY OF MICHIGAN	allow	manual_addition	common naming variant should resolve to Ann Arbor campus	us-mi-university-of-michigan-at-ann-arbor	University of Michigan at Ann Arbor	
+UNIVERSITY OF MICHIGAN SCHOOL OF MEDICINE	allow	manual_addition	subunit variant should resolve to Ann Arbor campus	us-mi-university-of-michigan-at-ann-arbor	University of Michigan at Ann Arbor	
+UNIVERSITY OF MICHIGAN MEDICAL SCHOOL	allow	manual_addition	subunit variant should resolve to Ann Arbor campus	us-mi-university-of-michigan-at-ann-arbor	University of Michigan at Ann Arbor	
+MICHIGAN MEDICINE	allow	manual_addition	health system branding variant for Ann Arbor campus	us-mi-university-of-michigan-at-ann-arbor	University of Michigan at Ann Arbor	
 BOSTON UNIVERSITY (CHARLES RIVER CAMPUS)	allow	manual_addition	funded institute variant	us-ma-boston-university	Boston University	
 YALE SCHOOL OF MEDICINE	allow	manual_addition	subunit string should resolve to parent institution	us-ct-yale-university	Yale University	
 WEILL CORNELL MEDICAL COLLEGE	allow	manual_addition	legacy naming variant	us-ny-weill-cornell-medicine	Weill Cornell Medicine	
