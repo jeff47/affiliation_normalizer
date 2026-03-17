@@ -1068,6 +1068,49 @@ def test_build_rules_allows_blank_grid_and_email_domain_values(tmp_path: Path) -
     assert rules["institutions"]["inst-a"]["email_domains"] == ""
 
 
+@pytest.mark.parametrize(
+    ("field_name", "field_value", "expected_message"),
+    [
+        ("preferred_canonical_id", "missing-preferred", "Unknown precedence preferred canonical_id"),
+        ("demoted_canonical_id", "missing-demoted", "Unknown precedence demoted canonical_id"),
+    ],
+)
+def test_build_rules_rejects_unknown_precedence_canonical_ids(
+    tmp_path: Path,
+    field_name: str,
+    field_value: str,
+    expected_message: str,
+) -> None:
+    master = tmp_path / "master.csv"
+    master.write_text(
+        "canonical_id,canonical_name,org_city,org_state,org_country,ror_id,grid_id,email_domains,openalex_id,nih_reporter_name\n"
+        "inst-a,Alpha Institute,Alpha City,AA,US,03x,grid.1234.5,alpha.edu,I123,Alpha Institute\n"
+        "inst-b,Beta Institute,Beta City,BB,US,04y,grid.6789.0,beta.edu,I456,Beta Institute\n",
+        encoding="utf-8",
+    )
+    policy = tmp_path / "alias_policy.tsv"
+    policy.write_text(
+        "alias\tpolicy\treason\tcandidate_canonical_ids\tcandidate_names\tnotes\n",
+        encoding="utf-8",
+    )
+    precedence = tmp_path / "precedence.tsv"
+    row = {
+        "preferred_canonical_id": "inst-a",
+        "demoted_canonical_id": "inst-b",
+        "reason": "test precedence",
+        "active": "true",
+    }
+    row[field_name] = field_value
+    precedence.write_text(
+        "preferred_canonical_id\tdemoted_canonical_id\treason\tactive\n"
+        f"{row['preferred_canonical_id']}\t{row['demoted_canonical_id']}\t{row['reason']}\t{row['active']}\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match=expected_message):
+        build_rules(master, policy, precedence)
+
+
 def test_module_match_record_default_not_found_for_empty_input() -> None:
     result = match_record()
     assert result.status == "not_found"

@@ -185,6 +185,30 @@ def load_precedence_rules(path: Path | None) -> list[dict[str, str]]:
     return out
 
 
+def validate_precedence_rules(
+    precedence_rules: list[dict[str, str]],
+    institutions: dict[str, dict[str, str]],
+) -> None:
+    errors: list[str] = []
+    known_ids = set(institutions)
+
+    for rule in precedence_rules:
+        preferred = (rule.get("preferred") or "").strip()
+        demoted = (rule.get("demoted") or "").strip()
+        reason = (rule.get("reason") or "").strip()
+        rule_desc = f"preferred={preferred!r}, demoted={demoted!r}"
+        if reason:
+            rule_desc = f"{rule_desc}, reason={reason!r}"
+
+        if preferred not in known_ids:
+            errors.append(f"Unknown precedence preferred canonical_id in rule: {rule_desc}")
+        if demoted not in known_ids:
+            errors.append(f"Unknown precedence demoted canonical_id in rule: {rule_desc}")
+
+    if errors:
+        raise ValueError("\n".join(errors))
+
+
 def build_rules(
     master_path: Path,
     alias_policy_path: Path,
@@ -265,6 +289,8 @@ def build_rules(
                 policy=policy,
             )
         )
+
+    validate_precedence_rules(precedence_rules, institutions)
 
     # Dedupe alias rules.
     unique: dict[tuple[str, str, str], AliasRule] = {}
