@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import re
 import unicodedata
+from collections.abc import Mapping as MappingABC
 from collections import defaultdict
 from dataclasses import dataclass
 from importlib import resources
@@ -33,6 +34,7 @@ APOSTROPHE_TRANSLATION = str.maketrans({ch: "'" for ch in APOSTROPHE_CHARS})
 
 DEFAULT_RULES_PATH = Path(__file__).with_name("data") / "rules.json"
 DEFAULT_RULES_RESOURCE = resources.files("affiliation_normalizer").joinpath("data", "rules.json")
+VALID_ALIAS_POLICIES = {"allow", "allow_if_geo", "review_only", "deny"}
 
 
 @dataclass(frozen=True)
@@ -62,6 +64,7 @@ class AffiliationNormalizer:
         shape emitted by ``affiliation_normalizer.build_rules.build_rules(...)``.
         """
 
+        validate_rules_payload(rules)
         self._institutions = cast(dict[str, dict[str, str]], rules.get("institutions", {}))
         raw_rules = cast(list[dict[str, str]], rules.get("alias_rules", []))
         self._precedence_pairs = [
@@ -324,20 +327,32 @@ class AffiliationNormalizer:
         grid_id: str = "",
         email: str = "",
     ) -> MatchResult:
-        ror_norm = normalize_ror(ror_id)
-        if ror_norm:
-            ror_result = self.match_ror(ror_norm)
-            if ror_result.status != "not_found":
-                return ror_result
+        invalid_reason: MatchReason | None = None
 
-        grid_norm = normalize_grid(grid_id)
-        if grid_norm:
-            grid_result = self.match_grid(grid_norm)
-            if grid_result.status != "not_found":
-                return grid_result
+        if ror_id.strip():
+            ror_norm = normalize_ror(ror_id)
+            if not ror_norm:
+                invalid_reason = "invalid_ror"
+            else:
+                ror_result = self.match_ror(ror_norm)
+                if ror_result.status != "not_found":
+                    return ror_result
 
-        domains = set(parse_email_domains(email))
-        domains.update(extract_email_domains(email))
+        if grid_id.strip():
+            grid_norm = normalize_grid(grid_id)
+            if not grid_norm and invalid_reason is None:
+                invalid_reason = "invalid_grid"
+            elif grid_norm:
+                grid_result = self.match_grid(grid_norm)
+                if grid_result.status != "not_found":
+                    return grid_result
+
+        domains: set[str] = set()
+        if email.strip():
+            domains = set(parse_email_domains(email))
+            domains.update(extract_email_domains(email))
+            if not domains and invalid_reason is None:
+                invalid_reason = "invalid_email_domain"
         if domains:
             email_result = self._match_email_domains(domains)
             if email_result.status == "matched":
@@ -385,6 +400,8 @@ class AffiliationNormalizer:
 
         if affiliation_text.strip():
             return self.match(affiliation_text)
+        if invalid_reason is not None:
+            return MatchResult(status="not_found", reason=invalid_reason)
         return MatchResult(status="not_found", reason="empty_input")
 
     def _match_email_domains(self, domains: set[str]) -> MatchResult:
@@ -628,6 +645,100 @@ def domain_suffixes(domain: str) -> tuple[str, ...]:
         if "." in suffix:
             out.append(suffix)
     return tuple(out)
+
+
+def validate_rules_payload(rules: Mapping[str, object]) -> None:
+    errors: list[str] = []
+
+    institutions_obj = rules.get("institutions")
+    alias_rules_obj = rules.get("alias_rules")
+    precedence_rules_obj = rules.get("precedence_rules")
+
+    if not isinstance(institutions_obj, MappingABC):
+        errors.append("rules['institutions'] must be a mapping")
+        institutions_obj = {}
+    if not isinstance(alias_rules_obj, list):
+        errors.append("rules['alias_rules'] must be a list")
+        alias_rules_obj = []
+    if not isinstance(precedence_rules_obj, list):
+        errors.append("rules['precedence_rules'] must be a list")
+        precedence_rules_obj = []
+
+    institutions = cast(Mapping[str, object], institutions_obj)
+    known_ids = set(institutions)
+    required_institution_fields = {
+        "canonical_name",
+        "city",
+        "state",
+        "country",
+        "ror_id",
+        "grid_id",
+        "email_domains",
+        "openalex_id",
+    }
+    for canonical_id, inst_obj in institutions.items():
+        if not isinstance(inst_obj, MappingABC):
+            errors.append(f"rules['institutions']['{canonical_id}'] must be a mapping")
+            continue
+        missing = sorted(required_institution_fields.difference(inst_obj))
+        if missing:
+            errors.append(
+                f"rules['institutions']['{canonical_id}'] is missing required fields: {', '.join(missing)}"
+            )
+        for field in sorted(required_institution_fields.intersection(inst_obj)):
+            value = inst_obj.get(field)
+            if not isinstance(value, str):
+                errors.append(
+                    f"rules['institutions']['{canonical_id}']['{field}'] must be a string"
+                )
+
+    for idx, rule_obj in enumerate(alias_rules_obj):
+        if not isinstance(rule_obj, MappingABC):
+            errors.append(f"rules['alias_rules'][{idx}] must be a mapping")
+            continue
+        required = {"alias", "alias_norm", "canonical_id", "alias_type", "policy"}
+        missing = sorted(required.difference(rule_obj))
+        if missing:
+            errors.append(f"rules['alias_rules'][{idx}] is missing required fields: {', '.join(missing)}")
+            continue
+        policy = rule_obj.get("policy")
+        alias_canonical_id = rule_obj.get("canonical_id")
+        if not isinstance(policy, str):
+            errors.append(f"rules['alias_rules'][{idx}]['policy'] must be a string")
+        elif policy not in VALID_ALIAS_POLICIES:
+            errors.append(
+                f"rules['alias_rules'][{idx}]['policy'] must be one of {sorted(VALID_ALIAS_POLICIES)}"
+            )
+        if not isinstance(alias_canonical_id, str):
+            errors.append(f"rules['alias_rules'][{idx}]['canonical_id'] must be a string")
+        elif alias_canonical_id not in known_ids:
+            errors.append(
+                f"rules['alias_rules'][{idx}]['canonical_id'] references unknown canonical_id: "
+                f"{alias_canonical_id}"
+            )
+
+    for idx, rule_obj in enumerate(precedence_rules_obj):
+        if not isinstance(rule_obj, MappingABC):
+            errors.append(f"rules['precedence_rules'][{idx}] must be a mapping")
+            continue
+        required = {"preferred", "demoted"}
+        missing = sorted(required.difference(rule_obj))
+        if missing:
+            errors.append(
+                f"rules['precedence_rules'][{idx}] is missing required fields: {', '.join(missing)}"
+            )
+            continue
+        for field in ("preferred", "demoted"):
+            value = rule_obj.get(field)
+            if not isinstance(value, str):
+                errors.append(f"rules['precedence_rules'][{idx}]['{field}'] must be a string")
+            elif value not in known_ids:
+                errors.append(
+                    f"rules['precedence_rules'][{idx}]['{field}'] references unknown canonical_id: {value}"
+                )
+
+    if errors:
+        raise ValueError("\n".join(errors))
 
 
 def default_normalizer() -> AffiliationNormalizer:

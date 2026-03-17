@@ -81,6 +81,7 @@ result = match_record(
 - GRID lookup: `match_grid(grid_id: str)` (supports bare IDs and legacy GRID URLs)
 - Email lookup: `match_email_domain(email_domain: str)` (supports domains or full email addresses)
 - Priority lookup: `match_record(...)` using `ROR/GRID > email > text`
+- If `match_record(...)` receives only malformed identifier/email inputs and no later signal resolves, it returns the same `invalid_*` reasons used by the direct lookup helpers.
 - Alias policy supports `allow`, `allow_if_geo`, `review_only`, and `deny`
 
 ## Policy behavior
@@ -114,7 +115,7 @@ Common operational implication:
 - `AffiliationNormalizer.from_rules_json(...)` is the preferred entry point for bundled or build-produced rule artifacts.
 - Direct construction with `AffiliationNormalizer(rules=...)` is supported for advanced/custom use.
 - The expected `rules` payload shape matches the output of `affiliation_normalizer.build_rules.build_rules(...)`, with top-level keys `institutions`, `alias_rules`, and `precedence_rules`.
-- The constructor currently does not perform full runtime schema validation, so callers supplying raw rule dictionaries should treat the build output schema as the source of truth.
+- The constructor performs basic runtime schema validation and raises `ValueError` for malformed rule payloads.
 
 ## Rule rebuild
 

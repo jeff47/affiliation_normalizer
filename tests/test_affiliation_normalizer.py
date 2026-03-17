@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 
 import pytest
@@ -1050,6 +1051,40 @@ def test_match_record_ror_priority_overrides_multi_author_text_gate() -> None:
     assert result.canonical_id == "us-ct-yale-university"
 
 
+@pytest.mark.parametrize(
+    ("kwargs", "expected_reason"),
+    [
+        ({"ror_id": "not-a-ror"}, "invalid_ror"),
+        ({"grid_id": "not-a-grid-id"}, "invalid_grid"),
+        ({"email": "not an email"}, "invalid_email_domain"),
+    ],
+)
+def test_match_record_distinguishes_invalid_record_level_inputs(
+    kwargs: dict[str, str],
+    expected_reason: str,
+) -> None:
+    result = match_record(**kwargs)
+    assert result.status == "not_found"
+    assert result.reason == expected_reason
+
+
+@pytest.mark.parametrize(
+    "kwargs",
+    [
+        {"ror_id": "not-a-ror", "affiliation_text": "Yale University, New Haven, CT"},
+        {"grid_id": "not-a-grid-id", "affiliation_text": "Yale University, New Haven, CT"},
+        {"email": "not an email", "affiliation_text": "Yale University, New Haven, CT"},
+    ],
+)
+def test_match_record_invalid_record_level_inputs_do_not_block_text_fallback(
+    kwargs: dict[str, str],
+) -> None:
+    result = match_record(**kwargs)
+    assert result.status == "matched"
+    assert result.canonical_id == "us-ct-yale-university"
+    assert result.reason == "precedence_or_direct_match"
+
+
 def test_load_alias_policy_supports_allow_if_geo_explicit_alias(tmp_path) -> None:
     policy_file = tmp_path / "alias_policy.tsv"
     policy_file.write_text(
@@ -1172,6 +1207,50 @@ def test_module_match_affiliation_uses_bundled_rules() -> None:
     assert result.canonical_id == "us-ct-yale-university"
 
 
+def test_confidence_is_lower_for_acronym_only_matches_than_full_name_matches() -> None:
+    rules = {
+        "institutions": {
+            "inst-a": {
+                "canonical_name": "Alpha University",
+                "city": "Alpha City",
+                "state": "AA",
+                "country": "US",
+                "ror_id": "",
+                "grid_id": "",
+                "email_domains": "",
+                "openalex_id": "",
+            }
+        },
+        "alias_rules": [
+            {
+                "alias": "Alpha University",
+                "alias_norm": "alpha university",
+                "canonical_id": "inst-a",
+                "alias_type": "canonical_name",
+                "policy": "allow",
+            },
+            {
+                "alias": "AU",
+                "alias_norm": "au",
+                "canonical_id": "inst-a",
+                "alias_type": "acronym",
+                "policy": "allow",
+            },
+        ],
+        "precedence_rules": [],
+    }
+    normalizer = AffiliationNormalizer(rules)
+
+    full_name = normalizer.match("Alpha University")
+    acronym = normalizer.match("AU")
+
+    assert full_name.status == "matched"
+    assert acronym.status == "matched"
+    assert acronym.confidence < full_name.confidence
+    assert acronym.confidence == 0.8
+    assert full_name.confidence == 0.95
+
+
 def test_normalize_text_preserves_boundary_for_unicode_dash() -> None:
     assert normalize_text("Harvard Medical School–Brigham") == "harvard medical school brigham"
 
@@ -1210,3 +1289,117 @@ def test_normalize_text_unicode_variants(input_text: str, expected_norm: str) ->
 )
 def test_build_and_runtime_normalize_text_parity(input_text: str) -> None:
     assert normalize_text(input_text) == build_normalize_text(input_text)
+
+
+def test_from_rules_json_raises_for_missing_file(tmp_path: Path) -> None:
+    with pytest.raises(FileNotFoundError):
+        AffiliationNormalizer.from_rules_json(tmp_path / "missing-rules.json")
+
+
+def test_from_rules_json_raises_for_invalid_json(tmp_path: Path) -> None:
+    path = tmp_path / "rules.json"
+    path.write_text("{not valid json", encoding="utf-8")
+
+    with pytest.raises(json.JSONDecodeError):
+        AffiliationNormalizer.from_rules_json(path)
+
+
+def test_from_rules_json_rejects_malformed_rules_payload(tmp_path: Path) -> None:
+    path = tmp_path / "rules.json"
+    path.write_text(
+        json.dumps(
+            {
+                "institutions": {},
+                "alias_rules": [{"alias": "Alpha"}],
+                "precedence_rules": [],
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match=r"rules\['alias_rules'\]\[0\] is missing required fields"):
+        AffiliationNormalizer.from_rules_json(path)
+
+
+@pytest.mark.parametrize(
+    ("rules", "expected_message"),
+    [
+        (
+            {
+                "institutions": {},
+                "alias_rules": [],
+            },
+            r"rules\['precedence_rules'\] must be a list",
+        ),
+        (
+            {
+                "institutions": {
+                    "inst-a": {
+                        "canonical_name": "Alpha University",
+                        "city": "Alpha City",
+                        "state": "AA",
+                        "country": "US",
+                        "ror_id": "",
+                        "grid_id": "",
+                        "email_domains": "",
+                    }
+                },
+                "alias_rules": [],
+                "precedence_rules": [],
+            },
+            r"rules\['institutions'\]\['inst-a'\] is missing required fields: openalex_id",
+        ),
+        (
+            {
+                "institutions": {
+                    "inst-a": {
+                        "canonical_name": "Alpha University",
+                        "city": "Alpha City",
+                        "state": "AA",
+                        "country": "US",
+                        "ror_id": "",
+                        "grid_id": "",
+                        "email_domains": "",
+                        "openalex_id": "",
+                    }
+                },
+                "alias_rules": [
+                    {
+                        "alias": "Alpha University",
+                        "alias_norm": "alpha university",
+                        "canonical_id": "inst-a",
+                        "alias_type": "manual_alias",
+                        "policy": "not-a-policy",
+                    }
+                ],
+                "precedence_rules": [],
+            },
+            r"rules\['alias_rules'\]\[0\]\['policy'\] must be one of",
+        ),
+        (
+            {
+                "institutions": {
+                    "inst-a": {
+                        "canonical_name": "Alpha University",
+                        "city": "Alpha City",
+                        "state": "AA",
+                        "country": "US",
+                        "ror_id": "",
+                        "grid_id": "",
+                        "email_domains": "",
+                        "openalex_id": "",
+                    }
+                },
+                "alias_rules": [],
+                "precedence_rules": [{"preferred": "inst-a", "demoted": "missing-id"}],
+            },
+            r"rules\['precedence_rules'\]\[0\]\['demoted'\] references unknown canonical_id: missing-id",
+        ),
+    ],
+)
+def test_affiliation_normalizer_rejects_malformed_custom_rules(
+    rules: dict[str, object],
+    expected_message: str,
+) -> None:
+    with pytest.raises(ValueError, match=expected_message):
+        AffiliationNormalizer(rules)

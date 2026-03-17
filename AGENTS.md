@@ -20,6 +20,7 @@ Use the `affiliation_normalizer` package for institution matching from affiliati
 - `match_email_domain(email_domain: str) -> MatchResult`
 - `match_record(*, affiliation_text: str = "", ror_id: str = "", grid_id: str = "", email: str = "") -> MatchResult`
 - Priority policy in `match_record`: `ROR/GRID > email > text`.
+- If `match_record(...)` receives only malformed identifier/email inputs and no later signal resolves, it returns the same `invalid_*` reasons as the direct lookup helpers.
 - Alias policies:
   - `allow`: normal runtime matching
   - `allow_if_geo`: alias match requires geo evidence in text (city, or state+country)
@@ -50,6 +51,7 @@ Use the `affiliation_normalizer` package for institution matching from affiliati
     - `no_ror_match`, `no_grid_match`, `no_email_domain_match`
 - For custom rules, prefer `AffiliationNormalizer.from_rules_json(...)`.
 - Direct `AffiliationNormalizer(rules=...)` is for advanced use and expects the same payload shape emitted by `build_rules(...)`: top-level `institutions`, `alias_rules`, and `precedence_rules`.
+- Malformed custom rule payloads now raise `ValueError` at construction time.
 
 ## Rule sources and rebuild
 - Master data: `niaid_org_seed_master.csv`
