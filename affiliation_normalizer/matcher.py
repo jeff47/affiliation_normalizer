@@ -10,9 +10,10 @@ from dataclasses import dataclass
 from importlib import resources
 from importlib.resources.abc import Traversable
 from pathlib import Path
+from typing import Mapping, cast
 from urllib.parse import urlparse
 
-from .models import AliasHit, MatchResult
+from .models import AliasHit, MatchReason, MatchResult, RulesPayload
 
 NON_ALNUM_RE = re.compile(r"[^a-z0-9\s]+")
 WHITESPACE_RE = re.compile(r"\s+")
@@ -46,14 +47,26 @@ class _AliasRule:
 
 
 class AffiliationNormalizer:
-    """Normalize affiliation strings to canonical institutions."""
+    """Normalize affiliation strings to canonical institutions.
 
-    def __init__(self, rules: dict) -> None:
-        self._institutions: dict[str, dict[str, str]] = rules.get("institutions", {})
-        raw_rules = rules.get("alias_rules", [])
+    ``from_rules_json(...)`` is the preferred entry point for bundled or
+    build-produced rule artifacts. Direct construction with ``rules=...`` is
+    supported for advanced callers providing a payload shaped like the output of
+    ``affiliation_normalizer.build_rules.build_rules(...)``.
+    """
+
+    def __init__(self, rules: RulesPayload | Mapping[str, object]) -> None:
+        """Build a normalizer from a rules payload.
+
+        Advanced callers passing ``rules=...`` should supply the same payload
+        shape emitted by ``affiliation_normalizer.build_rules.build_rules(...)``.
+        """
+
+        self._institutions = cast(dict[str, dict[str, str]], rules.get("institutions", {}))
+        raw_rules = cast(list[dict[str, str]], rules.get("alias_rules", []))
         self._precedence_pairs = [
             ((r.get("preferred") or "").strip(), (r.get("demoted") or "").strip())
-            for r in rules.get("precedence_rules", [])
+            for r in cast(list[dict[str, str]], rules.get("precedence_rules", []))
             if (r.get("preferred") or "").strip() and (r.get("demoted") or "").strip()
         ]
 
@@ -434,7 +447,7 @@ class AffiliationNormalizer:
         self,
         canonical_id: str,
         hits: list[_AliasRule],
-        reason: str,
+        reason: MatchReason,
         low_confidence: bool,
     ) -> MatchResult:
         inst = self._institutions.get(canonical_id, {})

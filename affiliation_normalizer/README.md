@@ -75,6 +75,8 @@ result = match_record(
 - `city`, `state`, `country`
 - `ror_id`, `grid_id`, `openalex_id`
 - `reason`, `candidate_ids`, `matched_aliases`, `confidence`
+- `reason` is intended for caller branching and operational inspection; treat the documented string values below as part of the public contract within a major version.
+- `confidence` is a coarse heuristic in the range `0.0` to `1.0`; it is not a calibrated probability and should not be used as a stable cross-release threshold unless explicitly documented.
 - ROR lookup: `match_ror(ror_id: str)` (supports bare IDs and `https://ror.org/...` URLs)
 - GRID lookup: `match_grid(grid_id: str)` (supports bare IDs and legacy GRID URLs)
 - Email lookup: `match_email_domain(email_domain: str)` (supports domains or full email addresses)
@@ -105,6 +107,14 @@ Common operational implication:
 - `empty_ror`, `invalid_ror`
 - `empty_grid`, `invalid_grid`
 - `empty_email_domain`, `invalid_email_domain`
+- `no_ror_match`, `no_grid_match`, `no_email_domain_match`
+
+## Custom rules
+
+- `AffiliationNormalizer.from_rules_json(...)` is the preferred entry point for bundled or build-produced rule artifacts.
+- Direct construction with `AffiliationNormalizer(rules=...)` is supported for advanced/custom use.
+- The expected `rules` payload shape matches the output of `affiliation_normalizer.build_rules.build_rules(...)`, with top-level keys `institutions`, `alias_rules`, and `precedence_rules`.
+- The constructor currently does not perform full runtime schema validation, so callers supplying raw rule dictionaries should treat the build output schema as the source of truth.
 
 ## Rule rebuild
 

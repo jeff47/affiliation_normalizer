@@ -29,6 +29,8 @@ Use the `affiliation_normalizer` package for institution matching from affiliati
   - `matched`: single resolved institution
   - `ambiguous`: multiple unresolved candidates
   - `not_found`: no allow-policy match
+- `MatchResult.reason` is intended for caller branching; treat the documented reason strings as part of the public runtime contract.
+- `MatchResult.confidence` is a coarse heuristic score in `[0.0, 1.0]`, not a calibrated probability.
 - For `matched`, use:
   - `canonical_id`
   - `canonical_name`
@@ -45,6 +47,9 @@ Use the `affiliation_normalizer` package for institution matching from affiliati
     - `empty_ror`, `invalid_ror`
     - `empty_grid`, `invalid_grid`
     - `empty_email_domain`, `invalid_email_domain`
+    - `no_ror_match`, `no_grid_match`, `no_email_domain_match`
+- For custom rules, prefer `AffiliationNormalizer.from_rules_json(...)`.
+- Direct `AffiliationNormalizer(rules=...)` is for advanced use and expects the same payload shape emitted by `build_rules(...)`: top-level `institutions`, `alias_rules`, and `precedence_rules`.
 
 ## Rule sources and rebuild
 - Master data: `niaid_org_seed_master.csv`
