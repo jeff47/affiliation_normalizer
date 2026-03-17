@@ -53,6 +53,16 @@ Use the `affiliation_normalizer` package for institution matching from affiliati
 - Direct `AffiliationNormalizer(rules=...)` is for advanced use and expects the same payload shape emitted by `build_rules(...)`: top-level `institutions`, `alias_rules`, and `precedence_rules`.
 - Malformed custom rule payloads now raise `ValueError` at construction time.
 
+## Notes For Downstream Repos
+- Treat `MatchResult.reason` as part of the caller-facing contract within the current major version.
+- Direct lookup helpers distinguish empty from malformed input:
+  - `match_ror(...)`: `empty_ror` vs `invalid_ror`
+  - `match_grid(...)`: `empty_grid` vs `invalid_grid`
+  - `match_email_domain(...)`: `empty_email_domain` vs `invalid_email_domain`
+- `match_record(...)` can also return `invalid_ror`, `invalid_grid`, or `invalid_email_domain` when malformed identifier/email input is provided and no later signal resolves.
+- `MatchResult.confidence` is a coarse heuristic only; it is not a calibrated probability and should not be treated as a stable cross-release threshold.
+- Prefer `AffiliationNormalizer.from_rules_json(...)` over raw `AffiliationNormalizer(rules=...)` unless custom rules are intentionally being constructed in the consumer repo.
+
 ## Rule sources and rebuild
 - Master data: `niaid_org_seed_master.csv`
 - Email mapping input (for seed population): `ipf_to_email.csv`
