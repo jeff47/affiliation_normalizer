@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 import pytest
 
 from affiliation_normalizer import (
@@ -10,7 +12,11 @@ from affiliation_normalizer import (
     match_record,
     match_ror,
 )
-from affiliation_normalizer.build_rules import load_alias_policy, normalize_text as build_normalize_text
+from affiliation_normalizer.build_rules import (
+    build_rules,
+    load_alias_policy,
+    normalize_text as build_normalize_text,
+)
 from affiliation_normalizer.matcher import DEFAULT_RULES_PATH, normalize_text
 
 
@@ -1007,6 +1013,59 @@ def test_load_alias_policy_supports_allow_if_geo_explicit_alias(tmp_path) -> Non
 
     assert policy_map["niaid"] == "allow_if_geo"
     assert explicit_aliases == [("NIAID", "inst-nih", "allow_if_geo")]
+
+
+@pytest.mark.parametrize("missing_header", ["grid_id", "email_domains"])
+def test_build_rules_requires_grid_and_email_domain_headers(
+    tmp_path: Path,
+    missing_header: str,
+) -> None:
+    headers = [
+        "canonical_id",
+        "canonical_name",
+        "org_city",
+        "org_state",
+        "org_country",
+        "ror_id",
+        "grid_id",
+        "email_domains",
+        "openalex_id",
+        "nih_reporter_name",
+    ]
+    headers.remove(missing_header)
+    master = tmp_path / "master.csv"
+    master.write_text(
+        ",".join(headers) + "\n"
+        + ",".join("value" for _ in headers) + "\n",
+        encoding="utf-8",
+    )
+    policy = tmp_path / "alias_policy.tsv"
+    policy.write_text(
+        "alias\tpolicy\treason\tcandidate_canonical_ids\tcandidate_names\tnotes\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(ValueError, match=f"Missing columns in master file: {missing_header}"):
+        build_rules(master, policy, None)
+
+
+def test_build_rules_allows_blank_grid_and_email_domain_values(tmp_path: Path) -> None:
+    master = tmp_path / "master.csv"
+    master.write_text(
+        "canonical_id,canonical_name,org_city,org_state,org_country,ror_id,grid_id,email_domains,openalex_id,nih_reporter_name\n"
+        "inst-a,Alpha Institute,Alpha City,AA,US,03x,,,I123,Alpha Institute\n",
+        encoding="utf-8",
+    )
+    policy = tmp_path / "alias_policy.tsv"
+    policy.write_text(
+        "alias\tpolicy\treason\tcandidate_canonical_ids\tcandidate_names\tnotes\n",
+        encoding="utf-8",
+    )
+
+    rules = build_rules(master, policy, None)
+
+    assert rules["institutions"]["inst-a"]["grid_id"] == ""
+    assert rules["institutions"]["inst-a"]["email_domains"] == ""
 
 
 def test_module_match_record_default_not_found_for_empty_input() -> None:

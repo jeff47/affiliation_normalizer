@@ -205,6 +205,8 @@ def build_rules(
             "org_state",
             "org_country",
             "ror_id",
+            "grid_id",
+            "email_domains",
             "openalex_id",
             "nih_reporter_name",
         }
