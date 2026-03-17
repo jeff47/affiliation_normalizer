@@ -916,6 +916,74 @@ def test_match_record_applies_identifier_email_text_priority() -> None:
     assert text_result.reason == "precedence_or_direct_match"
 
 
+def test_match_record_intersects_ambiguous_email_and_text_candidates() -> None:
+    rules = {
+        "institutions": {
+            "inst-a": {
+                "canonical_id": "inst-a",
+                "canonical_name": "Alpha University",
+                "city": "Alpha City",
+                "state": "AA",
+                "country": "US",
+                "ror_id": "",
+                "grid_id": "",
+                "email_domains": "shared.edu",
+                "openalex_id": "",
+            },
+            "inst-b": {
+                "canonical_id": "inst-b",
+                "canonical_name": "Beta Institute",
+                "city": "Beta City",
+                "state": "BB",
+                "country": "US",
+                "ror_id": "",
+                "grid_id": "",
+                "email_domains": "shared.edu",
+                "openalex_id": "",
+            },
+            "inst-c": {
+                "canonical_id": "inst-c",
+                "canonical_name": "Gamma Center",
+                "city": "Gamma City",
+                "state": "CC",
+                "country": "US",
+                "ror_id": "",
+                "grid_id": "",
+                "email_domains": "",
+                "openalex_id": "",
+            },
+        },
+        "alias_rules": [
+            {
+                "alias": "Medical Center",
+                "alias_norm": "medical center",
+                "canonical_id": "inst-a",
+                "alias_type": "manual_alias",
+                "policy": "allow",
+            },
+            {
+                "alias": "Medical Center",
+                "alias_norm": "medical center",
+                "canonical_id": "inst-c",
+                "alias_type": "manual_alias",
+                "policy": "allow",
+            },
+        ],
+        "precedence_rules": [],
+    }
+    normalizer = AffiliationNormalizer(rules)
+
+    result = normalizer.match_record(
+        affiliation_text="Medical Center",
+        email="person@shared.edu",
+    )
+
+    assert result.status == "matched"
+    assert result.canonical_id == "inst-a"
+    assert result.reason == "email_domain_disambiguation"
+    assert result.candidate_ids == ("inst-a",)
+
+
 def test_match_record_ror_priority_overrides_multi_author_text_gate() -> None:
     normalizer = _normalizer()
     result = normalizer.match_record(

@@ -322,7 +322,9 @@ class AffiliationNormalizer:
             if email_result.status == "ambiguous":
                 if affiliation_text.strip():
                     text_result = self.match(affiliation_text)
-                    if text_result.status == "matched" and text_result.canonical_id in set(email_result.candidate_ids):
+                    email_candidates = set(email_result.candidate_ids)
+
+                    if text_result.status == "matched" and text_result.canonical_id in email_candidates:
                         return MatchResult(
                             status="matched",
                             reason="email_domain_disambiguation",
@@ -337,8 +339,25 @@ class AffiliationNormalizer:
                             openalex_id=text_result.openalex_id,
                             confidence=text_result.confidence,
                             matched_aliases=text_result.matched_aliases,
-                            candidate_ids=text_result.candidate_ids,
+                            candidate_ids=(text_result.canonical_id,),
                         )
+
+                    if text_result.status in {"matched", "ambiguous"}:
+                        text_candidates = (
+                            {text_result.canonical_id}
+                            if text_result.status == "matched" and text_result.canonical_id
+                            else set(text_result.candidate_ids)
+                        )
+                        overlap = email_candidates.intersection(text_candidates)
+                        self._apply_precedence(overlap)
+                        if len(overlap) == 1:
+                            only_id = next(iter(overlap))
+                            return self._build_matched_result(
+                                canonical_id=only_id,
+                                hits=[],
+                                reason="email_domain_disambiguation",
+                                low_confidence=False,
+                            )
                 return email_result
 
         if affiliation_text.strip():
