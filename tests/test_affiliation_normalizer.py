@@ -571,6 +571,23 @@ def test_returns_not_found_for_unknown_ror() -> None:
     assert result.reason == "no_ror_match"
 
 
+@pytest.mark.parametrize(
+    ("value", "expected_reason"),
+    [
+        ("", "empty_ror"),
+        ("not-a-ror", "invalid_ror"),
+        ("https://example.com/03v76x132", "invalid_ror"),
+    ],
+)
+def test_match_ror_distinguishes_empty_and_invalid_input(
+    value: str,
+    expected_reason: str,
+) -> None:
+    result = match_ror(value)
+    assert result.status == "not_found"
+    assert result.reason == expected_reason
+
+
 def test_matches_grid_bare_id() -> None:
     normalizer = _normalizer()
 
@@ -593,6 +610,22 @@ def test_returns_not_found_for_unknown_grid() -> None:
     result = normalizer.match_grid("grid.000000.0")
     assert result.status == "not_found"
     assert result.reason == "no_grid_match"
+
+
+@pytest.mark.parametrize(
+    ("value", "expected_reason"),
+    [
+        ("", "empty_grid"),
+        ("not-a-grid-id", "invalid_grid"),
+    ],
+)
+def test_match_grid_distinguishes_empty_and_invalid_input(
+    value: str,
+    expected_reason: str,
+) -> None:
+    result = match_grid(value)
+    assert result.status == "not_found"
+    assert result.reason == expected_reason
 
 
 def test_maps_grid_id_to_bloomington() -> None:
@@ -779,6 +812,22 @@ def test_module_match_email_domain_no_match_with_default_rules() -> None:
     result = match_email_domain("example.org")
     assert result.status == "not_found"
     assert result.reason == "no_email_domain_match"
+
+
+@pytest.mark.parametrize(
+    ("value", "expected_reason"),
+    [
+        ("", "empty_email_domain"),
+        ("not an email", "invalid_email_domain"),
+    ],
+)
+def test_match_email_domain_distinguishes_empty_and_invalid_input(
+    value: str,
+    expected_reason: str,
+) -> None:
+    result = match_email_domain(value)
+    assert result.status == "not_found"
+    assert result.reason == expected_reason
 
 
 def test_email_match_has_priority_over_text_match() -> None:

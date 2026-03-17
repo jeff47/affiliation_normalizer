@@ -18,6 +18,7 @@ NON_ALNUM_RE = re.compile(r"[^a-z0-9\s]+")
 WHITESPACE_RE = re.compile(r"\s+")
 TOKEN_RE = re.compile(r"[a-z0-9]+")
 GRID_ID_RE = re.compile(r"grid\.[a-z0-9]+\.[a-z0-9]+")
+ROR_ID_RE = re.compile(r"^0[a-z0-9]{8}$")
 EMAIL_RE = re.compile(r"[A-Za-z0-9._%+-]+@([A-Za-z0-9.-]+\.[A-Za-z]{2,})")
 EMAIL_DOMAIN_RE = re.compile(r"^[a-z0-9][a-z0-9.-]*\.[a-z]{2,}$")
 IN_WORD_APOSTROPHE_RE = re.compile(r"(?<=\w)'(?=\w)")
@@ -241,9 +242,12 @@ class AffiliationNormalizer:
         )
 
     def match_ror(self, ror_id: str) -> MatchResult:
+        if not ror_id.strip():
+            return MatchResult(status="not_found", reason="empty_ror")
+
         ror_norm = normalize_ror(ror_id)
         if not ror_norm:
-            return MatchResult(status="not_found", reason="empty_ror")
+            return MatchResult(status="not_found", reason="invalid_ror")
 
         candidate_ids = self._ror_index.get(ror_norm, set())
         if not candidate_ids:
@@ -264,9 +268,12 @@ class AffiliationNormalizer:
         )
 
     def match_grid(self, grid_id: str) -> MatchResult:
+        if not grid_id.strip():
+            return MatchResult(status="not_found", reason="empty_grid")
+
         grid_norm = normalize_grid(grid_id)
         if not grid_norm:
-            return MatchResult(status="not_found", reason="empty_grid")
+            return MatchResult(status="not_found", reason="invalid_grid")
 
         candidate_ids = self._grid_index.get(grid_norm, set())
         if not candidate_ids:
@@ -287,9 +294,12 @@ class AffiliationNormalizer:
         )
 
     def match_email_domain(self, email_domain: str) -> MatchResult:
+        if not email_domain.strip():
+            return MatchResult(status="not_found", reason="empty_email_domain")
+
         domain_norm = normalize_email_domain(email_domain)
         if not domain_norm:
-            return MatchResult(status="not_found", reason="empty_email_domain")
+            return MatchResult(status="not_found", reason="invalid_email_domain")
 
         return self._match_email_domains({domain_norm})
 
@@ -503,8 +513,11 @@ def normalize_ror(ror_id: str) -> str:
         return ""
 
     parsed = urlparse(raw)
-    if parsed.scheme in {"http", "https"} and parsed.netloc in {"ror.org", "www.ror.org"}:
-        raw = parsed.path
+    if parsed.scheme or parsed.netloc:
+        if parsed.scheme in {"http", "https"} and parsed.netloc in {"ror.org", "www.ror.org"}:
+            raw = parsed.path
+        else:
+            return ""
 
     raw = raw.strip().strip("/")
     if raw.startswith("https://ror.org/"):
@@ -515,7 +528,10 @@ def normalize_ror(ror_id: str) -> str:
         raw = raw[len("www.ror.org/") :]
     elif raw.startswith("ror.org/"):
         raw = raw[len("ror.org/") :]
-    return raw.strip("/")
+    raw = raw.strip("/")
+    if not ROR_ID_RE.fullmatch(raw):
+        return ""
+    return raw
 
 
 def normalize_grid(grid_id: str) -> str:

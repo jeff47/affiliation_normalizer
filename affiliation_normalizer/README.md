@@ -102,6 +102,9 @@ Common operational implication:
 - `review_only_match`
 - `geo_policy_no_match`
 - `multi_author_input`
+- `empty_ror`, `invalid_ror`
+- `empty_grid`, `invalid_grid`
+- `empty_email_domain`, `invalid_email_domain`
 
 ## Rule rebuild
 

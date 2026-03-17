@@ -42,6 +42,9 @@ Use the `affiliation_normalizer` package for institution matching from affiliati
     - `review_only_match`
     - `geo_policy_no_match`
     - `multi_author_input`
+    - `empty_ror`, `invalid_ror`
+    - `empty_grid`, `invalid_grid`
+    - `empty_email_domain`, `invalid_email_domain`
 
 ## Rule sources and rebuild
 - Master data: `niaid_org_seed_master.csv`
